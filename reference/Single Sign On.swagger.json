@@ -1,0 +1,210 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Single Sign On",
+    "version": "1.0",
+    "description": "Provides methods to allow users the ability to single sign on to the DirectScale web sites."
+  },
+  "host": "dsapi-dev.directscale.com",
+  "basePath": "/v1/sso",
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "apiKeyHeader": {
+      "type": "apiKey",
+      "name": "Ocp-Apim-Subscription-Key",
+      "in": "header"
+    },
+    "apiKeyQuery": {
+      "type": "apiKey",
+      "name": "subscription-key",
+      "in": "query"
+    }
+  },
+  "security": [
+    {
+      "apiKeyHeader": []
+    },
+    {
+      "apiKeyQuery": []
+    }
+  ],
+  "paths": {
+    "/{customerId}": {
+      "get": {
+        "description": "Get an SSO URL for a specific customer.<br/><br/>\nThis method will return a fully qualified URL that will allow an external application to redirect the browser to the DirectScale back office application.  By using this URL the customer will automatically be logged in and placed on the proper view.<br/><br/>\n<b>Note:</b> These URLs have a small Time To Live (TTL), just a few minutes by default. Once the URL has expired the customers will be required to login using their username and password.  Calling applications should not cache or persist these URLs.<br/><br/>\n<b>WARNING:</b> It is up to the caller to verify the identity of the customer.  The DirectScale back office has no additional process to validate the identify of the customer.<br/><br/>",
+        "operationId": "580cd08acb00f20f64f59a1b",
+        "summary": "Get SSO URL for Customer",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "This is the commission system-assigned ID. ",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "dest",
+            "in": "query",
+            "description": "Named destination - the API team will need to create a URL target in DirectScale configuration to use this",
+            "type": "string"
+          },
+          {
+            "name": "args",
+            "in": "query",
+            "description": "When a destination page/view needs extra data, it can be provided with this parameter. The format of this value is a query string (IE Name=Joe&Age=24). Because this service method uses a GET, make sure you pass this parameter's value URL encoded.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a URL that contains the SSO login token. This can be used to log into the DS back office directly, in the corresponding environment (Dev, Stage, Production)"
+          }
+        },
+        "tags": [
+          "Single Sign On"
+        ]
+      }
+    },
+    "/": {
+      "get": {
+        "description": "Get an SSO URL for a specific customer using the external reference id.<br/><br/>\nThis method will return a fully qualified URL that will allow an external application to redirect the browser to the DirectScale back office application.  By using this URL the customer will automatically be logged in and placed on the proper view.<br/><br/>\n<b>Note:</b> These URLs have a small Time To Live (TTL), just a few minutes by default. Once the URL has expired the customers will be required to login using their username and password.  Calling applications should not cache or persist these URLs.<br/><br/>\n<b>WARNING:</b> It is up to the caller to verify the identity of the customer.  The DirectScale back office has no additional process to validate the identify of the customer.<br/><br/>",
+        "operationId": "580cd10ccb00f20f64f59a1c",
+        "summary": "Get SSO URL for External Reference Id",
+        "parameters": [
+          {
+            "name": "externalId",
+            "in": "query",
+            "description": "Customer-specific ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "dest",
+            "in": "query",
+            "description": "Named destination - the API team will need to create a URL target in DirectScale configuration to use this",
+            "type": "string"
+          },
+          {
+            "name": "args",
+            "in": "query",
+            "description": "When a destination page/view needs extra data, it can be provided with this parameter. The format of this value is a query string (IE Name=Joe&Age=24). Because this service method uses a GET, make sure you pass this parameter's value URL encoded.",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "Single Sign On"
+        ]
+      }
+    },
+    "/admin/token/{token}": {
+      "get": {
+        "description": "Given an admin site SSO token this method will validate the token and return the admin user.<br/><br/>\nWhen creating an external admin page in the DirectScale admin site, you can use the 'DirectScale:AdminToken' tag in the URL. When an admin user clicks to navigate to the external page, that tag will be replaced by a short-lived encrypted token. That token can be passed to this endpoint to verify it and retrieve the details for that admin user.",
+        "operationId": "5d38482675d3e0f9288b908c",
+        "summary": "Get Admin User for SSO Token",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "This comes back when the token is not expired, and relates to a valid user in the system.",
+            "examples": {
+              "application/json": {
+                "CustomerId": "45678",
+                "ExternalReferenceId": "ABC123",
+                "DisplayName": "John Doe",
+                "Username": "jonedoe45",
+                "EmailAddress": "someone@directscale.com"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Single Sign On"
+        ]
+      }
+    },
+    "/Training": {
+      "get": {
+        "description": "Test API",
+        "operationId": "5dc5fc27b763180761c2e720",
+        "summary": "Test API",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "ID of user for whom to get training material",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "This comes back when the token is not expired, and relates to a valid user in the system.",
+            "examples": {
+              "application/json": {
+                "CustomerId": "45678",
+                "ExternalReferenceId": "ABC123",
+                "DisplayName": "John Doe",
+                "Username": "jonedoe45",
+                "EmailAddress": "someone@directscale.com"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Single Sign On"
+        ]
+      }
+    }
+  },
+  "tags": [],
+  "x-ms-paths": {
+    "/?token={token}": {
+      "get": {
+        "description": "Given an external SSO token this method will validate the token and return the summary customer information.<br/><br/>\nThe DirectScale back office navigation features can generate an encrypted token, which can be added to a navigation link within the back office application.  When the user clicks on the link the target web site can then validate this token using this method. The links/tokens are always generated within the specific security scope of the individual customer that is logged into the back office.<br/>\n<br/>\nOn success, the method returns the summary customer information that indicates that the token belongs to the individual that triggered the link.<br/>\n<br/>\n<b>Note:</b> These tokens have a small Time To Live (TTL), 1 minutes by default.  Once the token has expired this method will consider the token invalid and return the appropriate status back to the caller. Calling applications should not cache or persist these tokens.<br/>\n<br/>",
+        "operationId": "5835e3fccb00f20174571d66",
+        "summary": "Get Customer for SSO Token",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "This comes back when the token is not expired, and relates to a valid user in the system.",
+            "examples": {
+              "application/json": {
+                "CustomerId": "45678",
+                "ExternalReferenceId": "ABC123",
+                "DisplayName": "John Doe",
+                "Username": "jonedoe45",
+                "EmailAddress": "someone@directscale.com"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    }
+  }
+}

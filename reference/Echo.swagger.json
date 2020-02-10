@@ -1,0 +1,66 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Echo",
+    "version": "1.0",
+    "description": "Provides methods for testing the connectivity and authorization to the DirectScale services."
+  },
+  "host": "dsapi-dev.directscale.com",
+  "basePath": "/v1/echo",
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "apiKeyHeader": {
+      "type": "apiKey",
+      "name": "Ocp-Apim-Subscription-Key",
+      "in": "header"
+    },
+    "apiKeyQuery": {
+      "type": "apiKey",
+      "name": "subscription-key",
+      "in": "query"
+    }
+  },
+  "security": [
+    {
+      "apiKeyHeader": []
+    },
+    {
+      "apiKeyQuery": []
+    }
+  ],
+  "paths": {
+    "/ping": {
+      "get": {
+        "description": "Ping the API gateway services to validate account settings and authentication.<br/><br/>\n<b>Note:</b> This method should be used for development and diagnostic support.<br/>\n<br/>\n",
+        "operationId": "57fd5882cb00f20f285d911f",
+        "summary": "Ping",
+        "responses": {
+          "200": {
+            "description": "The gateway accepted the request and it passed all the status and authorization checks."
+          }
+        },
+        "tags": [
+          "Echo"
+        ]
+      }
+    },
+    "/ping-deep": {
+      "get": {
+        "description": "The deep ping will check the connectivity status of the gateway to the DirectScale back end services.<br/>\n<br/>\n<b>Note:</b> This method should be used for development and diagnostic support.<br/>\n<br/>\n",
+        "operationId": "57fe3810cb00f20ae896cc63",
+        "summary": "Ping Deep",
+        "responses": {
+          "200": {
+            "description": "The gateway accepted the request and is able to communicate with the DirectScale back end services."
+          }
+        },
+        "tags": [
+          "Echo"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
