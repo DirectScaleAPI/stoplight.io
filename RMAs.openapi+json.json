@@ -1,0 +1,333 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "RMAs",
+    "description": "Provides methods for working with RMAs.",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://dsapi-dev.directscale.com/v1"
+    }
+  ],
+  "paths": {
+    "/rmas": {
+      "post": {
+        "tags": [
+          "rma"
+        ],
+        "summary": "Create RMA",
+        "description": "Create a new RMA.",
+        "operationId": "create-rmas",
+        "requestBody": {
+          "description": "RMA details",
+          "content": {
+            "application/json": {
+              "example": {
+                "RmaInfo": {
+                  "AssociateId": 2,
+                  "OrderNumber": 1255,
+                  "WarehouseId": 1,
+                  "Notes": "Wrong Item",
+                  "CurrencyCode": "USD",
+                  "LineItems": [
+                    {
+                      "ItemId": 104,
+                      "Sku": "PSS192027 | Navy | S",
+                      "Name": "Cotton Poplin Flutter Detail Top",
+                      "Qty": 1,
+                      "Price": 295
+                    }
+                  ],
+                  "Total": 295
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The RMA was successfully created."
+          },
+          "400": {
+            "description": "The provided RMA data is incomplete or incorrectly formatted.  See the response message in the headers for details."
+          },
+          "404": {
+            "description": "The order number on the RMA doesn't exist."
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "rma"
+        ],
+        "summary": "Get RMAs",
+        "description": "Get RMAs that match the filters in the request.",
+        "operationId": "get-rmas",
+        "parameters": [
+          {
+            "name": "BeginDate",
+            "in": "query",
+            "description": "The beginning date range.",
+            "required": true,
+            "schema": {
+              "type": "Date/Time"
+            }
+          },
+          {
+            "name": "EndDate",
+            "in": "query",
+            "description": "The end date range.",
+            "required": true,
+            "schema": {
+              "type": "Date/Time"
+            }
+          },
+          {
+            "name": "Filter",
+            "in": "query",
+            "description": "The complete RMA number, complete customer ID, partial first name, or partial last name.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "WarehouseID",
+            "in": "query",
+            "description": "The ID of the warehouse.",
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "description": "The status of the RMA. 1=Created, 2=Shipped, 3=Received",
+            "schema": {
+              "type": "int"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/rmas/{rmaId}": {
+      "delete": {
+        "tags": [
+          "rma"
+        ],
+        "summary": "Delete RMA",
+        "description": "Delete the RMA.\n\nYou can get the **Request Parameters** at these calls:\n\n**rmaId**\n- Get RMAs",
+        "operationId": "delete-rma",
+        "parameters": [
+          {
+            "name": "rmaId",
+            "in": "path",
+            "description": "The ID of the RMA to delete.",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "RMA successfully deleted."
+          },
+          "400": {
+            "description": "RMA has been received and can't be deleted."
+          },
+          "404": {
+            "description": "RMA not found."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "rma"
+        ],
+        "summary": "Get RMA",
+        "description": "Get a single RMA.\n\nYou can get the **Request Parameters** at these calls:\n\n**rmaId**\n- Get RMAs",
+        "operationId": "get-rma",
+        "parameters": [
+          {
+            "name": "rmaId",
+            "in": "path",
+            "description": "The ID of the RMA to get.",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Id": 14,
+                  "AssociateId": 2,
+                  "OrderNumber": 1233,
+                  "WarehouseId": 3,
+                  "Date": "2019-01-25T13:38:14.0000000+00:00",
+                  "ShipMethod": "1",
+                  "DateShipped": "2019-01-25T13:38:28.0000000+00:00",
+                  "DateReceived": "2019-01-25T13:38:47.0000000+00:00",
+                  "TrackingNumber": "fdhfdgj i76bb9",
+                  "Notes": "dsgfdhgfjhvgjbh",
+                  "CurrencyCode": "usd",
+                  "LineItems": [
+                    {
+                      "RmaId": 0,
+                      "ItemId": 1236,
+                      "Sku": "PSS195010 | NVY | 2",
+                      "Name": "Cotton Canvas Fringe Detail Jacket",
+                      "Qty": 1,
+                      "Price": 350
+                    }
+                  ],
+                  "Status": "Received",
+                  "Total": 350,
+                  "Shipped": true,
+                  "Received": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No RMA with that ID was found."
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/rmas/{rmaId}/shipped": {
+      "post": {
+        "tags": [
+          "rma"
+        ],
+        "summary": "Mark RMA shipped",
+        "description": "Mark an RMA as shipped.\n\nYou can get the **Request Parameters** at these calls:\n\n**rmaId**\n- Get RMAs\n\n**TrackingNumber**\n- Set Order Shipped\n- Set Package Shipped",
+        "operationId": "mark-rma-shipped",
+        "parameters": [
+          {
+            "name": "rmaId",
+            "in": "path",
+            "description": "The ID of the RMA to mark shipped.",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "TrackingNumber",
+            "in": "query",
+            "description": "Tracking number of the RMA.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successfully marked RMA as shipped."
+          },
+          "400": {
+            "description": "The RMA has already been marked shipped."
+          },
+          "404": {
+            "description": "RMA not found."
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/rmas/{rmaId}/received": {
+      "post": {
+        "tags": [
+          "rma"
+        ],
+        "summary": "Mark RMA as Received",
+        "description": "Mark an RMA as received.\n\nYou can get the **Request Parameters** at these calls:\n\n**rmaId**\n- Get RMAs",
+        "operationId": "mark-rma-as-received",
+        "parameters": [
+          {
+            "name": "rmaId",
+            "in": "path",
+            "description": "RMA ID to mark as received.",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Details about what was received.",
+          "content": {
+            "application/json": {
+              "example": {
+                "RmaItems": [
+                  {
+                    "ItemID": 0,
+                    "QtyReceived": 0,
+                    "QtyDamaged": 0
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "RMA received."
+          },
+          "400": {
+            "description": "The RMA is already received."
+          },
+          "404": {
+            "description": "RMA not found."
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKeyHeader": {
+        "type": "apiKey",
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header"
+      },
+      "apiKeyQuery": {
+        "type": "apiKey",
+        "name": "subscription-key",
+        "in": "query"
+      }
+    }
+  },
+  "security": [
+    {},
+    {
+      "apiKeyHeader": []
+    },
+    {
+      "apiKeyQuery": []
+    }
+  ]
+}

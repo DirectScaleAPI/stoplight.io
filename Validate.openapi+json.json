@@ -1,48 +1,33 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.1",
   "info": {
     "title": "Validate",
-    "version": "1.0",
-    "description": "Provides methods to validate and check the availability of username, web aliases, e-mail addresses, etc..."
+    "description": "Provides methods to validate and check the availability of username, web aliases, e-mail addresses, etc...",
+    "version": "1.0"
   },
-  "host": "dsapi-dev.directscale.com",
-  "basePath": "/v1/validate",
-  "schemes": [
-    "https"
-  ],
-  "securityDefinitions": {
-    "apiKeyHeader": {
-      "type": "apiKey",
-      "name": "Ocp-Apim-Subscription-Key",
-      "in": "header"
-    },
-    "apiKeyQuery": {
-      "type": "apiKey",
-      "name": "subscription-key",
-      "in": "query"
-    }
-  },
-  "security": [
+  "servers": [
     {
-      "apiKeyHeader": []
-    },
-    {
-      "apiKeyQuery": []
+      "url": "https://dsapi-dev.directscale.com/v1/validate"
     }
   ],
   "paths": {
     "/username/{username}": {
       "get": {
+        "tags": [
+          "Validation"
+        ],
+        "summary": "Username",
         "description": "Validates whether a Username already exists.<br/><br/>\n<b>Note:</b> All parameters that are passed on the URL must be encoded so that any extended characters are processed correctly.<br/><br/>",
         "operationId": "58d996cf13b5419644583387",
-        "summary": "Username",
         "parameters": [
           {
             "name": "username",
             "in": "path",
             "description": "The Username to validate.",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -55,24 +40,26 @@
           "500": {
             "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
           }
-        },
-        "tags": [
-          "Validate"
-        ]
+        }
       }
     },
     "/tax-id/{taxId}": {
       "get": {
+        "tags": [
+          "Validation"
+        ],
+        "summary": "Tax Id",
         "description": "Validates whether a Tax Id already exists.<br/><br/>\n<b>Note:</b> All parameters that are passed on the URL must be encoded so that any extended characters are processed correctly.<br/><br/>",
         "operationId": "58d996cf7df86aaede38a952",
-        "summary": "Tax Id",
         "parameters": [
           {
             "name": "taxId",
             "in": "path",
             "description": "The Tax Id to validate.",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -85,24 +72,26 @@
           "500": {
             "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
           }
-        },
-        "tags": [
-          "Validate"
-        ]
+        }
       }
     },
     "/email-address/{emailAddress}": {
       "get": {
+        "tags": [
+          "Validation"
+        ],
+        "summary": "Email Address",
         "description": "Validates whether an Email Address already exists.<br/><br/>\n<b>Note:</b> All parameters that are passed on the URL must be encoded so that any extended characters are processed correctly.<br/><br/>",
         "operationId": "58d996cfa7bb0a426a4899ef",
-        "summary": "Email Address",
         "parameters": [
           {
             "name": "emailAddress",
             "in": "path",
             "description": "Email address to validate.",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -115,24 +104,26 @@
           "500": {
             "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
           }
-        },
-        "tags": [
-          "Validate"
-        ]
+        }
       }
     },
     "/web-alias/{webAlias}": {
       "get": {
+        "tags": [
+          "Validation"
+        ],
+        "summary": "Web Alias",
         "description": "Validates whether a Web Alias already exists.<br/><br/>\n<b>Note:</b> All parameters that are passed on the URL must be encoded so that any extended characters are processed correctly.<br/><br/>",
         "operationId": "594c0ae8451c48d449b3a5d3",
-        "summary": "Web Alias",
         "parameters": [
           {
             "name": "webAlias",
             "in": "path",
             "description": "The Web Alias to validate.",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -145,82 +136,88 @@
           "500": {
             "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
           }
-        },
-        "tags": [
-          "Validate"
-        ]
+        }
       }
     },
     "/login": {
       "get": {
+        "tags": [
+          "Validation"
+        ],
+        "summary": "Login",
         "description": "Validates a Username/Password combination.<br/><br/>\n<b>Note:</b> All parameters that are passed on the URL must be encoded so that any extended characters are processed correctly.<br/><br/>",
         "operationId": "594d7b96b3ac880c101a48f8",
-        "summary": "Login",
         "parameters": [
           {
             "name": "username",
             "in": "query",
             "description": "The Username of the customer to validate.",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "password",
             "in": "query",
             "description": "The Password of the customer to validate.",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "The Username/Password combination is valid. This returns the Customer belonging to that combination.",
-            "examples": {
+            "content": {
               "application/json": {
-                "CustomerId": 0,
-                "BackOfficeId": "1234",
-                "BirthDate": "1998-01-01",
-                "CompanyName": "Test Company",
-                "CustomerStatus": 1,
-                "CustomerType": 1,
-                "DefaultShippingAddress": {
-                  "ID": 0,
-                  "Line1": "1124 South Market",
-                  "Line2": "",
-                  "Line3": "",
-                  "City": "Dallas",
-                  "State": "TX",
-                  "Zip": "75633",
-                  "CountryCode": "US"
-                },
-                "EmailAddress": "test@testing.directscale.com",
-                "EnrollerId": 2,
-                "ExternalReferenceId": "asd123",
-                "FirstName": "Direct Scale",
-                "InactiveDate": "0001-01-01",
-                "LanguageCode": "en",
-                "LastName": "Test",
-                "PrimaryAddress": {
-                  "ID": 0,
-                  "Line1": "1124 South Market",
-                  "Line2": "",
-                  "Line3": "",
-                  "City": "Dallas",
-                  "State": "TX",
-                  "Zip": "75633",
-                  "CountryCode": "US"
-                },
-                "PrimaryPhone": "555-555-5555",
-                "SecondaryPhone": "555-555-5556",
-                "SendEmails": false,
-                "SignupDate": "2015-05-13T14:11:21",
-                "SponsorId": 2,
-                "TaxExemptId": "asd-123-qwe",
-                "TaxId": "qwe-312-ewq",
-                "TermsAccepted": true,
-                "TextPhone": "555-555-5555",
-                "Username": "DSTest",
-                "WebAlias": "DSTest"
+                "example": {
+                  "CustomerId": 0,
+                  "BackOfficeId": "1234",
+                  "BirthDate": "1998-01-01T00:00:00.0000000+00:00",
+                  "CompanyName": "Test Company",
+                  "CustomerStatus": 1,
+                  "CustomerType": 1,
+                  "DefaultShippingAddress": {
+                    "ID": 0,
+                    "Line1": "1124 South Market",
+                    "Line2": "",
+                    "Line3": "",
+                    "City": "Dallas",
+                    "State": "TX",
+                    "Zip": "75633",
+                    "CountryCode": "US"
+                  },
+                  "EmailAddress": "test@testing.directscale.com",
+                  "EnrollerId": 2,
+                  "ExternalReferenceId": "asd123",
+                  "FirstName": "Direct Scale",
+                  "InactiveDate": "0001-01-01T00:00:00.0000000+00:00",
+                  "LanguageCode": "en",
+                  "LastName": "Test",
+                  "PrimaryAddress": {
+                    "ID": 0,
+                    "Line1": "1124 South Market",
+                    "Line2": "",
+                    "Line3": "",
+                    "City": "Dallas",
+                    "State": "TX",
+                    "Zip": "75633",
+                    "CountryCode": "US"
+                  },
+                  "PrimaryPhone": "555-555-5555",
+                  "SecondaryPhone": "555-555-5556",
+                  "SendEmails": false,
+                  "SignupDate": "2015-05-13T14:11:21.0000000+00:00",
+                  "SponsorId": 2,
+                  "TaxExemptId": "asd-123-qwe",
+                  "TaxId": "qwe-312-ewq",
+                  "TermsAccepted": true,
+                  "TextPhone": "555-555-5555",
+                  "Username": "DSTest",
+                  "WebAlias": "DSTest"
+                }
               }
             }
           },
@@ -230,15 +227,31 @@
           "500": {
             "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
           }
-        },
-        "produces": [
-          "application/json"
-        ],
-        "tags": [
-          "Validate"
-        ]
+        }
       }
     }
   },
-  "tags": []
+  "components": {
+    "securitySchemes": {
+      "apiKeyHeader": {
+        "type": "apiKey",
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header"
+      },
+      "apiKeyQuery": {
+        "type": "apiKey",
+        "name": "subscription-key",
+        "in": "query"
+      }
+    }
+  },
+  "security": [
+    {},
+    {
+      "apiKeyHeader": []
+    },
+    {
+      "apiKeyQuery": []
+    }
+  ]
 }

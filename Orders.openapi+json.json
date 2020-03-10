@@ -1,0 +1,1059 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Orders",
+    "description": "Provides methods for working with order processing and settings.",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://dsapi-dev.directscale.com/v1/orders"
+    }
+  ],
+  "paths": {
+    "/order-types": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get Order Types",
+        "description": "Retrieves an array of Order Types.<br/><br/>\n",
+        "operationId": "594c013eed38c0285eae4f6a",
+        "responses": {
+          "200": {
+            "description": "Returns an array of valid Order Type objects.",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "OrderType": 1,
+                    "Description": "Standard"
+                  },
+                  {
+                    "OrderType": 2,
+                    "Description": "AutoShip"
+                  },
+                  {
+                    "OrderType": 3,
+                    "Description": "Enrollment"
+                  }
+                ]
+              }
+            }
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/price-groups/{priceGroupId}": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get Price Group",
+        "description": "Retrieves a Price Group based on a valid Price Group ID.\n\nYou can get the **Request Parameters** at these calls:\n\n**priceGroupId**\n- Get Price Groups",
+        "operationId": "594c013e663740137535789b",
+        "parameters": [
+          {
+            "name": "priceGroupId",
+            "in": "path",
+            "description": "The Id of the Price Group to retrieve.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a valid Price Group object.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "ID": 2,
+                  "Description": "Retail Associate"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "A Price Group with the given Price Group ID was not found."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/{orderId}": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get Order",
+        "description": "Retrieves an Order based on a valid Order ID.\n\nYou can get the **Request Parameter** at these calls:\n\n**orderId**\n- Get Order IDs\n- Get Order IDs by Filter\n",
+        "operationId": "594c013e6f6c08a2e90d53c5",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "The ID of the Order to retrieve. ",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a valid Order object.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "BillPhone": "555-555-5555",
+                  "CommissionDate": "0001-01-01T00:00:00.0000000+00:00",
+                  "DistributorID": 2,
+                  "Email": "testing@testing.directscale.com",
+                  "InvoiceDate": "2017-05-05T00:00:00.0000000+00:00",
+                  "LocalInvoiceNumber": 22,
+                  "Name": "DirectScale Testing",
+                  "OrderDate": "2015-04-25T00:00:00.0000000+00:00",
+                  "OrderType": 0,
+                  "OrderTypeDescription": "Description of the order",
+                  "OrderNumber": 2,
+                  "SpecialInstructions": "Here are some specs...",
+                  "Status": "Waiting Payment",
+                  "PartyId": 0,
+                  "TotalBonus": 10,
+                  "TotalCost": 13,
+                  "TotalCV": 1,
+                  "TotalQV": 1,
+                  "Void": false,
+                  "BillAddress": {
+                    "Line1": "1234 Newtown Rd.",
+                    "Line2": null,
+                    "Line3": null,
+                    "City": "Placerville",
+                    "StateCode": "CA",
+                    "Zip": "95667",
+                    "CountryCode": "US"
+                  },
+                  "TaxInfo": null,
+                  "IsPaid": false,
+                  "IsShipped": false,
+                  "LineItems": [
+                    {
+                      "Amount": 0,
+                      "Bonus": 0,
+                      "Cost": 0,
+                      "CurrencyCode": "",
+                      "Height": 0,
+                      "Length": 0,
+                      "OrderNumber": 2,
+                      "PackageNumber": 0,
+                      "CV": 0,
+                      "QV": 0,
+                      "Qty": 0,
+                      "SKU": "",
+                      "ItemID": 0,
+                      "ProductName": "",
+                      "Weight": 0,
+                      "Width": 0,
+                      "FlagCancer": false,
+                      "FlagBirthDefect": false
+                    }
+                  ],
+                  "Packages": [],
+                  "Totals": [
+                    {
+                      "TaxableSubTotal": 0,
+                      "CurrencyCode": "USD",
+                      "ExchangeRate": 0,
+                      "OrderNumber": 2,
+                      "Shipping": 0,
+                      "SubTotal": 125.5,
+                      "Tax": 8.21,
+                      "TaxTransactionID": "",
+                      "DiscountTotal": 0,
+                      "OverridenShippingTax": false,
+                      "Total": 133.71,
+                      "PaidAmount": 0,
+                      "TotalDue": 133.71
+                    }
+                  ],
+                  "Payments": []
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "An Order with the given Order ID was not found."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Cancel Order",
+        "description": "Cancel the Order based on a valid Order Id.\n\nYou can get the **Request Parameter** at these calls:\n\n**orderId**\n- Get Order IDs\n- Get Order IDs by Filter",
+        "operationId": "cancel-order",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "The Id of the Order to cancel. ",
+            "required": true,
+            "schema": {
+              "type": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order was cancelled."
+          },
+          "404": {
+            "description": "An Order with the given Order Id was not found."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/shipping-methods": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get Shipping Methods",
+        "description": "Retrieves an list of Shipping Methods.<br/><br/>",
+        "operationId": "594c013e6cf3850afff96220",
+        "responses": {
+          "200": {
+            "description": "Returns an array of valid Shipping Method objects."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/shipping-methods/{shippingMethodId}": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get Shipping Method",
+        "description": "Retrieves a Shipping Method based on a valid Shipping Method ID.\n\nYou can get the **Request Parameters** at these calls:\n\n**shippingMethodId**\n- Get Shipping Methods",
+        "operationId": "594c013e5c6888222836034e",
+        "parameters": [
+          {
+            "name": "shippingMethodId",
+            "in": "path",
+            "description": "The ID of the Shipping Method to retrieve.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a valid Shipping Method object.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "ID": 1,
+                  "Name": "International Shipping",
+                  "CountryCode": "HU",
+                  "Price": 5.25,
+                  "ShipType": 1
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "A Shipping Method with the given Shipping Method ID was not found."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/order-types/{orderTypeId}": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get Order Type",
+        "description": "Retrieves an Order Type based on a valid Order Type ID.\n\nYou can get the **Request Parameter** at this call:\n\n**orderTypeId**\n- Get Order Types",
+        "operationId": "594c013ea3e348501dc10b86",
+        "parameters": [
+          {
+            "name": "orderTypeId",
+            "in": "path",
+            "description": "The ID of the Order Type to retrieve.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a valid Order Type object.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "ID": 2,
+                  "Description": "AutoShip"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "An Order Type with the given Order Type ID was not found."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/price-groups": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get Price Groups",
+        "description": "Provides list of available Price Groups.<br/><br/>",
+        "operationId": "594c013e35d8c872d645cb8b",
+        "responses": {
+          "200": {
+            "description": "Returns an array of valid Price Group objects.",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "ID": 1,
+                    "Description": "Distributor Associate"
+                  },
+                  {
+                    "ID": 2,
+                    "Description": "Retail Associate"
+                  },
+                  {
+                    "ID": 3,
+                    "Description": "Preferred Customer"
+                  },
+                  {
+                    "ID": 4,
+                    "Description": "100PV Club"
+                  }
+                ]
+              }
+            }
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/packages/unshipped": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get Unshipped Packages",
+        "description": "Retrieves list of unshipped packages.\n\nYou can get the **Request Parameters** at these calls:\n\n**warehouseId**\n- Products: Get Regions",
+        "operationId": "59e60841b3ac880abcc07e61",
+        "parameters": [
+          {
+            "name": "warehouseId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a list of unshipped packages.",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/packages/{packageId}/shipped": {
+      "put": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Set Package Shipped",
+        "description": "Set the package status to shipped.  This method is used to notify the order processing system that the package was shipped by an external system.\n\nYou can get the **Request Parameter** at this call:\n\n**packageId**\n- Get Order",
+        "operationId": "59e6191db3ac880abcc07e62",
+        "parameters": [
+          {
+            "name": "packageId",
+            "in": "path",
+            "description": "Package Id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The shipping carrier and tracking number.",
+          "content": {
+            "application/json": {
+              "example": {
+                "Carrier": "UPS",
+                "TrackingNumber": "ABC-123-456"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Package shipping status was successfully updated."
+          },
+          "404": {
+            "description": "The package was not found."
+          }
+        }
+      }
+    },
+    "/packages/{packageId}/returned": {
+      "put": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Set Package Returned",
+        "description": "Set the package status to returned.  This method is used to notify the order processing system that the package was returned by an external system.\n\nYou can get the **Request Parameter** at this call:\n\n**packageId**\n- Get Order",
+        "operationId": "59e624a7b3ac880abcc07e63",
+        "parameters": [
+          {
+            "name": "packageId",
+            "in": "path",
+            "description": "Package Id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Package was successfully marked as returned."
+          },
+          "404": {
+            "description": "Package was not found."
+          }
+        }
+      }
+    },
+    "/{orderId}/packages/{packageId}": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get Order Package Details",
+        "description": "Get the details for a package within an order.\n\nYou can get the **Request Parameters** at these calls:\n\n**orderId**\n- Get Order IDs\n- Get Order IDs by Filter\n\n**packageId**\n- Get Order",
+        "operationId": "59e74311b3ac880abcc07e6d",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "The Order number for the given order",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "packageId",
+            "in": "path",
+            "description": "The package id for the given package",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the details of a package.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Amount": 39.95,
+                  "Bonus": 0,
+                  "Cost": 0,
+                  "CurrencyCode": "USD",
+                  "Height": 5,
+                  "Length": 4,
+                  "OrderNumber": 1234,
+                  "PackageNumber": 5678,
+                  "CV": 10,
+                  "QV": 10,
+                  "Qty": 1,
+                  "SKU": "ABC-1000",
+                  "ItemID": 123,
+                  "ProductName": "First Place Ribbon",
+                  "Weight": 0.5,
+                  "Width": 3,
+                  "FlagCancer": false,
+                  "FlagBirthDefect": false
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Given order or package was not found."
+          }
+        }
+      }
+    },
+    "/external-orders": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Import External Order",
+        "description": "Import an order that has been processed by an external system.  This API will import the order data for commission calculations only.  It is assumed that all processing, billing, and shipping of goods for the order has being done by an external system.<br/><br/>\n<b>NOTE;</b> This operation is only available on Disco version 10 or later.<br/>\n<br/>\n<b>PREVIEW:</b> Please note that this method is still under development.<br/>\n<br/>",
+        "operationId": "import-external-order",
+        "requestBody": {
+          "content": {
+            "application/json": {}
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Order successfully imported."
+          }
+        }
+      }
+    },
+    "/{orderId}/packages/shipped": {
+      "put": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Set Order Shipped",
+        "description": "Set the package status of all packages in an order to shipped.\n\nYou can get the **Request Parameters** at these calls:\n\n**orderId**\n- Get Order IDs\n- Get Order IDs by Filter",
+        "operationId": "set-order-shipped",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "The OrderId of the order for which you want to set package status shipped.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "Carrier": "UPS",
+                "TrackingNumber": "ABC-123-456"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Package shipping status was successfully updated for all packages in order."
+          },
+          "404": {
+            "description": "The order was not found"
+          }
+        }
+      }
+    },
+    "/order-ids": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get Order IDs",
+        "description": "Gets all Order IDs.<br/><br/>\n",
+        "operationId": "5bad1ba78965177b6a0672e4",
+        "responses": {
+          "200": {
+            "description": "Returns an array of Order IDs",
+            "content": {
+              "application/json": {
+                "example": [
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              }
+            }
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/order-ids-by-filter": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get Order IDs by Filter",
+        "description": "Gets all Order IDs that meet the specified criteria.\n\nYou can get the **Request Parameters** at these calls:\n\n**orderType**\n- Get Order Type(s)\n\n**orderCreatedBeginDate**\n- Get Order\n\n**Date + Time format**\n\nYear-Month-Day'T'MilitaryTimeHour:Minute:Second\n- Ex. 2020-02-20T15:47:52",
+        "operationId": "5bad1c9db5cb63c59cc3a49e",
+        "parameters": [
+          {
+            "name": "orderType",
+            "in": "query",
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "orderCreatedBeginDate",
+            "in": "query",
+            "schema": {
+              "type": "Date/Time"
+            }
+          },
+          {
+            "name": "orderCreatedEndDate",
+            "in": "query",
+            "schema": {
+              "type": "Date/Time"
+            }
+          },
+          {
+            "name": "orderUpdatedBeginDate",
+            "in": "query",
+            "schema": {
+              "type": "Date/Time"
+            }
+          },
+          {
+            "name": "orderUpdatedEndDate",
+            "in": "query",
+            "schema": {
+              "type": "Date/Time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns an array of Order IDs that matched the filter criteria.",
+            "content": {
+              "application/json": {
+                "example": [
+                  1,
+                  3,
+                  10
+                ]
+              }
+            }
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/send-receipt": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Send Order Receipt",
+        "description": "Sends an order receipt.",
+        "operationId": "send-order-receipt",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "orderId": 1234
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/refund-payment": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Refund Payment",
+        "description": "Refund a payment on an order.",
+        "operationId": "refund-payment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "OrderNumber": 0,
+                "Refunds": {
+                  "PaymentID": 0,
+                  "Amount": 0,
+                  "ManualRefund": false,
+                  "ManualTransactionID": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "null"
+          }
+        }
+      }
+    },
+    "/{orderId}/rmas": {
+      "get": {
+        "tags": [
+          "rma",
+          "Orders"
+        ],
+        "summary": "Get Order RMAs",
+        "description": "Get RMAs for an order.\n\nYou can get the **Request Parameter** at these calls:\n\n**orderId**\n- Get Order IDs\n- Get Order IDs by Filter",
+        "operationId": "get-order-rmas",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "The ID of the order.",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "404": {
+            "description": "Order not found."
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/insert-payment": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Insert Payment",
+        "description": "Inserts a payment into the Payments table.",
+        "operationId": "insert-payment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "Payments": [
+                  {
+                    "PaymentType": "string",
+                    "AuthorizationCode": "string",
+                    "Response": "string",
+                    "ResponseID": "string",
+                    "TransactionNumber": "string",
+                    "ReferenceNumber": "string",
+                    "Status": "string",
+                    "Amount": "double",
+                    "Currency": "string",
+                    "Merchant": "int",
+                    "FraudPreventionId": "string",
+                    "FraudPreventionProviderId": "int",
+                    "OrderNumber": "int",
+                    "Redirect": "bool",
+                    "RedirectURL": "string",
+                    "SpecialInstructionsURL": "string",
+                    "SavedPaymentId": "int"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The Payment was inserted."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/autoship/{autoshipId}": {
+      "get": {
+        "tags": [
+          "Autoships"
+        ],
+        "summary": "Get Autoship",
+        "description": "Retrieves an Autoship template based on a valid Autoship ID. An autoship is a template for an order that's executed on a regular basis. This can be used for product, service, or subscription sales orders.<br/><br/>\n\nYou can get the **Request Parameter** at this call:\n\n**autoshipId**\n- Customers: Get Customer Autoships\n",
+        "operationId": "5dd47906a2933ac2d3380927",
+        "parameters": [
+          {
+            "name": "autoshipId",
+            "in": "path",
+            "description": "ID of the autoship template to be fetched",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a valid Order object.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "BillPhone": "555-555-5555",
+                  "CommissionDate": "0001-01-01T00:00:00.0000000+00:00",
+                  "DistributorID": 2,
+                  "Email": "testing@testing.directscale.com",
+                  "InvoiceDate": "2017-05-05T00:00:00.0000000+00:00",
+                  "LocalInvoiceNumber": 22,
+                  "Name": "DirectScale Testing",
+                  "OrderDate": "2015-04-25T00:00:00.0000000+00:00",
+                  "OrderType": 0,
+                  "OrderTypeDescription": "Description of the order",
+                  "OrderNumber": 2,
+                  "SpecialInstructions": "Here are some specs...",
+                  "Status": "Waiting Payment",
+                  "PartyId": 0,
+                  "TotalBonus": 10,
+                  "TotalCost": 13,
+                  "TotalCV": 1,
+                  "TotalQV": 1,
+                  "Void": false,
+                  "BillAddress": {
+                    "Line1": "1234 Newtown Rd.",
+                    "Line2": null,
+                    "Line3": null,
+                    "City": "Placerville",
+                    "StateCode": "CA",
+                    "Zip": "95667",
+                    "CountryCode": "US"
+                  },
+                  "TaxInfo": null,
+                  "IsPaid": false,
+                  "IsShipped": false,
+                  "LineItems": [
+                    {
+                      "Amount": 0,
+                      "Bonus": 0,
+                      "Cost": 0,
+                      "CurrencyCode": "",
+                      "Height": 0,
+                      "Length": 0,
+                      "OrderNumber": 2,
+                      "PackageNumber": 0,
+                      "CV": 0,
+                      "QV": 0,
+                      "Qty": 0,
+                      "SKU": "",
+                      "ItemID": 0,
+                      "ProductName": "",
+                      "Weight": 0,
+                      "Width": 0,
+                      "FlagCancer": false,
+                      "FlagBirthDefect": false
+                    }
+                  ],
+                  "Packages": [],
+                  "Totals": [
+                    {
+                      "TaxableSubTotal": 0,
+                      "CurrencyCode": "USD",
+                      "ExchangeRate": 0,
+                      "OrderNumber": 2,
+                      "Shipping": 0,
+                      "SubTotal": 125.5,
+                      "Tax": 8.21,
+                      "TaxTransactionID": "",
+                      "DiscountTotal": 0,
+                      "OverridenShippingTax": false,
+                      "Total": 133.71,
+                      "PaidAmount": 0,
+                      "TotalDue": 133.71
+                    }
+                  ],
+                  "Payments": []
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "An Order with the given Order ID was not found."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Orders",
+          "Autoships"
+        ],
+        "summary": "Delete Autoship",
+        "description": "Deletes an Autoship template based on a valid Autoship ID.<br/><br/>\n\nYou can get the **Request Parameter** at this call:\n\n**autoshipId**\n- Customers: Get Customer Autoships",
+        "operationId": "5dd47a42c0ef83bf86c990be",
+        "parameters": [
+          {
+            "name": "autoshipId",
+            "in": "path",
+            "description": "ID of the autoship template to be deleted",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a valid Order object.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "BillPhone": "555-555-5555",
+                  "CommissionDate": "0001-01-01T00:00:00.0000000+00:00",
+                  "DistributorID": 2,
+                  "Email": "testing@testing.directscale.com",
+                  "InvoiceDate": "2017-05-05T00:00:00.0000000+00:00",
+                  "LocalInvoiceNumber": 22,
+                  "Name": "DirectScale Testing",
+                  "OrderDate": "2015-04-25T00:00:00.0000000+00:00",
+                  "OrderType": 0,
+                  "OrderTypeDescription": "Description of the order",
+                  "OrderNumber": 2,
+                  "SpecialInstructions": "Here are some specs...",
+                  "Status": "Waiting Payment",
+                  "PartyId": 0,
+                  "TotalBonus": 10,
+                  "TotalCost": 13,
+                  "TotalCV": 1,
+                  "TotalQV": 1,
+                  "Void": false,
+                  "BillAddress": {
+                    "Line1": "1234 Newtown Rd.",
+                    "Line2": null,
+                    "Line3": null,
+                    "City": "Placerville",
+                    "StateCode": "CA",
+                    "Zip": "95667",
+                    "CountryCode": "US"
+                  },
+                  "TaxInfo": null,
+                  "IsPaid": false,
+                  "IsShipped": false,
+                  "LineItems": [
+                    {
+                      "Amount": 0,
+                      "Bonus": 0,
+                      "Cost": 0,
+                      "CurrencyCode": "",
+                      "Height": 0,
+                      "Length": 0,
+                      "OrderNumber": 2,
+                      "PackageNumber": 0,
+                      "CV": 0,
+                      "QV": 0,
+                      "Qty": 0,
+                      "SKU": "",
+                      "ItemID": 0,
+                      "ProductName": "",
+                      "Weight": 0,
+                      "Width": 0,
+                      "FlagCancer": false,
+                      "FlagBirthDefect": false
+                    }
+                  ],
+                  "Packages": [],
+                  "Totals": [
+                    {
+                      "TaxableSubTotal": 0,
+                      "CurrencyCode": "USD",
+                      "ExchangeRate": 0,
+                      "OrderNumber": 2,
+                      "Shipping": 0,
+                      "SubTotal": 125.5,
+                      "Tax": 8.21,
+                      "TaxTransactionID": "",
+                      "DiscountTotal": 0,
+                      "OverridenShippingTax": false,
+                      "Total": 133.71,
+                      "PaidAmount": 0,
+                      "TotalDue": 133.71
+                    }
+                  ],
+                  "Payments": []
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "An Order with the given Order ID was not found."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKeyHeader": {
+        "type": "apiKey",
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header"
+      },
+      "apiKeyQuery": {
+        "type": "apiKey",
+        "name": "subscription-key",
+        "in": "query"
+      }
+    }
+  },
+  "security": [
+    {},
+    {
+      "apiKeyHeader": []
+    },
+    {
+      "apiKeyQuery": []
+    }
+  ]
+}

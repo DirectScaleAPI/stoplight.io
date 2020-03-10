@@ -1,0 +1,776 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Products",
+    "description": "List stores, categories, and items configured in the Direct Scale Commission Engine.",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://dsapi-dev.directscale.com/v1/products"
+    }
+  ],
+  "paths": {
+    "/stores": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get Stores",
+        "description": "The DirectScale commission engine contains a collection of \"stores\". Products and product categories are categorized into specific \"stores\". For instance, Retail, Wholesale, etc., listings that contain products and categories.<br/><br/>",
+        "operationId": "58a64bedb3ac8810c4b2a9d3",
+        "responses": {
+          "200": {
+            "description": "Returns an array of valid Store objects.",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "ID": 1,
+                    "Description": "Corporate"
+                  },
+                  {
+                    "ID": 2,
+                    "Description": "Wholesale"
+                  }
+                ]
+              }
+            }
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/store/{storeId}/categories": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get Categories",
+        "description": "Get a list of categories to a specific store.\n\nYou can get the **Request Parameter** at this call:\n\n**storeId**\n- Get Stores\n",
+        "operationId": "58a91b96b3ac880c189b9362",
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "path",
+            "description": "The ID of the Store whose Categories are to be retrieved.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns an array of valid Category objects.",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "ID": 1,
+                    "Name": "Home & Garden",
+                    "Description": "",
+                    "ImageUrl": "/test_image.jpg",
+                    "ParentID": 0,
+                    "HasChildren": false,
+                    "SubCategories": []
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "A Store with the given Store ID was not found."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/categories/{categoryId}/items": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get Items by Filter",
+        "description": "Return all items in a given country and category. Optional filter parameters will limit translations, prices, and products returned.\n\nYou can get the **Request Parameters** at these calls:\n\n**categoryId**\n- Get Categories\n\n**CurrencyCode**\n- Get Regions displays the country/state codes of the warehouses. If you are concerned about having the proper CurrencyCode, then this will allow you to know what region warehouse support team to call to get the confirmed CurrencyCode.\n\n**LanguageCode**\n- Get Item by Id\n- Get Items\n- Get Items by Filter\n\n**RegionID**\n- Get Regions\n\n**PriceGroup**\n- Order: Get Price Group(s)\n\n**StoreID**\n- Get Stores",
+        "operationId": "58a91c00b3ac880c189b9363",
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "description": "The Id of the Category whose Items are to be retrieved.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "CurrencyCode",
+            "in": "query",
+            "description": "The 3-character ISO currency code indicating pricing to be returned.",
+            "schema": {
+              "enum": [
+                "usd"
+              ],
+              "type": "string",
+              "default": "usd"
+            }
+          },
+          {
+            "name": "LanguageCode",
+            "in": "query",
+            "description": "The 2-character ISO language code indicating language of translations.",
+            "schema": {
+              "enum": [
+                "en"
+              ],
+              "type": "string",
+              "default": "en"
+            }
+          },
+          {
+            "name": "RegionID",
+            "in": "query",
+            "description": "The Region ID, fetched using \"Get Regions\"",
+            "schema": {
+              "enum": [
+                "1"
+              ],
+              "type": "int",
+              "default": 1
+            }
+          },
+          {
+            "name": "PriceGroup",
+            "in": "query",
+            "description": "The Price Group ID, fetched using \"Get Price Groups\"",
+            "schema": {
+              "enum": [
+                "1"
+              ],
+              "type": "int",
+              "default": 1
+            }
+          },
+          {
+            "name": "StoreID",
+            "in": "query",
+            "description": "The Store ID, fetched using \"Get Stores\"",
+            "schema": {
+              "enum": [
+                "1"
+              ],
+              "type": "int"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns an array of valid Item objects.",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "ItemID": 3,
+                    "Quantity": 1,
+                    "ExtendedPrice": 50,
+                    "ExtendedBonus": 0,
+                    "ExtendedCV": 0,
+                    "ExtendedQV": 0,
+                    "ProductName": "Example Item",
+                    "Description": "Long Description",
+                    "Specifications": "Long Specifications",
+                    "LanguageCode": "en",
+                    "SKU": "ipd",
+                    "ChargeShipping": false,
+                    "FlagCancer": false,
+                    "FlagBirthDefects": false,
+                    "HasKitGroups": false,
+                    "Price": 50,
+                    "Bonus": 0,
+                    "CV": 0,
+                    "QV": 0,
+                    "CurrencyCode": "usd",
+                    "OriginalPrice": 50,
+                    "Cost": 0,
+                    "ExtendedRewardPoints": 0,
+                    "ExtendedCost": 0,
+                    "Category": "Electronics",
+                    "Height": 0,
+                    "ImageUrl": "/ipod_nano_1.jpg",
+                    "Length": 0,
+                    "MPN": "",
+                    "PackCount": 0,
+                    "PackageGroupID": 1,
+                    "TaxClassID": 0,
+                    "UnitOfMeasure": "",
+                    "UPC": "",
+                    "Weight": 0,
+                    "Width": 0,
+                    "PriceGroup": 1,
+                    "RewardPoints": 0
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "A Category with the given Category ID was not found."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\r\n- Is the model being sent to the API incorrect?\r\n- Did you forget a required field?\r\n- Is the API marked as deprecated, and the date has expired?\r\n\r\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/item/{itemId}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get Item by Id",
+        "description": "Retrieves an Item based on a valid Item ID.\n\nYou can get the **Request Parameter** at these calls:\n\n**itemId**\n- Get Items by Filter\n- Get Item by SKU",
+        "operationId": "58a91c4fb3ac880c189b9364",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "description": "The Id of the Item to retrieve. ",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a valid Item object.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "ItemID": 6,
+                  "Quantity": 1,
+                  "ExtendedPrice": 12.85,
+                  "ExtendedBonus": 0,
+                  "ExtendedCV": 100,
+                  "ExtendedQV": 200,
+                  "ProductName": "Turtle Arch",
+                  "Description": "This is a great decorative item featuring a lovely Lady Bug.",
+                  "Specifications": "",
+                  "LanguageCode": "en",
+                  "SKU": "TDLARCH",
+                  "ChargeShipping": true,
+                  "FlagCancer": false,
+                  "FlagBirthDefects": false,
+                  "HasKitGroups": false,
+                  "Price": 12.85,
+                  "Bonus": 0,
+                  "CV": 100,
+                  "QV": 200,
+                  "CurrencyCode": "usd",
+                  "OriginalPrice": 12.85,
+                  "Cost": 2,
+                  "ExtendedRewardPoints": 0,
+                  "ExtendedCost": 0,
+                  "Category": "Home & Garden",
+                  "Height": 0,
+                  "ImageUrl": "/test-image.jpg",
+                  "Length": 0,
+                  "MPN": "",
+                  "PackCount": 0,
+                  "PackageGroupID": 1,
+                  "TaxClassID": 1,
+                  "UnitOfMeasure": "in",
+                  "UPC": "123453224",
+                  "Weight": 1,
+                  "Width": 0,
+                  "PriceGroup": 0,
+                  "RewardPoints": 0
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "An Item with the given Item ID was not found."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/item/sku/{sku}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get Item by SKU",
+        "description": "Retrieves an Item based on a valid Item Stock Keeping Unit (SKU).\n\nYou can get the **Request Parameters** at these calls:\n\n**sku**\n- Get Item by Id\n- Get Items\n- Get Items by Filter\n\n**CurrencyCode**\n- Get Regions displays the country/state codes of the warehouses. If you are concerned about having the proper CurrencyCode, then this will allow you to know what region warehouse support team to call to get the confirmed CurrencyCode.\n\n**LanguageCode**\n- Get Item by Id\n- Get Items\n- Get Items by Filter",
+        "operationId": "58a91c9fb3ac880c189b9365",
+        "parameters": [
+          {
+            "name": "sku",
+            "in": "path",
+            "description": "The SKU of the Item to retrieve. ",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "CurrencyCode",
+            "in": "query",
+            "description": "The 3-character ISO currency code indicating pricing to be returned.",
+            "schema": {
+              "enum": [
+                "usd"
+              ],
+              "type": "string",
+              "default": "usd"
+            }
+          },
+          {
+            "name": "LanguageCode",
+            "in": "query",
+            "description": "The 2-character ISO language code indicating language of translations.",
+            "schema": {
+              "enum": [
+                "en"
+              ],
+              "type": "string",
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a valid Item object.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "ItemID": 6,
+                  "Quantity": 1,
+                  "ExtendedPrice": 12.85,
+                  "ExtendedBonus": 0,
+                  "ExtendedCV": 100,
+                  "ExtendedQV": 200,
+                  "ProductName": "Turtle Arch",
+                  "Description": "This is a great decorative item featuring a lovely Lady Bug.",
+                  "Specifications": "",
+                  "LanguageCode": "en",
+                  "SKU": "TDLARCH",
+                  "ChargeShipping": true,
+                  "FlagCancer": false,
+                  "FlagBirthDefects": false,
+                  "HasKitGroups": false,
+                  "Price": 12.85,
+                  "Bonus": 0,
+                  "CV": 100,
+                  "QV": 200,
+                  "CurrencyCode": "usd",
+                  "OriginalPrice": 12.85,
+                  "Cost": 2,
+                  "ExtendedRewardPoints": 0,
+                  "ExtendedCost": 0,
+                  "Category": "Home & Garden",
+                  "Height": 0,
+                  "ImageUrl": "/test-image.jpg",
+                  "Length": 0,
+                  "MPN": "",
+                  "PackCount": 0,
+                  "PackageGroupID": 1,
+                  "TaxClassID": 1,
+                  "UnitOfMeasure": "in",
+                  "UPC": "123453224",
+                  "Weight": 1,
+                  "Width": 0,
+                  "PriceGroup": 0,
+                  "RewardPoints": 0
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "An Item with the given Item SKU was not found."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/categories/{categoryId}/subcategories": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get Sub Categories",
+        "description": "Retrieves an array of Sub Categories.<br/><br/>\n\nYou can get the **Request Parameter** at this call:\n\n**categoryId**\n- Get Categories",
+        "operationId": "58cbf0d6785439057b0a0ff3",
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "description": "The ID of the Category whose Sub Categories are to be retrieved.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns an array of valid Sub Category objects.",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "ID": 4,
+                    "Name": "Cameras",
+                    "Description": "",
+                    "ImageUrl": "/canon_eos_5d_2.jpg",
+                    "ParentID": 2,
+                    "HasChildren": false,
+                    "SubCategories": null
+                  },
+                  {
+                    "ID": 11,
+                    "Name": "Apple",
+                    "Description": "",
+                    "ImageUrl": "",
+                    "ParentID": 2,
+                    "HasChildren": false,
+                    "SubCategories": null
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "A Category with the given Category ID was not found."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/regions": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get Regions",
+        "description": "Retrieves an array of Regions.<br/><br/>",
+        "operationId": "58eb9ddef8de0c73b203de02",
+        "responses": {
+          "200": {
+            "description": "Returns an array of valid Region objects.",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "ID": 10,
+                    "Name": "Test Region",
+                    "WarehouseID": 21,
+                    "CountryList": [],
+                    "Locale": []
+                  },
+                  {
+                    "ID": 4,
+                    "Name": "Europe",
+                    "WarehouseID": 1,
+                    "CountryList": [
+                      {
+                        "CountryCode": "hu",
+                        "StateCodes": [
+                          "BE",
+                          "BU",
+                          "BZ"
+                        ],
+                        "IsAllStates": false
+                      }
+                    ],
+                    "Locale": [
+                      {
+                        "StateCode": "BE",
+                        "CountryCode": "hu"
+                      },
+                      {
+                        "StateCode": "BU",
+                        "CountryCode": "hu"
+                      },
+                      {
+                        "StateCode": "BZ",
+                        "CountryCode": "hu"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/items": {
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Save Item",
+        "description": "Creates a new inventory item.",
+        "operationId": "save-item",
+        "requestBody": {
+          "content": {
+            "application/json": {}
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The new item was created successfully."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get Items",
+        "description": "Return an array of all available items.<br/><br/>",
+        "operationId": "5bae70323d3199452c276517",
+        "responses": {
+          "200": {
+            "description": "Returns an array of all Item objects.",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "ItemID": 3,
+                    "Quantity": 1,
+                    "ExtendedPrice": 50,
+                    "ExtendedBonus": 0,
+                    "ExtendedCV": 0,
+                    "ExtendedQV": 0,
+                    "ProductName": "Example Item",
+                    "Description": "Long Description",
+                    "Specifications": "Long Specifications",
+                    "LanguageCode": "en",
+                    "SKU": "ipd",
+                    "ChargeShipping": false,
+                    "FlagCancer": false,
+                    "FlagBirthDefects": false,
+                    "HasKitGroups": false,
+                    "Price": 50,
+                    "Bonus": 0,
+                    "CV": 0,
+                    "QV": 0,
+                    "CurrencyCode": "usd",
+                    "OriginalPrice": 50,
+                    "Cost": 0,
+                    "ExtendedRewardPoints": 0,
+                    "ExtendedCost": 0,
+                    "Category": "Electronics",
+                    "Height": 0,
+                    "ImageUrl": "/ipod_nano_1.jpg",
+                    "Length": 0,
+                    "MPN": "",
+                    "PackCount": 0,
+                    "PackageGroupID": 1,
+                    "TaxClassID": 0,
+                    "UnitOfMeasure": "",
+                    "UPC": "",
+                    "Weight": 0,
+                    "Width": 0,
+                    "PriceGroup": 1,
+                    "RewardPoints": 0
+                  }
+                ]
+              }
+            }
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\r\n- Is the model being sent to the API incorrect?\r\n- Did you forget a required field?\r\n- Is the API marked as deprecated, and the date has expired?\r\n\r\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/items/{itemId}": {
+      "put": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Update Item",
+        "description": "Update an existing inventory item.\n\nYou can get the **Request Parameter** at this call:\n\n**itemId**\n- Get Item by Id\n- Get Item by SKU\n- Get Items by Filter",
+        "operationId": "update-item",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "description": "The Id of the item to update.",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The item was successfully updated."
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Delete Item",
+        "description": "Delete an inventory item.\n\nYou can get the **Request Parameter** at these calls:\n\n**itemId**\n- Get Items by Filter\n- Get Item by SKU",
+        "operationId": "delete-item",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "description": "The Id of the item to delete.",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The item is successfully deleted."
+          },
+          "404": {
+            "description": "Item not found."
+          },
+          "500": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/item/{itemId}/stockLevel/{warehouseId}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get Stock Level",
+        "description": "Retrieves Stock Level information for Item based on a valid Item ID and Warehouse ID.\n\nYou can get the **Request Parameters** at these calls:\n\n**itemId**\n- Get Items by Filter\n- Get Item by SKU\n\n**warehouseId**\n- Get Regions",
+        "operationId": "get-stock-level",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "description": "The ID of the Item to retrieve. \n",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          },
+          {
+            "name": "warehouseId",
+            "in": "path",
+            "description": "The ID of the Warehouse for the given Item to retrieve. ",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a valid Stock Level object.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "WarehouseId": 1,
+                  "ItemId": 1,
+                  "Committed": 2,
+                  "OnHand": 10,
+                  "OnOrder": 3,
+                  "TrackStock": 0,
+                  "Avaliable": 8
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "An Item with the given Item ID or Warehouse ID was not found."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/items/{itemId}/stockLevel": {
+      "put": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Update Stock Level",
+        "description": "Sets the On Hand stock level for the given Warehouse and Item.\n\nYou can get the **Request Parameter** at these calls:\n\n**itemId**\n- Get Item by Id\n- Get Items by Filter\n- Get Item by SKU",
+        "operationId": "update-stock-level",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "description": "The ItemId of the item for which you are adjusting stock.",
+            "required": true,
+            "schema": {
+              "type": "int"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {}
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The stock level for the item was successfully updated."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKeyHeader": {
+        "type": "apiKey",
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header"
+      },
+      "apiKeyQuery": {
+        "type": "apiKey",
+        "name": "subscription-key",
+        "in": "query"
+      }
+    }
+  },
+  "security": [
+    {},
+    {
+      "apiKeyHeader": []
+    },
+    {
+      "apiKeyQuery": []
+    }
+  ]
+}

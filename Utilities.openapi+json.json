@@ -1,0 +1,83 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Utilities",
+    "description": "Provides a set of utility methods for controlling different aspects of the API.",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://dsapi-dev.directscale.com/v1/utilities"
+    }
+  ],
+  "paths": {
+    "/cache": {
+      "delete": {
+        "tags": [
+          "Utilities"
+        ],
+        "summary": "Clear Cache",
+        "description": "Calling this method will clear all cached values and properties for the given developer.<br/>\n<br/>\nIn order to assist with performance the API Gateway will cached several security and developer properties.  This method will clear all cached values and will regenerate them on the next call to the gateway.<br/>\n<br/>\n<b>Note:</b> Under normal operations this method should not be required.  If you do find an issue where this was needed.  The DirectScale development team would greatly appreciate you providing a brief description of the problem you where seeing prior to clearing the cache.<br/>\n<br/>\n",
+        "operationId": "580f69aacb00f2038ced71b4",
+        "responses": {
+          "200": {
+            "description": null
+          }
+        }
+      }
+    },
+    "/status": {
+      "get": {
+        "tags": [
+          "Utilities"
+        ],
+        "summary": "Get Status",
+        "description": "This method will return a set of status properties and routing information about the commission services.<br/>\n<br/>\n<b>Note:</b> This method should be used for development and diagnostic support.<br/>\n<br/>\n",
+        "operationId": "593822f2b3ac880e98f64161",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/status/error": {
+      "get": {
+        "tags": [
+          "Utilities"
+        ],
+        "summary": "Get Error",
+        "description": "This method is used for testing the system infrastructure by generating an error.<br/>\r\n<br/>\r\n<b>Note:</b> This method should be used for development and diagnostic support.<br/>\r\n<br/>\r\n",
+        "operationId": "596e64cab3ac880e5c00e2e7",
+        "responses": {
+          "200": {
+            "description": null
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKeyHeader": {
+        "type": "apiKey",
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header"
+      },
+      "apiKeyQuery": {
+        "type": "apiKey",
+        "name": "subscription-key",
+        "in": "query"
+      }
+    }
+  },
+  "security": [
+    {},
+    {
+      "apiKeyHeader": []
+    },
+    {
+      "apiKeyQuery": []
+    }
+  ]
+}
