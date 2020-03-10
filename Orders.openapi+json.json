@@ -53,7 +53,7 @@
           "Orders"
         ],
         "summary": "Get Price Group",
-        "description": "Retrieves a Price Group based on a valid Price Group ID.\n\nYou can get the **Request Parameters** at these calls:\n\n**priceGroupId**\n- Get Price Groups",
+        "description": "Retrieves a Price Group based on a valid Price Group ID.\n\nYou can get the **Path Parameters** at these calls:\n\n**priceGroupId**\n- Get Price Groups",
         "operationId": "594c013e663740137535789b",
         "parameters": [
           {
@@ -93,7 +93,7 @@
           "Orders"
         ],
         "summary": "Get Order",
-        "description": "Retrieves an Order based on a valid Order ID.\n\nYou can get the **Request Parameter** at these calls:\n\n**orderId**\n- Get Order IDs\n- Get Order IDs by Filter\n",
+        "description": "Retrieves an Order based on a valid Order ID.\n\nYou can get the **Path Parameter** at these calls:\n\n**orderId**\n- Get Order IDs\n- Get Order IDs by Filter\n",
         "operationId": "594c013e6f6c08a2e90d53c5",
         "parameters": [
           {
@@ -201,7 +201,7 @@
           "Orders"
         ],
         "summary": "Cancel Order",
-        "description": "Cancel the Order based on a valid Order Id.\n\nYou can get the **Request Parameter** at these calls:\n\n**orderId**\n- Get Order IDs\n- Get Order IDs by Filter",
+        "description": "Cancel the Order based on a valid Order Id.\n\nYou can get the **Path Parameter** at these calls:\n\n**orderId**\n- Get Order IDs\n- Get Order IDs by Filter",
         "operationId": "cancel-order",
         "parameters": [
           {
@@ -251,7 +251,7 @@
           "Orders"
         ],
         "summary": "Get Shipping Method",
-        "description": "Retrieves a Shipping Method based on a valid Shipping Method ID.\n\nYou can get the **Request Parameters** at these calls:\n\n**shippingMethodId**\n- Get Shipping Methods",
+        "description": "Retrieves a Shipping Method based on a valid Shipping Method ID.\n\nYou can get the **Path Parameters** at these calls:\n\n**shippingMethodId**\n- Get Shipping Methods",
         "operationId": "594c013e5c6888222836034e",
         "parameters": [
           {
@@ -294,7 +294,7 @@
           "Orders"
         ],
         "summary": "Get Order Type",
-        "description": "Retrieves an Order Type based on a valid Order Type ID.\n\nYou can get the **Request Parameter** at this call:\n\n**orderTypeId**\n- Get Order Types",
+        "description": "Retrieves an Order Type based on a valid Order Type ID.\n\nYou can get the **Path Parameter** at this call:\n\n**orderTypeId**\n- Get Order Types",
         "operationId": "594c013ea3e348501dc10b86",
         "parameters": [
           {
@@ -374,7 +374,7 @@
           "Orders"
         ],
         "summary": "Get Unshipped Packages",
-        "description": "Retrieves list of unshipped packages.\n\nYou can get the **Request Parameters** at these calls:\n\n**warehouseId**\n- Products: Get Regions",
+        "description": "Retrieves list of unshipped packages.\n\nYou can get the **Path Parameters** at these calls:\n\n**warehouseId**\n- Products: Get Regions",
         "operationId": "59e60841b3ac880abcc07e61",
         "parameters": [
           {
@@ -403,7 +403,7 @@
           "Orders"
         ],
         "summary": "Set Package Shipped",
-        "description": "Set the package status to shipped.  This method is used to notify the order processing system that the package was shipped by an external system.\n\nYou can get the **Request Parameter** at this call:\n\n**packageId**\n- Get Order",
+        "description": "Set the package status to shipped.  This method is used to notify the order processing system that the package was shipped by an external system.\n\nYou can get the **Path Parameter** at this call:\n\n**packageId**\n- Get Order",
         "operationId": "59e6191db3ac880abcc07e62",
         "parameters": [
           {
@@ -443,7 +443,7 @@
           "Orders"
         ],
         "summary": "Set Package Returned",
-        "description": "Set the package status to returned.  This method is used to notify the order processing system that the package was returned by an external system.\n\nYou can get the **Request Parameter** at this call:\n\n**packageId**\n- Get Order",
+        "description": "Set the package status to returned.  This method is used to notify the order processing system that the package was returned by an external system.\n\nYou can get the **Path Parameter** at this call:\n\n**packageId**\n- Get Order",
         "operationId": "59e624a7b3ac880abcc07e63",
         "parameters": [
           {
@@ -472,7 +472,7 @@
           "Orders"
         ],
         "summary": "Get Order Package Details",
-        "description": "Get the details for a package within an order.\n\nYou can get the **Request Parameters** at these calls:\n\n**orderId**\n- Get Order IDs\n- Get Order IDs by Filter\n\n**packageId**\n- Get Order",
+        "description": "Get the details for a package within an order.\n\nYou can get the **Path Parameters** at these calls:\n\n**orderId**\n- Get Order IDs\n- Get Order IDs by Filter\n\n**packageId**\n- Get Order",
         "operationId": "59e74311b3ac880abcc07e6d",
         "parameters": [
           {
@@ -554,7 +554,7 @@
           "Orders"
         ],
         "summary": "Set Order Shipped",
-        "description": "Set the package status of all packages in an order to shipped.\n\nYou can get the **Request Parameters** at these calls:\n\n**orderId**\n- Get Order IDs\n- Get Order IDs by Filter",
+        "description": "Set the package status of all packages in an order to shipped.\n\nYou can get the **Path Parameters** at these calls:\n\n**orderId**\n- Get Order IDs\n- Get Order IDs by Filter",
         "operationId": "set-order-shipped",
         "parameters": [
           {
@@ -621,7 +621,7 @@
           "Orders"
         ],
         "summary": "Get Order IDs by Filter",
-        "description": "Gets all Order IDs that meet the specified criteria.\n\nYou can get the **Request Parameters** at these calls:\n\n**orderType**\n- Get Order Type(s)\n\n**orderCreatedBeginDate**\n- Get Order\n\n**Date + Time format**\n\nYear-Month-Day'T'MilitaryTimeHour:Minute:Second\n- Ex. 2020-02-20T15:47:52",
+        "description": "Gets all Order IDs that meet the specified criteria.\n\nYou can get the **Path Parameters** at these calls:\n\n**orderType**\n- Get Order Type(s)\n\n**orderCreatedBeginDate**\n- Get Order\n\n**Date + Time format**\n\nYear-Month-Day'T'MilitaryTimeHour:Minute:Second\n- Ex. 2020-02-20T15:47:52",
         "operationId": "5bad1c9db5cb63c59cc3a49e",
         "parameters": [
           {
@@ -740,7 +740,7 @@
           "Orders"
         ],
         "summary": "Get Order RMAs",
-        "description": "Get RMAs for an order.\n\nYou can get the **Request Parameter** at these calls:\n\n**orderId**\n- Get Order IDs\n- Get Order IDs by Filter",
+        "description": "Get RMAs for an order.\n\nYou can get the **Path Parameter** at these calls:\n\n**orderId**\n- Get Order IDs\n- Get Order IDs by Filter",
         "operationId": "get-order-rmas",
         "parameters": [
           {
@@ -819,7 +819,7 @@
           "Autoships"
         ],
         "summary": "Get Autoship",
-        "description": "Retrieves an Autoship template based on a valid Autoship ID. An autoship is a template for an order that's executed on a regular basis. This can be used for product, service, or subscription sales orders.<br/><br/>\n\nYou can get the **Request Parameter** at this call:\n\n**autoshipId**\n- Customers: Get Customer Autoships\n",
+        "description": "Retrieves an Autoship template based on a valid Autoship ID. An autoship is a template for an order that's executed on a regular basis. This can be used for product, service, or subscription sales orders.<br/><br/>\n\nYou can get the **Path Parameter** at this call:\n\n**autoshipId**\n- Customers: Get Customer Autoships\n",
         "operationId": "5dd47906a2933ac2d3380927",
         "parameters": [
           {
@@ -928,7 +928,7 @@
           "Autoships"
         ],
         "summary": "Delete Autoship",
-        "description": "Deletes an Autoship template based on a valid Autoship ID.<br/><br/>\n\nYou can get the **Request Parameter** at this call:\n\n**autoshipId**\n- Customers: Get Customer Autoships",
+        "description": "Deletes an Autoship template based on a valid Autoship ID.<br/><br/>\n\nYou can get the **Path Parameter** at this call:\n\n**autoshipId**\n- Customers: Get Customer Autoships",
         "operationId": "5dd47a42c0ef83bf86c990be",
         "parameters": [
           {

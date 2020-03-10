@@ -49,7 +49,7 @@
           "Products"
         ],
         "summary": "Get Categories",
-        "description": "Get a list of categories to a specific store.\n\nYou can get the **Request Parameter** at this call:\n\n**storeId**\n- Get Stores\n",
+        "description": "Get a list of categories to a specific store.\n\nYou can get the **Path Parameter** at this call:\n\n**storeId**\n- Get Stores\n",
         "operationId": "58a91b96b3ac880c189b9362",
         "parameters": [
           {
@@ -96,7 +96,7 @@
           "Products"
         ],
         "summary": "Get Items by Filter",
-        "description": "Return all items in a given country and category. Optional filter parameters will limit translations, prices, and products returned.\n\nYou can get the **Request Parameters** at these calls:\n\n**categoryId**\n- Get Categories\n\n**CurrencyCode**\n- Get Regions displays the country/state codes of the warehouses. If you are concerned about having the proper CurrencyCode, then this will allow you to know what region warehouse support team to call to get the confirmed CurrencyCode.\n\n**LanguageCode**\n- Get Item by Id\n- Get Items\n- Get Items by Filter\n\n**RegionID**\n- Get Regions\n\n**PriceGroup**\n- Order: Get Price Group(s)\n\n**StoreID**\n- Get Stores",
+        "description": "Return all items in a given country and category. Optional filter parameters will limit translations, prices, and products returned.\n\nYou can get the **Path Parameters** at these calls:\n\n**categoryId**\n- Get Categories\n\n**CurrencyCode**\n- Get Regions displays the country/state codes of the warehouses. If you are concerned about having the proper CurrencyCode, then this will allow you to know what region warehouse support team to call to get the confirmed CurrencyCode.\n\n**LanguageCode**\n- Get Item by Id\n- Get Items\n- Get Items by Filter\n\n**RegionID**\n- Get Regions\n\n**PriceGroup**\n- Order: Get Price Group(s)\n\n**StoreID**\n- Get Stores",
         "operationId": "58a91c00b3ac880c189b9363",
         "parameters": [
           {
@@ -233,7 +233,7 @@
           "Products"
         ],
         "summary": "Get Item by Id",
-        "description": "Retrieves an Item based on a valid Item ID.\n\nYou can get the **Request Parameter** at these calls:\n\n**itemId**\n- Get Items by Filter\n- Get Item by SKU",
+        "description": "Retrieves an Item based on a valid Item ID.\n\nYou can get the **Path Parameter** at these calls:\n\n**itemId**\n- Get Items by Filter\n- Get Item by SKU",
         "operationId": "58a91c4fb3ac880c189b9364",
         "parameters": [
           {
@@ -309,7 +309,7 @@
           "Products"
         ],
         "summary": "Get Item by SKU",
-        "description": "Retrieves an Item based on a valid Item Stock Keeping Unit (SKU).\n\nYou can get the **Request Parameters** at these calls:\n\n**sku**\n- Get Item by Id\n- Get Items\n- Get Items by Filter\n\n**CurrencyCode**\n- Get Regions displays the country/state codes of the warehouses. If you are concerned about having the proper CurrencyCode, then this will allow you to know what region warehouse support team to call to get the confirmed CurrencyCode.\n\n**LanguageCode**\n- Get Item by Id\n- Get Items\n- Get Items by Filter",
+        "description": "Retrieves an Item based on a valid Item Stock Keeping Unit (SKU).\n\nYou can get the **Path Parameters** at these calls:\n\n**sku**\n- Get Item by Id\n- Get Items\n- Get Items by Filter\n\n**CurrencyCode**\n- Get Regions displays the country/state codes of the warehouses. If you are concerned about having the proper CurrencyCode, then this will allow you to know what region warehouse support team to call to get the confirmed CurrencyCode.\n\n**LanguageCode**\n- Get Item by Id\n- Get Items\n- Get Items by Filter",
         "operationId": "58a91c9fb3ac880c189b9365",
         "parameters": [
           {
@@ -409,7 +409,7 @@
           "Products"
         ],
         "summary": "Get Sub Categories",
-        "description": "Retrieves an array of Sub Categories.<br/><br/>\n\nYou can get the **Request Parameter** at this call:\n\n**categoryId**\n- Get Categories",
+        "description": "Retrieves an array of Sub Categories.<br/><br/>\n\nYou can get the **Path Parameter** at this call:\n\n**categoryId**\n- Get Categories",
         "operationId": "58cbf0d6785439057b0a0ff3",
         "parameters": [
           {
@@ -608,7 +608,7 @@
           "Products"
         ],
         "summary": "Update Item",
-        "description": "Update an existing inventory item.\n\nYou can get the **Request Parameter** at this call:\n\n**itemId**\n- Get Item by Id\n- Get Item by SKU\n- Get Items by Filter",
+        "description": "Update an existing inventory item.\n\nYou can get the **Path Parameter** at this call:\n\n**itemId**\n- Get Item by Id\n- Get Item by SKU\n- Get Items by Filter",
         "operationId": "update-item",
         "parameters": [
           {
@@ -635,7 +635,7 @@
           "Products"
         ],
         "summary": "Delete Item",
-        "description": "Delete an inventory item.\n\nYou can get the **Request Parameter** at these calls:\n\n**itemId**\n- Get Items by Filter\n- Get Item by SKU",
+        "description": "Delete an inventory item.\n\nYou can get the **Path Parameter** at these calls:\n\n**itemId**\n- Get Items by Filter\n- Get Item by SKU",
         "operationId": "delete-item",
         "parameters": [
           {
@@ -667,7 +667,7 @@
           "Products"
         ],
         "summary": "Get Stock Level",
-        "description": "Retrieves Stock Level information for Item based on a valid Item ID and Warehouse ID.\n\nYou can get the **Request Parameters** at these calls:\n\n**itemId**\n- Get Items by Filter\n- Get Item by SKU\n\n**warehouseId**\n- Get Regions",
+        "description": "Retrieves Stock Level information for Item based on a valid Item ID and Warehouse ID.\n\nYou can get the **Path Parameters** at these calls:\n\n**itemId**\n- Get Items by Filter\n- Get Item by SKU\n\n**warehouseId**\n- Get Regions",
         "operationId": "get-stock-level",
         "parameters": [
           {
@@ -721,7 +721,7 @@
           "Products"
         ],
         "summary": "Update Stock Level",
-        "description": "Sets the On Hand stock level for the given Warehouse and Item.\n\nYou can get the **Request Parameter** at these calls:\n\n**itemId**\n- Get Item by Id\n- Get Items by Filter\n- Get Item by SKU",
+        "description": "Sets the On Hand stock level for the given Warehouse and Item.\n\nYou can get the **Path Parameter** at these calls:\n\n**itemId**\n- Get Item by Id\n- Get Items by Filter\n- Get Item by SKU",
         "operationId": "update-stock-level",
         "parameters": [
           {

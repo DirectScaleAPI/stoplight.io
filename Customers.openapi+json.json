@@ -17,7 +17,7 @@
           "Customers"
         ],
         "summary": "Get Customers By Parameter",
-        "description": "Retrieves an array of Customers based on a valid parameter of choice.<br /><br />\n<b>Note</b>: This API allows for multiple parameters, however only one parameter should be passed to the API at any given time, as only one will be honored.<br/><br/>\n\nYou can get the **Request Parameters** at this call:\n- Get Customer",
+        "description": "Retrieves an array of Customers based on a valid parameter of choice.<br /><br />\n<b>Note</b>This API allows for multiple parameters, however only one parameter should be passed to the API at any given time, as only one will be honored.<br/><br/>\n\nYou can get the **Path Parameters** at this call:\n- Get Customer",
         "operationId": "57fe681ecb00f20ae896cc69",
         "parameters": [
           {
@@ -197,7 +197,7 @@
           "Customers"
         ],
         "summary": "Get Customer",
-        "description": "Retrieves a Customer based on a valid Customer Id.\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Retrieves a Customer based on a valid Customer Id.\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "57fe68e3cb00f20ae896cc6a",
         "parameters": [
           {
@@ -277,7 +277,7 @@
           "Customers"
         ],
         "summary": "Update Customer",
-        "description": "Updates an existing Customer's information.<br/><br/>\n<b>Note:</b> This call requires an update to all of the Customer's information. Therefore, if a field is omitted or remains blank, the update will clear out the existing information. If only a partial update is desired, please use the <em>PATCH Update Customer</em> API call.<br/><br/>\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Updates an existing Customer's information.<br/><br/>\n<b>Note:</b> This call requires an update to all of the Customer's information. Therefore, if a field is omitted or remains blank, the update will clear out the existing information. If only a partial update is desired, please use the <em>PATCH Update Customer</em> API call.<br/><br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "57fe7ebccb00f20ae896cc6c",
         "parameters": [
           {
@@ -348,7 +348,7 @@
           "Customers"
         ],
         "summary": "Delete Customer",
-        "description": "Deletes a Customer (and all peripheral data) based on a valid Customer Id.<br/><br/>\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Deletes a Customer (and all peripheral data) based on a valid Customer Id.<br/><br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "57fe8026cb00f20ae896cc6d",
         "parameters": [
           {
@@ -378,7 +378,7 @@
           "Customers"
         ],
         "summary": "Update Customer By Parameter",
-        "description": "Updates an existing Customer's information.<br/><br/>\n<b>Note</b>: This call updates only the Customer's information that is passed in (*Address updates must include all properties in the address structure*). If a complete update is desired, please use the <em>PUT Update Customer</em> API call.<br/><br/>\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Updates an existing Customer's information.<br/><br/>\n<b>Note</b>: This call updates only the Customer's information that is passed in (*Address updates must include all properties in the address structure*). If a complete update is desired, please use the <em>PUT Update Customer</em> API call.<br/><br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "593adc28b3ac880fe0fceb4c",
         "parameters": [
           {
@@ -424,7 +424,7 @@
           "Customers"
         ],
         "summary": "Get Customer Orders",
-        "description": "Retrieves an array of Orders based on a valid Customer Id.\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Retrieves an array of Orders based on a valid Customer Id.\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "58994f26b3ac881388ae1035",
         "parameters": [
           {
@@ -572,7 +572,7 @@
           "Customers"
         ],
         "summary": "Create Customer Order",
-        "description": "Creates an Order for the given Customer Id.<br/><br/>\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Creates an Order for the given Customer Id.<br/><br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "58995107b3ac881388ae1037",
         "parameters": [
           {
@@ -586,7 +586,7 @@
           }
         ],
         "requestBody": {
-          "description": "<b>Required Fields:</b>\n- [CurrencyCode](https://developer-dev.directscale.com/docs/services/58a647e0b3ac8810c4b2a9d2/operations/58eb9ddef8de0c73b203de02?)\n   - **Get Regions** displays the country/state codes of the warehouses. If you are concerned about having the proper [CurrencyCode](https://developer-dev.directscale.com/docs/services/58a647e0b3ac8810c4b2a9d2/operations/58eb9ddef8de0c73b203de02?), then this will allow you to know what region warehouse support team to call to get the confirmed [CurrencyCode](https://developer-dev.directscale.com/docs/services/58a647e0b3ac8810c4b2a9d2/operations/58eb9ddef8de0c73b203de02?).\n- [Items](https://developer-dev.directscale.com/docs/services/58a647e0b3ac8810c4b2a9d2/operations/5bae70323d3199452c276517?) *\n- [Payments](https://developer-dev.directscale.com/docs/services/57fe6761cb00f20ae896cc68/operations/get-payment-methods-by-parameters?) *\n- [ShipMethodId](https://developer-dev.directscale.com/docs/services/594c013b1b29261d6841753f/operations/594c013e6cf3850afff96220?)\n- [ShippingAddress](https://developer-dev.directscale.com/docs/services/57fe6761cb00f20ae896cc68/operations/57fe68e3cb00f20ae896cc6a?)\n- [StoreId](https://developer-dev.directscale.com/docs/services/58a647e0b3ac8810c4b2a9d2/operations/58a64bedb3ac8810c4b2a9d3?)\n\n<b>OnFileCard Options:</b>\n- Unknown\n- DoNotSave\n- Primary\n- Secondary\n- OneTimeUse\n\n<hr />\n* At least one object must be present in the array.<br />\n<br />",
+          "description": "<b>Required Fields:</b>\n- CurrencyCode\n   - **Get Regions** displays the country/state codes of the warehouses. If you are concerned about having the proper CurrencyCode, then this will allow you to know what region warehouse support team to call to get the confirmed CurrencyCode.\n- Items*\n- Payments*\n- ShipMethodId\n- ShippingAddress\n- StoreId\n\n<b>OnFileCard Options:</b>\n- Unknown\n- DoNotSave\n- Primary\n- Secondary\n- OneTimeUse\n\n<hr />\n* At least one object must be present in the array.<br />\n<br />",
           "content": {
             "application/json": {}
           }
@@ -627,7 +627,7 @@
           "Customers"
         ],
         "summary": "Get Customer Stats",
-        "description": "Provides a collection of commission metrics and statistical information for a given customer.\n\nYou can get the **Request Parameter** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**Time Format**\n\nMilitaryTimeHour:Minute:Second\n- Ex. 15:47:12",
+        "description": "Provides a collection of commission metrics and statistical information for a given customer.\n\nYou can get the **Path Parameter** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**Time Format**\n\nMilitaryTimeHour:Minute:Second\n- Ex. 15:47:12",
         "operationId": "58c9aa365b859009f09f5af3",
         "parameters": [
           {
@@ -784,7 +784,7 @@
           "Customers"
         ],
         "summary": "Calculate Customer Order Total",
-        "description": "Calculates a Customer Order Total based on a valid Customer Order object.<br/><br/>\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Calculates a Customer Order Total based on a valid Customer Order object.<br/><br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "58e3a27d370f72f9d8cc2bdf",
         "parameters": [
           {
@@ -866,7 +866,7 @@
           "Autoships"
         ],
         "summary": "Create Customer Autoship Order",
-        "description": "Creates an Autoship Order for the given Customer ID.<br/><br/>\nIf the ShippingAddress is not included in the json or set to null then the default shipping address for the customer will be used.<br/><br/>\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Creates an Autoship Order for the given Customer ID.<br/><br/>\nIf the ShippingAddress is not included in the json or set to null then the default shipping address for the customer will be used.<br/><br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "58fba8ab322c2752fd451a8f",
         "parameters": [
           {
@@ -904,7 +904,7 @@
           "Customers"
         ],
         "summary": "Get Customer Parties",
-        "description": "Retrieves an array of Customer Parties based on a valid Customer ID and Party Status.<br/>\n<br/>\n<b>PREVIEW</b>: Please note that this method is still under development.<br/>\n\nYou can get the **Request Parameters** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**partyStatus**\n- Get Customer Party Totals",
+        "description": "Retrieves an array of Customer Parties based on a valid Customer ID and Party Status.<br/>\n<br/>\n<b>PREVIEW</b>: Please note that this method is still under development.<br/>\n\nYou can get the **Path Parameters** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**partyStatus**\n- Get Customer Party Totals",
         "operationId": "5953da9eb3ac8812040c6543",
         "parameters": [
           {
@@ -1020,7 +1020,7 @@
           "Customers"
         ],
         "summary": "Get Customer Party Totals",
-        "description": "Retrieves an array of Party Totals based on a valid Customer Id.<br/>\n<br/>\n<b>PREVIEW</b>: Please note that this method is still under development.<br/>\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Retrieves an array of Party Totals based on a valid Customer Id.<br/>\n<br/>\n<b>PREVIEW</b>: Please note that this method is still under development.<br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "595d29bfb3ac881714d011a1",
         "parameters": [
           {
@@ -1097,7 +1097,7 @@
     "/websiteInfo": {
       "get": {
         "summary": "Get Website Information (Deprecated)",
-        "description": "<b>DEPRECATED</b>: Please use the Get Website Information (Extended) instead.<br/><br/>\n\nYou can get the **Request Parameters** at these calls:\n\n- Get Customer",
+        "description": "<b>DEPRECATED</b>: Please use the Get Website Information (Extended) instead.<br/><br/>\n\nYou can get the **Path Parameters** at these calls:\n\n- Get Customer",
         "operationId": "5965150db3ac880988fd2c51",
         "parameters": [
           {
@@ -1143,7 +1143,7 @@
           "Customers"
         ],
         "summary": "Reset Password",
-        "description": "Retrieves a Customer Password based on a valid Customer Id.\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter\n",
+        "description": "Retrieves a Customer Password based on a valid Customer Id.\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter\n",
         "operationId": "5967f042b3ac8807249d6e6e",
         "parameters": [
           {
@@ -1185,7 +1185,7 @@
           "Customers"
         ],
         "summary": "Get Website Information (Extended)",
-        "description": "Retrieves custom website information for the given Web Alias.\n\nYou can get the **Request Parameter** at this call:\n\n- Get Customer",
+        "description": "Retrieves custom website information for the given Web Alias.\n\nYou can get the **Path Parameter** at this call:\n\n- Get Customer",
         "operationId": "5a874be6b3ac880a38c60ca0",
         "parameters": [
           {
@@ -1231,7 +1231,7 @@
           "Customers"
         ],
         "summary": "Get Payment Methods by Parameters",
-        "description": "Retrieves an list of PaymentMethods for the given Customers for the given Store.\n<br/><br/>\n<b>Note</b>: This operation is only available on Disco version 10 or later.<br/><br/>\n\nYou can get the **Request Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**storeId**\n- Products: Get Stores",
+        "description": "Retrieves an list of PaymentMethods for the given Customers for the given Store.\n<br/><br/>\n<b>Note</b>: This operation is only available on Disco version 10 or later.<br/><br/>\n\nYou can get the **Path Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**storeId**\n- Products: Get Stores",
         "operationId": "get-payment-methods-by-parameters",
         "parameters": [
           {
@@ -1288,7 +1288,7 @@
           "Customers"
         ],
         "summary": "Create Payment Method",
-        "description": "Create a new payment method for the given customer.<br/><br/>\n<b>NOTE;</b> This operation is only available on Disco version 10 or later.<br/>\n<br/>\n\nYou can get the **Request Parameter** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Create a new payment method for the given customer.<br/><br/>\n<b>NOTE;</b> This operation is only available on Disco version 10 or later.<br/>\n<br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "create-payment-method",
         "parameters": [
           {
@@ -1329,7 +1329,7 @@
           "Customers"
         ],
         "summary": "Delete Payment Method",
-        "description": "Delete the given payment method for this customer.<br/><br/>\nNote: You must also provide the merchant id for the given payment method.<br/><br/>\n<b>Note</b>: This operation is only available on Disco version 10 or later.<br/>\n<br/>\n\nYou can get the **Request Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**paymentmethodid**\n- Get Payment Method by Parameters\n\n**merchantid**\n- Get Payment Merchants",
+        "description": "Delete the given payment method for this customer.<br/><br/>\nNote: You must also provide the merchant id for the given payment method.<br/><br/>\n<b>Note</b>: This operation is only available on Disco version 10 or later.<br/>\n<br/>\n\nYou can get the **Path Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**paymentmethodid**\n- Get Payment Method by Parameters\n\n**merchantid**\n- Get Payment Merchants",
         "operationId": "delete-payment-method",
         "parameters": [
           {
@@ -1373,7 +1373,7 @@
           "Customers"
         ],
         "summary": "Get Payment Method IFrame",
-        "description": "Get the data to display a iFrame for hosting the payment data capture form for the given store.<br/><br/>\n<b>Note</b>: This operation is only available on Disco version 10 or later.<br/><br/>\n\nYou can get the **Request Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**iframeId**\n- Not sourced by DirectScale\n\n**storeId**\n- Products: Get Stores\n\n**countryCode**, **Region**, and **languageCode**\n- Products: Get Regions",
+        "description": "Get the data to display a iFrame for hosting the payment data capture form for the given store.<br/><br/>\n<b>Note</b>: This operation is only available on Disco version 10 or later.<br/><br/>\n\nYou can get the **Path Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**iframeId**\n- Not sourced by DirectScale\n\n**storeId**\n- Products: Get Stores\n\n**countryCode**, **Region**, and **languageCode**\n- Products: Get Regions",
         "operationId": "get-payment-method-iframe",
         "parameters": [
           {
@@ -1455,7 +1455,7 @@
           "Customers"
         ],
         "summary": "Get Payment Method IFrame (Temp User)",
-        "description": "Get the data to display a iFrame for hosting the payment data capture form for the given store.<br/><br/>This will also create a temporary customer/associate account.  The customer ID is returned in the response body.  The Customer Id can be used to save payment method data and submit a enrollment order.  The account will not be visible to other area of the system until the submit enrollment is called.  If the enrollment is never processed then the account will automatically be removed from the system.<br/><br/>\n<b>Note</b>: This operation is only available on Disco version 10 or later.<br/><br/>\n\nYou can get the **Request Parameters** at these calls:\n\n**iframeId**\n- Not sourced by DirectScale\n\n**storeId**\n- Products: Get Stores\n\n**countryCode**, **region**, and **languageCode**\n- Products: Get Regions",
+        "description": "Get the data to display a iFrame for hosting the payment data capture form for the given store.<br/><br/>This will also create a temporary customer/associate account.  The customer ID is returned in the response body.  The Customer Id can be used to save payment method data and submit a enrollment order.  The account will not be visible to other area of the system until the submit enrollment is called.  If the enrollment is never processed then the account will automatically be removed from the system.<br/><br/>\n<b>Note</b>: This operation is only available on Disco version 10 or later.<br/><br/>\n\nYou can get the **Path Parameters** at these calls:\n\n**iframeId**\n- Not sourced by DirectScale\n\n**storeId**\n- Products: Get Stores\n\n**countryCode**, **region**, and **languageCode**\n- Products: Get Regions",
         "operationId": "5b03347e795d2e8091251f30",
         "parameters": [
           {
@@ -1529,7 +1529,7 @@
           "Customers"
         ],
         "summary": "Get Payment Merchants",
-        "description": "Get a list of merchants that can accept payment methods for the given store, country, and language.<br/><br/>\n<b>Note</b>: This operation is only available on Disco version 10 or later.<br/>\n<br/>\n\nYou can get the **Request Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**storeId**\n- Products: Get Stores\n\n**CountryCode**\n- Products: Get Regions\n\n**Region**\n- Products: Get Regions",
+        "description": "Get a list of merchants that can accept payment methods for the given store, country, and language.<br/><br/>\n<b>Note</b>: This operation is only available on Disco version 10 or later.<br/>\n<br/>\n\nYou can get the **Path Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**storeId**\n- Products: Get Stores\n\n**CountryCode**\n- Products: Get Regions\n\n**Region**\n- Products: Get Regions",
         "operationId": "get-payment-merchants",
         "parameters": [
           {
@@ -1613,7 +1613,7 @@
           "Customers"
         ],
         "summary": "Get Customer Services",
-        "description": "Retrieves an array of Active Services on a valid Customer Id.\n\nYou can get the **Request Parameter** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Retrieves an array of Active Services on a valid Customer Id.\n\nYou can get the **Path Parameter** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "get-customer-services",
         "parameters": [
           {
@@ -1822,7 +1822,7 @@
           "Customers"
         ],
         "summary": "Get Customer Downline Ids",
-        "description": "Retrieves an array of Associates in your organization by tree.\n\nYou can get the **Request Parameters** at these calls:\n\n**associateId**\n- Get Customer Stats",
+        "description": "Retrieves an array of Associates in your organization by tree.\n\nYou can get the **Path Parameters** at these calls:\n\n**associateId**\n- Get Customer Stats",
         "operationId": "5c09527cbdc0d215e3ddac6a",
         "parameters": [
           {
@@ -1926,7 +1926,7 @@
           "Autoships"
         ],
         "summary": "Update AutoShip Date and Amount",
-        "description": "Updates the Last Charge Amount and Next Process Date of the given AutoShip.\n\n\nYou can get the **Request Parameter** at this call:\n\n**autoshipId**\n- Get Customer Autoships",
+        "description": "Updates the Last Charge Amount and Next Process Date of the given AutoShip.\n\n\nYou can get the **Path Parameter** at this call:\n\n**autoshipId**\n- Get Customer Autoships",
         "operationId": "update-autoship-date-and-amount",
         "parameters": [
           {
@@ -2003,7 +2003,7 @@
           "Customers"
         ],
         "summary": "Create Customer Service Log Entry",
-        "description": "Create a service log entry for the given customer.<br/><br/>\nThis appears on the customer record.<br/><br/>\nPassing in a Message results in only a service log entry. Passing in both Message and Detailed Message creates the service log entry, and a (linked) related support record with greater detail.\n\nYou can get the **Request Parameter** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Create a service log entry for the given customer.<br/><br/>\nThis appears on the customer record.<br/><br/>\nPassing in a Message results in only a service log entry. Passing in both Message and Detailed Message creates the service log entry, and a (linked) related support record with greater detail.\n\nYou can get the **Path Parameter** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "5dcb2708dafe38aad9ae7ce6",
         "parameters": [
           {
@@ -2041,7 +2041,7 @@
           "Autoships"
         ],
         "summary": "Get Customer Autoships",
-        "description": "Retrieves an array of Autoships based on a valid Customer Id.\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Retrieves an array of Autoships based on a valid Customer Id.\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "5dcb36b61bc448bce7d67fe6",
         "parameters": [
           {
