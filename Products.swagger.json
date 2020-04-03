@@ -58,7 +58,7 @@
     },
     "/store/{storeId}/categories": {
       "get": {
-        "description": "Get a list of categories to a specific store.\n\nYou can get the **Path Parameter** at this call:\n\n**storeId**\n- Get Stores\n",
+        "description": "Get a list of categories to a specific store.\n\nYou can get the **Request Parameter** at this call:\n\n**storeId**\n- Get Stores\n",
         "operationId": "58a91b96b3ac880c189b9362",
         "summary": "Get Categories",
         "tags": [
@@ -80,7 +80,7 @@
           "200": {
             "description": "Returns an array of valid Category objects.",
             "examples": {
-              "application/json": "[\n  {\n    \"ID\": 1,\n    \"Name\": \"Home & Garden\",\n    \"Description\": \"\",\n    \"ImageUrl\": \"/test_image.jpg\",\n    \"ParentID\": 0,\n    \"HasChildren\": false,\n    \"SubCategories\": []\n  }\n]"
+              "application/json": "[{\n    \"ID\": 1,\n    \"Name\": \"Test Category\",\n    \"Description\": \"\",\n    \"ImageUrl\": null,\n    \"ParentID\": 0,\n    \"HasChildren\": false,\n    \"SubCategories\": null\n  },\n  {\n    \"ID\": 115,\n    \"Name\": \"Category Trace\",\n    \"Description\": \"\",\n    \"ImageUrl\": null,\n    \"ParentID\": 0,\n    \"HasChildren\": false,\n    \"SubCategories\": null\n  },\n  {\n    \"ID\": 116,\n    \"Name\": \"Category Trace 2\",\n    \"Description\": \"\",\n    \"ImageUrl\": null,\n    \"ParentID\": 0,\n    \"HasChildren\": false,\n    \"SubCategories\": null\n  }\n]"
             }
           },
           "404": {
@@ -94,7 +94,7 @@
     },
     "/categories/{categoryId}/items": {
       "get": {
-        "description": "Return all items in a given country and category. Optional filter parameters will limit translations, prices, and products returned.\n\nYou can get the **Path Parameters** at these calls:\n\n**categoryId**\n- Get Categories\n\n**CurrencyCode**\n- Get Regions displays the country/state codes of the warehouses. If you are concerned about having the proper CurrencyCode, then this will allow you to know what region warehouse support team to call to get the confirmed CurrencyCode.\n\n**LanguageCode**\n- Get Item by Id\n- Get Items\n- Get Items by Filter\n\n**RegionID**\n- Get Regions\n\n**PriceGroup**\n- Order: Get Price Group(s)\n\n**StoreID**\n- Get Stores",
+        "description": "Return all items in a given country and category. Optional filter parameters will limit translations, prices, and products returned.\n\nYou can get the **Request Parameters** at these calls:\n\n**categoryId**\n- Get Categories\n\n**CurrencyCode**\n- Get Regions displays the country/state codes of the warehouses. If you are concerned about having the proper CurrencyCode, then this will allow you to know what region warehouse support team to call to get the confirmed CurrencyCode.\n\n**LanguageCode**\n- Get Item by Id\n- Get Items\n- Get Items by Filter\n\n**RegionID**\n- Get Regions\n\n**PriceGroup**\n- Order: Get Price Group(s)\n\n**StoreID**\n- Get Stores",
         "operationId": "58a91c00b3ac880c189b9363",
         "summary": "Get Items by Filter",
         "tags": [
@@ -179,7 +179,7 @@
     },
     "/item/{itemId}": {
       "get": {
-        "description": "Retrieves an Item based on a valid Item ID.\n\nYou can get the **Path Parameter** at these calls:\n\n**itemId**\n- Get Items by Filter\n- Get Item by SKU",
+        "description": "Retrieves an Item based on a valid Item ID.\n\nYou can get the **Request Parameter** at these calls:\n\n**itemId**\n- Get Items by Filter\n- Get Item by SKU",
         "operationId": "58a91c4fb3ac880c189b9364",
         "summary": "Get Item by Id",
         "tags": [
@@ -254,7 +254,7 @@
     },
     "/item/sku/{sku}": {
       "get": {
-        "description": "Retrieves an Item based on a valid Item Stock Keeping Unit (SKU).\n\nYou can get the **Path Parameters** at these calls:\n\n**sku**\n- Get Item by Id\n- Get Items\n- Get Items by Filter\n\n**CurrencyCode**\n- Get Regions displays the country/state codes of the warehouses. If you are concerned about having the proper CurrencyCode, then this will allow you to know what region warehouse support team to call to get the confirmed CurrencyCode.\n\n**LanguageCode**\n- Get Item by Id\n- Get Items\n- Get Items by Filter",
+        "description": "Retrieves an Item based on a valid Item Stock Keeping Unit (SKU).\n\nYou can get the **Request Parameters** at these calls:\n\n**sku**\n- Get Item by Id\n- Get Items\n- Get Items by Filter\n\n**CurrencyCode**\n- Get Regions displays the country/state codes of the warehouses. If you are concerned about having the proper CurrencyCode, then this will allow you to know what region warehouse support team to call to get the confirmed CurrencyCode.\n\n**LanguageCode**\n- Get Item by Id\n- Get Items\n- Get Items by Filter",
         "operationId": "58a91c9fb3ac880c189b9365",
         "summary": "Get Item by SKU",
         "tags": [
@@ -349,7 +349,7 @@
     },
     "/categories/{categoryId}/subcategories": {
       "get": {
-        "description": "Retrieves an array of Sub Categories.<br/><br/>\n\nYou can get the **Path Parameter** at this call:\n\n**categoryId**\n- Get Categories",
+        "description": "Retrieves an array of Sub Categories.<br/><br/>\n\nYou can get the **Request Parameter** at this call:\n\n**categoryId**\n- Get Categories",
         "operationId": "58cbf0d6785439057b0a0ff3",
         "summary": "Get Sub Categories",
         "tags": [
@@ -409,7 +409,7 @@
     },
     "/items": {
       "post": {
-        "description": "Creates a new inventory item.",
+        "description": "Creates a new inventory item.\n\n**WARNING:** This call does **not** have validation, so as long as the array variables are present, the call will create the desired item, no matter the fields missing.",
         "operationId": "save-item",
         "summary": "Save Item",
         "tags": [
@@ -420,12 +420,13 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "example": "{\n    \"Sku\": \"API_ITEM_SKU\",\n    \"KitLevel\": 0,\n    \"Category\": {\n        \"Id\": 0 //Call GetCategories for Options\n    },\n    \"ChargeShipping\": true,\n    \"Disabled\": false,\n    \"Height\": 0.0,\n    \"Image\": \"/path_to_image.jpg\",\n    \"Length\": 0.0,\n    \"LengthUnitOfMeasure\": \"in | cm | mm\",\n    \"ManufacturerPartNum\": \"Manufacturer Part Number\",\n    \"OutOfStockStatus\": 1, // 1: In Stock | 2: 2-3 Days | 3: Out Of Stock | 4: Pre-Order\n    \"PackCount\": 0.0,\n    \"PackageGroupId\": 1, // 1: Standard\n    \"PreferedVendorId\": 0,\n    \"SortOrder\": 0,\n    \"TaxClassId\": 0,\n    \"ProductClass\": 1, // 1: Standard Item | 2: Raw Material\n    \"TrackStock\": true,\n    \"UnitOfMeasure\": \"ea | kg | gr | lb | oz | cm | mm | in | ft | yd\",\n    \"Upc\": \"Universal Product Code\",\n    \"Weight\": 0.0,\n    \"WeightUnitOfMeasure\": \"kg | gr | lb | oz\",\n    \"Width\": 0.0,\n    \"FlagCancer\": false,\n    \"FlagBirthDefects\": false,\n    \"HasKitGroups\": false,\n    \"HsCode\": \"Harmonized Tariff Commodity Code\",\n    \"FastStart\": {\n        \"Gen1\": 0,\n        \"Gen2\": 0,\n        \"Gen3\": 0,\n        \"Gen4\": 0,\n        \"Gen5\": 0,\n        \"Gen6\": 0,\n        \"Gen7\": 0,\n        \"Gen8\": 0,\n        \"Gen9\": 0,\n        \"Gen10\": 0\n    },\n    \"Images\": [{\n            \"Description\": \"string\",\n            \"Path\": \"string\"\n        }\n    ],\n    \"Languages\": [{\n            \"Description\": \"Product Description Here\",\n            \"LanguageCode\": \"en\",\n            \"ProductName\": \"Product Name Here\",\n            \"SeoKeywords\": null,\n            \"Specifications\": \"Product Specification Here\"\n        }\n    ],\n    \"Options\": [{\n            \"Option\": \"Option Category Name\",\n            \"OptionType\": 1, // 1: Standard\n            \"Values\": [{\n                    \"Option\": \"Option Name\",\n                    \"SkuExt\": \"OPTION_SKU\"\n                }\n            ]\n        }\n    ],\n    \"OptionsMap\": [], // Keep this as an empty array\n    \"Discounts\": [{\n            \"Bonus\": 0.00, // Nullable\n            \"End\": \"01-01-9999\",\n            \"Price\": 0.00,\n            \"PriceCurrency\": \"usd\",\n            \"Cv\": 0.0,\n            \"Qv\": 0.0,\n            \"RewardPointsEarned\": 0.0,\n            \"Start\": \"01-01-1900\",\n            \"Type\": \"Discount | Price\",\n            \"Stores\": [\n                0 // Call GetStores for Options\n            ],\n            \"OrderType\": [\n                0 // 0: Corporate | 1: Wholesale | 2: Retail | 3: Enroll | 4: AutoShip | 5: Rewards | 6: Party\n            ],\n            \"PriceGroups\": [\n                0 // 0: Stylist | 1: Customer | 2: Preferred Customer\n            ],\n            \"Regions\": [\n                0 // Call GetRegions for Options\n            ]\n        }\n    ]\n}\n"
+              "example": "{\r\n    \"Category\": { },\r\n    \"FastStart\": { },\r\n    \"Images\": [{ }],\r\n    \"Languages\": [{ }],\r\n    \"Options\": [{\r\n            \"Values\": [{ }]\r\n        }],\r\n    \"OptionsMap\": [], // Keep this as an empty array\r\n    \"Discounts\": [{\r\n            \"Start\": \"01-01-1900\",\r\n            \"Stores\": [],\r\n            \"OrderType\": [],\r\n            \"PriceGroups\": [],\r\n            \"Regions\": []\r\n        }]\r\n}\r\n"
             }
           }
         ],
         "consumes": [
-          "application/json"
+          "application/json (full)",
+          "application/json (minimal)"
         ],
         "responses": {
           "201": {
@@ -458,7 +459,7 @@
     },
     "/items/{itemId}": {
       "put": {
-        "description": "Update an existing inventory item.\n\nYou can get the **Path Parameter** at this call:\n\n**itemId**\n- Get Item by Id\n- Get Item by SKU\n- Get Items by Filter",
+        "description": "Update an existing inventory item.\n\nYou can get the **Request Parameter** at this call:\n\n**itemId**\n- Get Item by Id\n- Get Item by SKU\n- Get Items by Filter",
         "operationId": "update-item",
         "summary": "Update Item",
         "tags": [
@@ -483,7 +484,7 @@
         }
       },
       "delete": {
-        "description": "Delete an inventory item.\n\nYou can get the **Path Parameter** at these calls:\n\n**itemId**\n- Get Items by Filter\n- Get Item by SKU",
+        "description": "Delete an inventory item.\n\nYou can get the **Request Parameter** at these calls:\n\n**itemId**\n- Get Items by Filter\n- Get Item by SKU",
         "operationId": "delete-item",
         "summary": "Delete Item",
         "tags": [
@@ -513,7 +514,7 @@
     },
     "/item/{itemId}/stockLevel/{warehouseId}": {
       "get": {
-        "description": "Retrieves Stock Level information for Item based on a valid Item ID and Warehouse ID.\n\nYou can get the **Path Parameters** at these calls:\n\n**itemId**\n- Get Items by Filter\n- Get Item by SKU\n\n**warehouseId**\n- Get Regions",
+        "description": "Retrieves Stock Level information for Item based on a valid Item ID and Warehouse ID.\n\nYou can get the **Request Parameters** at these calls:\n\n**itemId**\n- Get Items by Filter\n- Get Item by SKU\n\n**warehouseId**\n- Get Regions",
         "operationId": "get-stock-level",
         "summary": "Get Stock Level",
         "tags": [
@@ -564,7 +565,7 @@
     },
     "/items/{itemId}/stockLevel": {
       "put": {
-        "description": "Sets the On Hand stock level for the given Warehouse and Item.\n\nYou can get the **Path Parameter** at these calls:\n\n**itemId**\n- Get Item by Id\n- Get Items by Filter\n- Get Item by SKU",
+        "description": "Sets the On Hand stock level for the given Warehouse and Item.\n\nYou can get the **Request Parameter** at these calls:\n\n**itemId**\n- Get Item by Id\n- Get Items by Filter\n- Get Item by SKU",
         "operationId": "update-stock-level",
         "summary": "Update Stock Level",
         "tags": [
@@ -595,6 +596,114 @@
           },
           "500": {
             "description": "Something went wrong... Here are some possible reasons for this error:\n- Is the model being sent to the API incorrect?\n- Did you forget a required field?\n- Is the API marked as deprecated, and the date has expired?\n\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
+          }
+        }
+      }
+    },
+    "/categories/{categoryId}/topproducts": {
+      "get": {
+        "description": "Return a list of top-selling items in a particular category. Optional filter parameters will limit translations, prices, and products returned.\n\n**NOTE:** This call runs a sales query to fetch the top-selling products, which is then cached and kept for 4 hours, for each category/region/etc. The first time this call is made, it could take several seconds, but subsequently should only take milliseconds for cache retrieval (until the 4 hours pass).\n\nYou can get the **Request Parameters** at these calls:\n\n**categoryId**\n- Get Categories\n\n**CurrencyCode**\n- Get Regions displays the country/state codes of the warehouses. If you are concerned about having the proper CurrencyCode, then this will allow you to know what region warehouse support team to call to get the confirmed CurrencyCode.\n\n**LanguageCode**\n- Get Item by Id\n- Get Items\n- Get Items by Filter\n\n**RegionID**\n- Get Regions\n\n**PriceGroup**\n- Order: Get Price Group(s)\n\n**StoreID**\n- Get Stores",
+        "operationId": "5e823ee05fcb855a7ea1f293",
+        "summary": "Get Top-selling Products",
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "description": "The Id of the Category whose Items are to be retrieved.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "numberOfProducts",
+            "in": "query",
+            "description": "The number of top products to retrieve",
+            "required": true,
+            "type": "integer",
+            "default": "1",
+            "enum": [
+              "1"
+            ]
+          },
+          {
+            "name": "CurrencyCode",
+            "in": "query",
+            "description": "The 3-character ISO currency code indicating pricing to be returned.",
+            "required": true,
+            "type": "string",
+            "default": "usd",
+            "enum": [
+              "usd"
+            ]
+          },
+          {
+            "name": "LanguageCode",
+            "in": "query",
+            "description": "The 2-character ISO language code indicating language of translations.",
+            "required": true,
+            "type": "string",
+            "default": "en",
+            "enum": [
+              "en"
+            ]
+          },
+          {
+            "name": "RegionID",
+            "in": "query",
+            "description": "The Region ID, fetched using \"Get Regions\"",
+            "required": true,
+            "type": "integer",
+            "default": "1",
+            "enum": [
+              "1"
+            ]
+          },
+          {
+            "name": "PriceGroup",
+            "in": "query",
+            "description": "The Price Group ID, fetched using \"Get Price Groups\"",
+            "required": true,
+            "type": "integer",
+            "default": "1",
+            "enum": [
+              "1"
+            ]
+          },
+          {
+            "name": "StoreID",
+            "in": "query",
+            "description": "The Store ID, fetched using \"Get Stores\"",
+            "required": true,
+            "type": "integer",
+            "enum": [
+              "1"
+            ]
+          },
+          {
+            "name": "CountryCode",
+            "in": "query",
+            "description": "The Country Code, fetched using \"Get Regions\"",
+            "type": "string",
+            "default": "US",
+            "enum": [
+              "US"
+            ]
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns an array of requested top-selling item objects. If the category selected is empty the array will be empty.",
+            "examples": {
+              "application/json": "[\r\n  {\r\n    \"ItemID\": 3,\r\n    \"Quantity\": 1.0,\r\n    \"ExtendedPrice\": 50.0,\r\n    \"ExtendedBonus\": 0.0,\r\n    \"ExtendedCV\": 0.0,\r\n    \"ExtendedQV\": 0.0,\r\n    \"ProductName\": \"Example Item\",\r\n    \"Description\": \"Long Description\",\r\n    \"Specifications\": \"Long Specifications\",\r\n    \"LanguageCode\": \"en\",\r\n    \"SKU\": \"ipd\",\r\n    \"ChargeShipping\": false,\r\n    \"FlagCancer\": false,\r\n    \"FlagBirthDefects\": false,\r\n    \"HasKitGroups\": false,\r\n    \"Price\": 50.0,\r\n    \"Bonus\": 0.0,\r\n    \"CV\": 0.0,\r\n    \"QV\": 0.0,\r\n    \"CurrencyCode\": \"usd\",\r\n    \"OriginalPrice\": 50.0,\r\n    \"Cost\": 0.0,\r\n    \"ExtendedRewardPoints\": 0.0,\r\n    \"ExtendedCost\": 0.0,\r\n    \"Category\": \"Electronics\",\r\n    \"Height\": 0.0,\r\n    \"ImageUrl\": \"/ipod_nano_1.jpg\",\r\n    \"Length\": 0.0,\r\n    \"MPN\": \"\",\r\n    \"PackCount\": 0.0,\r\n    \"PackageGroupID\": 1,\r\n    \"TaxClassID\": 0,\r\n    \"UnitOfMeasure\": \"\",\r\n    \"UPC\": \"\",\r\n    \"Weight\": 0.0,\r\n    \"Width\": 0.0,\r\n    \"PriceGroup\": 1,\r\n    \"RewardPoints\": 0.0\r\n  }\r\n]"
+            }
+          },
+          "404": {
+            "description": "A Category with the given Category ID was not found."
+          },
+          "500": {
+            "description": "Something went wrong... Here are some possible reasons for this error:\r\n- Is the model being sent to the API incorrect?\r\n- Did you forget a required field?\r\n- Is the API marked as deprecated, and the date has expired?\r\n\r\nIf the answer is \"No\" to all of these questions, DirectScale could be experiencing technical difficulties. Please contact your DirectScale representative if the issue persists."
           }
         }
       }

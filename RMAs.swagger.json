@@ -208,7 +208,7 @@
     },
     "/rmas/{rmaId}/shipped": {
       "post": {
-        "description": "Mark an RMA as shipped.\n\nYou can get the **Request Parameters** at these calls:\n\n**rmaId**\n- Get RMAs\n\n**TrackingNumber**\n- Set Order Shipped\n- Set Package Shipped",
+        "description": "Mark an RMA as shipped.\n\nYou can get the **Request Parameters** at these calls:\n\n**rmaId**\n- Get RMAs\n\n**TrackingNumber**\n- Order: Set Order Shipped\n- Order: Set Package Shipped",
         "operationId": "mark-rma-shipped",
         "summary": "Mark RMA shipped",
         "tags": [

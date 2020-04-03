@@ -34,7 +34,7 @@
   "paths": {
     "/": {
       "get": {
-        "description": "Retrieves an array of Customers based on a valid parameter of choice.<br /><br />\n<b>Note</b>: This API allows for multiple parameters, however only one parameter should be passed to the API at any given time, as only one will be honored.<br/><br/>\n\nYou can get the **Path Parameters** at this call:\n- Get Customer",
+        "description": "Retrieves an array of Customers based on a valid parameter of choice.<br /><br />\n<b>Note</b>: This API allows for multiple parameters, however only one parameter should be passed to the API at any given time, as only one will be honored.<br/><br/>\n\nYou can get the **Request Parameters** at this call:\n- Get Customer\n\n**NOTE:** Do not include spaces between words.\n   - Format: FirstnameLastname\n      - Ex. SamSpace",
         "operationId": "57fe681ecb00f20ae896cc69",
         "summary": "Get Customers By Parameter",
         "tags": [
@@ -79,7 +79,7 @@
           "200": {
             "description": "Returns an array of valid Customer objects.",
             "examples": {
-              "application/json": "[\n  {\n    \"CustomerId\": 2,\n    \"BackOfficeId\": \"ABC123\",\n    \"BirthDate\": \"1988-04-01\",\n    \"CompanyName\": \"Test Company Name\",\n    \"CustomerStatus\": 1,\n    \"CustomerType\": 1,\n    \"DefaultShippingAddress\": {\n      \"AddressId\": 15714,\n      \"Street1\": \"7432 Maytown Road\",\n      \"Street2\": \"\",\n      \"Street3\": \"\",\n      \"City\": \"Springfield\",\n      \"Region\": \"NT\",\n      \"PostalCode\": \"49007\",\n      \"CountryCode\": \"US\"\n    },\n    \"EmailAddress\": \"testing@testing.directscale.com\",\n    \"EnrollerId\": 2,\n    \"ExternalReferenceId\": \"TEST123\",\n    \"FirstName\": \"TestFirst\",\n    \"InactiveDate\": \"1900-01-01\",\n    \"LanguageCode\": \"EN\",\n    \"LastName\": \"TestLast\",\n    \"PrimaryAddress\": {\n      \"AddressId\": 15714,\n      \"Street1\": \"7432 Maytown Road\",\n      \"Street2\": \"\",\n      \"Street3\": \"\",\n      \"City\": \"Springfield\",\n      \"Region\": \"NT\",\n      \"PostalCode\": \"49007\",\n      \"CountryCode\": \"US\"\n    },\n    \"PrimaryPhone\": \"+1 555 555 1111\",\n    \"SecondaryPhone\": \"+1 555 555 2222\",\n    \"SendEmails\": false,\n    \"SignupDate\": \"2014-10-30\",\n    \"SponsorId\": 1,\n    \"TaxExemptId\": \"11-ASDF-1234\",\n    \"TaxId\": \"152-55-6765\",\n    \"TermsAccepted\": true,\n    \"TextPhone\": \"+1 555 555 1111\",\n    \"Username\": \"myUsername\",\n    \"WebAlias\": \"hello-world-web-alias\"\n  }\n]"
+              "application/json": "[\n  {\n    \"CustomerId\": 2,\n    \"BackOfficeId\": \"ABC123\",\n    \"BirthDate\": \"1988-04-01T00:00:00.0000000+00:00\",\n    \"CompanyName\": \"Test Company Name\",\n    \"CustomerStatus\": 1,\n    \"CustomerType\": 1,\n    \"DefaultShippingAddress\": {\n      \"AddressId\": 15714,\n      \"Street1\": \"7432 Maytown Road\",\n      \"Street2\": \"\",\n      \"Street3\": \"\",\n      \"City\": \"Springfield\",\n      \"Region\": \"NT\",\n      \"PostalCode\": \"49007\",\n      \"CountryCode\": \"US\"\n    },\n    \"EmailAddress\": \"testing@testing.directscale.com\",\n    \"EnrollerId\": 2,\n    \"ExternalReferenceId\": \"TEST123\",\n    \"FirstName\": \"TestFirst\",\n    \"InactiveDate\": \"1900-01-01T00:00:00.0000000+00:00\",\n    \"LanguageCode\": \"EN\",\n    \"LastName\": \"TestLast\",\n    \"PrimaryAddress\": {\n      \"AddressId\": 15714,\n      \"Street1\": \"7432 Maytown Road\",\n      \"Street2\": \"\",\n      \"Street3\": \"\",\n      \"City\": \"Springfield\",\n      \"Region\": \"NT\",\n      \"PostalCode\": \"49007\",\n      \"CountryCode\": \"US\"\n    },\n    \"PrimaryPhone\": \"+1 555 555 1111\",\n    \"SecondaryPhone\": \"+1 555 555 2222\",\n    \"SendEmails\": false,\n    \"SignupDate\": \"2014-10-30T00:00:00.0000000+00:00\",\n    \"SponsorId\": 1,\n    \"TaxExemptId\": \"11-ASDF-1234\",\n    \"TaxId\": \"152-55-6765\",\n    \"TermsAccepted\": true,\n    \"TextPhone\": \"+1 555 555 1111\",\n    \"Username\": \"myUsername\",\n    \"WebAlias\": \"hello-world-web-alias\"\n  }\n]"
             }
           },
           "404": {
@@ -91,7 +91,7 @@
         }
       },
       "post": {
-        "description": "Creates a new Customer based on a valid Customer object.<br/><br/>",
+        "description": "Creates a new Customer based on a valid Customer object.<br/><br/>\n\n**Date + Time format**\n\nYear-Month-Day'T'MilitaryTimeHour:Minute:Second\n- Ex. 2018-10-30T15:47:52",
         "operationId": "57fe7e33cb00f20ae896cc6b",
         "summary": "Create Customer",
         "tags": [
@@ -102,13 +102,16 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "example": "{\n    \"BackOfficeId\": \"TestBackOfficeId01\",\n    \"BirthDate\": \"1973-05-12\",\n    \"CompanyName\": \"Test Company Name Inc.\",\n    \"CustomerStatus\": 1,\n    \"CustomerType\": 1,\n    \"DefaultShippingAddress\": {\n        \"Street1\": \"250 South 400 West\",\n        \"Street2\": \"Suite #225\",\n        \"Street3\": null,\n        \"PostalCode\": \"84042\",\n        \"City\": \"Lindon\",\n        \"Region\": \"UT\",\n        \"CountryCode\": \"US\"\n    },\n    \"EmailAddress\": \"directScaleTest@testing.directscale.com\",\n    \"ExternalReferenceId\": \"EXT1234567890\",\n    \"FirstName\": \"Ryan\",\n    \"LanguageCode\": \"en\",\n    \"LastName\": \"Testing\",\n    \"Password\": \"********\",\n    \"PrimaryAddress\": {\n        \"Street1\": \"250 South 400 West\",\n        \"Street2\": \"Suite #225\",\n        \"Street3\": null,\n        \"PostalCode\": \"84042\",\n        \"City\": \"Lindon\",\n        \"Region\": \"UT\",\n        \"CountryCode\": \"US\"\n    },\n    \"PrimaryPhone\": \"+1 801 555-1111\",\n    \"SecondaryPhone\": \"+1 801 555-2222\",\n    \"SendEmails\": true,\n    \"SignUpDate\": \"1988-01-01\",\n    \"SponsorId\": 2,\n    \"TaxExemptId\": \"TAX-TEST-0000\",\n    \"TaxId\": \"TAX-TEST-1111\",\n    \"TermsAccepted\": true,\n    \"TextPhone\": \"+1 801 555-1111\",\n    \"Username\": \"TestUsername01\",\n    \"WebAlias\": \"TestWebAlias\"\n}"
+              "example": "{\r\n  \"CustomerType\": 3,\r\n  \"EmailAddress\": \"bobafett@testing.directscale.com\",\r\n  \"FirstName\": \"Boba\",\r\n  \"LastName\": \"Fett\",\r\n  \"PrimaryAddress\": {\r\n    \"Street1\": \"250 South 400 West\",\r\n    \"Region\": \"UT\",\r\n    \"CountryCode\": \"US\"\r\n  },\r\n  \"SponsorId\": 2\r\n}"
             },
-            "description": "**Required Fields:**\n- BackOfficeId\n- CustomerType\n- DefaultShippingAddress\n- EmailAddress\n- FirstName\n- LastName\n- Password\n- PrimaryAddress\n- SendEmails\n- SponsorId\n- TermsAccepted\n- TaxId\n- Username\n\n<b>Uniqueness Required:</b>\n- BackOfficeId\n- EmailAddress\n- TaxId\n- Username\n- WebAlias\n<br/><br/>\n<b>Note</b>: Many of the property's behaviors can be changed by the implementation of the commission plan to allow the property to be optional or have different uniqueness characteristics.  Please contact your support representative for specific details.<br/><br />\n"
+            "description": "**Required Fields (based on customerType):**\n- BirthDate (1)\n   - Get Customer\n- CustomerType (1, 2, 3)\n   - Get Customer\n- DefaultShippingAddress (1)\n   - street1\n   - PostalCode\n   - City\n   - CountryCode\n- EmailAddress (1, 2, 3)\n   - Get Customer\n- FirstName (1, 2, 3)\n   - Get Customer\n- LastName (1, 2, 3)\n   - Get Customer\n- Password (1, 2)\n- PrimaryAddress (1, 2, 3)\n   - street1\n   - Region\n   - CountryCode\n- SponsorId (1, 2, 3)\n   - Get Customer\n- TaxId (1)\n   - Get Customer\n- TermsAccepted (1)\n- Username (1, 2, 3)\n   - Get Customer\n\n<b>Uniqueness Required:</b>\n- BackOfficeId\n- EmailAddress\n- TaxId\n- Username\n- WebAlias\n\n**NOTE:** Unique variables can be validated with our **Validate** API calls.\n\n<br/><br/>\n<b>Note</b>: Many of the property's behaviors can be changed by the implementation of the commission plan to allow the property to be optional or have different uniqueness characteristics.  Please contact your support representative for specific details.<br/><br />\n"
           }
         ],
         "consumes": [
-          "application/json"
+          "application/json (full)",
+          "application/json (customerType: 1)",
+          "application/json  (customerType: 2)",
+          "application/json (customerType: 3)"
         ],
         "responses": {
           "201": {
@@ -122,7 +125,7 @@
     },
     "/{customerId}": {
       "get": {
-        "description": "Retrieves a Customer based on a valid Customer Id.\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Retrieves a Customer based on a valid Customer Id.\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "57fe68e3cb00f20ae896cc6a",
         "summary": "Get Customer",
         "tags": [
@@ -147,7 +150,7 @@
               "application/json": {
                 "CustomerId": 2,
                 "BackOfficeId": "ABC123",
-                "BirthDate": "1988-04-01",
+                "BirthDate": "1988-04-01T00:00:00+00:00",
                 "CompanyName": "Test Company Name",
                 "CustomerStatus": 1,
                 "CustomerType": 1,
@@ -165,7 +168,7 @@
                 "EnrollerId": 2,
                 "ExternalReferenceId": "TEST123",
                 "FirstName": "TestFirst",
-                "InactiveDate": "1900-01-01",
+                "InactiveDate": "1900-01-01T00:00:00+00:00",
                 "LanguageCode": "EN",
                 "LastName": "TestLast",
                 "PrimaryAddress": {
@@ -181,7 +184,7 @@
                 "PrimaryPhone": "+1 555 555 1111",
                 "SecondaryPhone": "+1 555 555 2222",
                 "SendEmails": false,
-                "SignupDate": "2014-10-30",
+                "SignupDate": "2014-10-30T00:00:00+00:00",
                 "SponsorId": 1,
                 "TaxExemptId": "11-ASDF-1234",
                 "TaxId": "152-55-6765",
@@ -201,7 +204,7 @@
         }
       },
       "put": {
-        "description": "Updates an existing Customer's information.<br/><br/>\n<b>Note:</b> This call requires an update to all of the Customer's information. Therefore, if a field is omitted or remains blank, the update will clear out the existing information. If only a partial update is desired, please use the <em>PATCH Update Customer</em> API call.<br/><br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Updates an existing Customer's information.<br/><br/>\n<b>Note:</b> This call requires an update to all of the Customer's information. Therefore, if a field is omitted or remains blank, the update will clear out the existing information. If only a partial update is desired, please use the <em>PATCH Update Customer</em> API call.<br/><br/>\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "57fe7ebccb00f20ae896cc6c",
         "summary": "Update Customer",
         "tags": [
@@ -219,9 +222,9 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "example": "{\n  \"BirthDate\": \"1979-04-01T00:00:00\",\n  \"CompanyName\": \"Test Company\",\n  \"CustomerStatus\": 1,\n  \"CustomerType\": 1,\n  \"DefaultShippingAddress\": {\n    \"Street1\": \"7432 Maytown Road\",\n    \"Street2\": \"\",\n    \"Street3\": \"\",\n    \"City\": \"Springfield\",\n    \"Region\": \"NT\",\n    \"PostalCode\": \"49007\",\n    \"CountryCode\": \"US\"\n  },\n  \"EmailAddress\": \"janedoe@directscale.testing.com\",\n  \"ExternalReferenceId\": \"jane1234\",\n  \"FirstName\": \"Jane\",\n  \"LanguageCode\": \"en\",\n  \"LastName\": \"Doe\",\n  \"PrimaryAddress\": {\n    \"Street1\": \"7432 Maytown Road\",\n    \"Street2\": \"\",\n    \"Street3\": \"\",\n    \"City\": \"Springfield\",\n    \"Region\": \"NT\",\n    \"PostalCode\": \"49007\",\n    \"CountryCode\": \"US\"\n  },\n  \"PrimaryPhone\": \"+1 801 555-1111\",\n  \"SecondaryPhone\": \"+1 801 555-2222\",\n  \"SponsorId\":1,\n  \"TaxExemptId\":\"11-asdf-1234\",\n  \"TextPhone\": \"+1 801 555-1111\"\n}"
+              "example": "{\n  \"BirthDate\": \"1979-04-01T00:00:00.0000000+00:00\",\n  \"CompanyName\": \"Test Company\",\n  \"CustomerStatus\": 1,\n  \"CustomerType\": 1,\n  \"DefaultShippingAddress\": {\n    \"Street1\": \"7432 Maytown Road\",\n    \"Street2\": \"\",\n    \"City\": \"Springfield\",\n    \"Region\": \"NT\",\n    \"PostalCode\": \"49007\",\n    \"CountryCode\": \"US\"\n  },\n  \"EmailAddress\": \"janedoe@directscale.testing.com\",\n  \"ExternalReferenceId\": \"jane1234\",\n  \"FirstName\": \"Jane\",\n  \"LanguageCode\": \"en\",\n  \"LastName\": \"Doe\",\n  \"PrimaryAddress\": {\n    \"Street1\": \"7432 Maytown Road\",\n    \"Street2\": \"\",\n    \"City\": \"Springfield\",\n    \"Region\": \"NT\",\n    \"PostalCode\": \"49007\",\n    \"CountryCode\": \"US\"\n  },\n  \"PrimaryPhone\": \"+1 801 555-1111\",\n  \"SecondaryPhone\": \"+1 801 555-2222\",\n  \"SponsorId\": 1,\n  \"TaxExemptId\": \"11-asdf-1234\",\n  \"TextPhone\": \"+1 801 555-1111\"\n}"
             },
-            "description": "<b>All Fields are Required</b>\n\n <b>WARNING:</b> If a field is omitted or remains blank, the update will clear out the existing information.<br /><br />"
+            "description": "<b>All Fields are Required</b>\n\n <b>WARNING:</b> If a field is omitted or remains blank, the update will clear out the existing information.<br /><br />\n\nAll variables can be found using **Get Customer** and **Get Customers by Parameter**.\n- BirthDate\n- CompanyName\n- CustomerStatus\n- CustomerType\n- DefaultShippingAddress\n   - Street1\n   - Street2\n   - City\n   - Region\n   - PostalCode\n   - CountryCode\n- EmailAddress\n- ExternalReferenceId\n- FirstName\n- LanguageCode\n- LastName\n- PrimaryAddress\n   - Street1\n   - Street2\n   - City\n   - Region\n   - PostalCode\n   - CountryCode\n- PrimaryPhone\n- SecondaryPhone\n- SponsorId\n- TaxExemptId\n- TextPhone"
           }
         ],
         "consumes": [
@@ -240,7 +243,7 @@
         }
       },
       "delete": {
-        "description": "Deletes a Customer (and all peripheral data) based on a valid Customer Id.<br/><br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Deletes a Customer (and all peripheral data) based on a valid Customer Id.<br/><br/>\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "57fe8026cb00f20ae896cc6d",
         "summary": "Delete Customer",
         "tags": [
@@ -268,7 +271,7 @@
         }
       },
       "patch": {
-        "description": "Updates an existing Customer's information.<br/><br/>\n<b>Note</b>: This call updates only the Customer's information that is passed in (*Address updates must include all properties in the address structure*). If a complete update is desired, please use the <em>PUT Update Customer</em> API call.<br/><br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Updates an existing Customer's information.<br/><br/>\n<b>Note</b>: This call updates only the Customer's information that is passed in. If the variable desired is part of an array of variables, then the rest of the variables must be included. If a complete update is desired, then please use the <em>PUT Update Customer</em> API call.<br/><br/>\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**Date + Time format**\n\nYear-Month-Day'T'MilitaryTimeHour:Minute:Second\n- Ex. 2020-02-20T15:47:52\n",
         "operationId": "593adc28b3ac880fe0fceb4c",
         "summary": "Update Customer By Parameter",
         "tags": [
@@ -286,9 +289,9 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "example": "{\n  \"WebAlias\" : \"my-web-alias\",\n  \"Username\" : \"myUsername\",\n  \"CustomerType\" : 1,\n  \"CustomerStatus\" : 1\n}"
+              "example": "{\n  \"WebAlias\": \"my-web-alias\",\n  \"Username\": \"myUsername\",\n  \"CustomerType\": 1,\n  \"CustomerStatus\": 1\n}"
             },
-            "description": "Include only the fields needed for the Customer update.\n\n<b>Supported Fields:</b>\n- WebAlias\n- Username\n- CustomerType\n- CustomerStatus\n- BirthDate\n- CompanyName\n- EmailAddress\n- PrimaryAddress (All Address properties must be specified: Street1, Street2, City, Region, PostalCode, CountryCode)\n- DefaultShippingAddress (All Address properties must be specified: Street1, Street2, City, Region, PostalCode, CountryCode)\n- FirstName\n- LanguageCode\n- LastName\n- PrimaryPhone\n- SecondaryPhone\n- TaxId\n- TextPhone\n- Username\n\n<br /><br />"
+            "description": "Include only the fields needed for the Customer update.\n\n<b>Supported Fields:</b>\n- WebAlias\n- Username\n- CustomerType\n- CustomerStatus\n- BirthDate\n- CompanyName\n- EmailAddress\n- PrimaryAddress (All Address properties must be specified: Street1, Street2, City, Region, PostalCode, CountryCode)\n- DefaultShippingAddress (All Address properties must be specified: Street1, Street2, City, Region, PostalCode, CountryCode)\n- FirstName\n- LanguageCode\n- LastName\n- PrimaryPhone\n- SecondaryPhone\n- TaxId\n- TextPhone\n\n<br /><br />"
           }
         ],
         "consumes": [
@@ -309,7 +312,7 @@
     },
     "/{customerId}/orders": {
       "get": {
-        "description": "Retrieves an array of Orders based on a valid Customer Id.\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Retrieves an array of Orders based on a valid Customer Id.\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "58994f26b3ac881388ae1035",
         "summary": "Get Customer Orders",
         "tags": [
@@ -332,7 +335,7 @@
           "200": {
             "description": "Returns an array of valid Order objects.",
             "examples": {
-              "application/json": "[{\n    \"BillPhone\": \"+1 555 555 1111\",\n    \"CommissionDate\": \"2015-05-11\",\n    \"DistributorID\": 2,\n    \"Email\": \"testing@testing.directscale.com\",\n    \"InvoiceDate\": \"2015-05-11\",\n    \"LocalInvoiceNumber\": 1234,\n    \"Name\": \"Testing Name\",\n    \"OrderDate\": \"2015-05-11\",\n    \"OrderType\": 1,\n    \"OrderTypeDescription\": \"Test Description\",\n    \"OrderNumber\": 18,\n    \"SpecialInstructions\": \"Special Instructions here...\",\n    \"Status\": \"Paid\",\n    \"TotalBonus\": 12.0,\n    \"TotalCost\": 120.0,\n    \"TotalCV\": 1.0,\n    \"TotalQV\": 1.0,\n    \"Void\": false,\n    \"BillAddress\": {\n      \"ID\": 3214,\n      \"Line1\": \"1234 Testing Wy.\",\n      \"Line2\": null,\n      \"Line3\": null,\n      \"City\": \"Elko\",\n      \"State\": \"NV\",\n      \"Zip\": \"55487\",\n      \"CountryCode\": \"US\"\n    },\n    \"IsPaid\": true,\n    \"IsShipped\": false,\n    \"LineItems\": [\n      {\n        \"Amount\": 25.5,\n        \"Bonus\": 0.0,\n        \"Cost\": 0.0,\n        \"CurrencyCode\": \"USD\",\n        \"Height\": 0.0,\n        \"Length\": 0.0,\n        \"OrderNumber\": 18,\n        \"PackageNumber\": 15,\n        \"CV\": 0.0,\n        \"QV\": 0.0,\n        \"Qty\": 1.0,\n        \"SKU\": \"TDLARCH\",\n        \"ItemID\": 6,\n        \"ProductName\": \"Turtle Arch\",\n        \"Weight\": 0.0,\n        \"Width\": 0.0,\n        \"FlagCancer\": false,\n        \"FlagBirthDefect\": false\n      }\n    ],\n    \"Packages\": [\n      {\n        \"ID\": 15,\n        \"CustomerID\": \"2\",\n        \"Address1\": 3214,\n        \"Address2\": null,\n        \"Carrier\": \"FedEx\",\n        \"City\": \"Elko\",\n        \"CountryCode\": \"US\",\n        \"Height\": 0.0,\n        \"Length\": 0.0,\n        \"Notes\": \"Special Instructions here...\",\n        \"OrderNumber\": 18,\n        \"ShipByDate\": \"2015-05-11\",\n        \"ShipMethodID\": 1,\n        \"State\": \"NV\",\n        \"WarehouseID\": 1,\n        \"Weight\": 0.0,\n        \"Width\": 0.0,\n        \"Zip\": \"55487\",\n        \"ShipTo\": \"Test Name\",\n        \"Status\": \"Submitted\"\n      }\n    ],\n    \"Totals\": [\n      {\n        \"TaxableSubTotal\": 18.5,\n        \"CurrencyCode\": \"USD\",\n        \"ExchangeRate\": 1.0,\n        \"OrderNumber\": 18,\n        \"Shipping\": 7.0,\n        \"SubTotal\": 25.5,\n        \"Tax\": 1.67,\n        \"TaxTransactionID\": \"\",\n        \"DiscountTotal\": 0.0,\n        \"OverridenShippingTax\": false,\n        \"Total\": 27.17,\n        \"PaidAmount\": 27.17,\n        \"TotalDue\": 0.0\n      }\n    ],\n    \"Payments\": [\n      {\n        \"Amount\": 27.17,\n        \"AuthorizationNumber\": \"asdf1234\",\n        \"TransactionNumber\": \"asdfw56\",\n        \"CurrencyCode\": \"USD\",\n        \"ExchangeRate\": 1.0,\n        \"Merchant\": 12,\n        \"OrderNumber\": 18,\n        \"PayDate\": \"2015-05-11\",\n        \"PaymentResponse\": \"0: Success\",\n        \"PayType\": \"Cash\",\n        \"Reference\": \"\",\n        \"Status\": \"Paid\"\n      }\n    ]\n  }\n]"
+              "application/json": "[\n  {\n    \"BillPhone\": \"+1 555 555 1111\",\n    \"CommissionDate\": \"2015-05-11T00:00:00.0000000+00:00\",\n    \"DistributorID\": 2,\n    \"Email\": \"testing@testing.directscale.com\",\n    \"InvoiceDate\": \"2015-05-11T00:00:00.0000000+00:00\",\n    \"LocalInvoiceNumber\": 1234,\n    \"Name\": \"Testing Name\",\n    \"OrderDate\": \"2015-05-11T00:00:00.0000000+00:00\",\n    \"OrderType\": 1,\n    \"OrderTypeDescription\": \"Test Description\",\n    \"OrderNumber\": 18,\n    \"SpecialInstructions\": \"Special Instructions here...\",\n    \"Status\": \"Paid\",\n    \"TotalBonus\": 12,\n    \"TotalCost\": 120,\n    \"TotalCV\": 1,\n    \"TotalQV\": 1,\n    \"Void\": false,\n    \"BillAddress\": {\n      \"ID\": 3214,\n      \"Line1\": \"1234 Testing Wy.\",\n      \"Line2\": null,\n      \"Line3\": null,\n      \"City\": \"Elko\",\n      \"State\": \"NV\",\n      \"Zip\": \"55487\",\n      \"CountryCode\": \"US\"\n    },\n    \"IsPaid\": true,\n    \"IsShipped\": false,\n    \"LineItems\": [\n      {\n        \"Amount\": 25.5,\n        \"Bonus\": 0,\n        \"Cost\": 0,\n        \"CurrencyCode\": \"USD\",\n        \"Height\": 0,\n        \"Length\": 0,\n        \"OrderNumber\": 18,\n        \"PackageNumber\": 15,\n        \"CV\": 0,\n        \"QV\": 0,\n        \"Qty\": 1,\n        \"SKU\": \"TDLARCH\",\n        \"ItemID\": 6,\n        \"ProductName\": \"Turtle Arch\",\n        \"Weight\": 0,\n        \"Width\": 0,\n        \"FlagCancer\": false,\n        \"FlagBirthDefect\": false\n      }\n    ],\n    \"Packages\": [\n      {\n        \"ID\": 15,\n        \"CustomerID\": \"2\",\n        \"Address1\": 3214,\n        \"Address2\": null,\n        \"Carrier\": \"FedEx\",\n        \"City\": \"Elko\",\n        \"CountryCode\": \"US\",\n        \"Height\": 0,\n        \"Length\": 0,\n        \"Notes\": \"Special Instructions here...\",\n        \"OrderNumber\": 18,\n        \"ShipByDate\": \"2015-05-11T00:00:00.0000000+00:00\",\n        \"ShipMethodID\": 1,\n        \"State\": \"NV\",\n        \"WarehouseID\": 1,\n        \"Weight\": 0,\n        \"Width\": 0,\n        \"Zip\": \"55487\",\n        \"ShipTo\": \"Test Name\",\n        \"Status\": \"Submitted\"\n      }\n    ],\n    \"Totals\": [\n      {\n        \"TaxableSubTotal\": 18.5,\n        \"CurrencyCode\": \"USD\",\n        \"ExchangeRate\": 1,\n        \"OrderNumber\": 18,\n        \"Shipping\": 7,\n        \"SubTotal\": 25.5,\n        \"Tax\": 1.67,\n        \"TaxTransactionID\": \"\",\n        \"DiscountTotal\": 0,\n        \"OverridenShippingTax\": false,\n        \"Total\": 27.17,\n        \"PaidAmount\": 27.17,\n        \"TotalDue\": 0\n      }\n    ],\n    \"Payments\": [\n      {\n        \"Amount\": 27.17,\n        \"AuthorizationNumber\": \"asdf1234\",\n        \"TransactionNumber\": \"asdfw56\",\n        \"CurrencyCode\": \"USD\",\n        \"ExchangeRate\": 1,\n        \"Merchant\": 12,\n        \"OrderNumber\": 18,\n        \"PayDate\": \"2015-05-11T00:00:00.0000000+00:00\",\n        \"PaymentResponse\": \"0: Success\",\n        \"PayType\": \"Cash\",\n        \"Reference\": \"\",\n        \"Status\": \"Paid\"\n      }\n    ]\n  }\n]"
             }
           },
           "404": {
@@ -344,7 +347,7 @@
         }
       },
       "post": {
-        "description": "Creates an Order for the given Customer Id.<br/><br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Creates an Order for the given Customer Id.<br/><br/>\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "58995107b3ac881388ae1037",
         "summary": "Create Customer Order",
         "tags": [
@@ -363,9 +366,9 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "example": "{\n  \"Attention\": \"Test Attention\",\n  \"CouponCodes\": [\n    \"Code_1\",\n    \"Code_2\"\n  ],\n  \"CurrencyCode\": \"USD\",\n  \"FirstName\": \"Test\",\n  \"Items\": [{\n    \"ItemId\": 6,                                               // Products: Get Item by Id\n    \"Quantity\": 2\n  }],\n  \"LastName\": \"User\",\n  \"OrderType\": 1,                                              // Orders: Get Order Type(s)\n  \"PartyId\": 1,\n  \"Payments\": [{\n    \"SavePaymentMethodId\": 1,\n    \"OnFileCard\": \"DoNotSave\",\n    \"CurrencyCode\": \"USD\",\n    \"MerchantId\": 99,                                          // Customers: Get Payment Merchants\n    \"SavePayment\": false,\n    \"OrderRewardPoints\": {\n      \"Amount\": 20.0\n    },\n    \"OrderCreditCard\": {\n      \"CardToken\": \"fake-card-token\",\n      \"NameOnCard\": \"Test User\",\n      \"Last4\": \"1234\",\n      \"CardType\": \"Card Type\",\n      \"ExpirationMonth\": 12,\n      \"ExpirationYear\": 12\n    }\n  }],\n  \"Phone\": \"555-555-5555\",\n  \"PriceGroup\": 1,\n  \"ShipMethodId\": 1,                                           // Orders: Get Shipping Method(s)\n  \"ShippingAddress\": {\n    \"Street1\" : \"250 South 400 West\",\n    \"Street2\" : \"Suite #225\",\n    \"Street3\" : null,\n    \"PostalCode\" : \"84042\",\n    \"City\" : \"Lindon\",\n    \"Region\" : \"UT\",\n    \"CountryCode\" : \"US\"\n  },\n  \"SpecialInstructions\": \"These are special instructions...\",\n  \"StoreId\": 1,                                                // Products: Get Stores\n  \"WarehouseId\": 1\n}"
+              "example": "{\r\n    \"WarehouseId\": 1,\r\n    \"ShipMethodId\": 1,\r\n    \"StoreId\": 1,\r\n    \"CurrencyCode\": \"usd\",\r\n    \"ShippingAddress\": {\r\n      \"AddressId\": 7470,\r\n      \"Street1\": \"350 S 400 W\",\r\n      \"Street2\": \"Ste 225\",\r\n      \"City\": \"Lindon\",\r\n      \"Region\": \"UT\",\r\n      \"PostalCode\": \"84042\",\r\n      \"CountryCode\": \"us\"\r\n    },\r\n    \"PriceGroup\": 1,\r\n    \"OrderType\": 1,\r\n    \"KitItems\": [\r\n      {\r\n        \"ItemId\": 1,\r\n        \"Quantity\": 4\r\n      }\r\n    ],\r\n    \"Items\": [\r\n      {\r\n        \"ItemId\": 101,\r\n        \"Quantity\": 3\r\n      }\r\n    ],\r\n    \"PartyId\": 1,\r\n    \"CouponCodes\": [\r\n      \"coupon20\"\r\n    ],\r\n    \"CountryCode\": \"us\"\r\n}"
             },
-            "description": "<b>Required Fields:</b>\n- CurrencyCode\n   - **Get Regions** displays the country/state codes of the warehouses. If you are concerned about having the proper CurrencyCode, then this will allow you to know what region warehouse support team to call to get the confirmed CurrencyCode.\n- Items*\n- Payments*\n- ShipMethodId\n- ShippingAddress\n- StoreId\n\n<b>OnFileCard Options:</b>\n- Unknown\n- DoNotSave\n- Primary\n- Secondary\n- OneTimeUse\n\n<hr />\n* At least one object must be present in the array.<br />\n<br />"
+            "description": "<b>Required Fields:</b>\n- CurrencyCode\n   - **Get Regions** displays the country/state codes of the warehouses. If you are concerned about having the proper CurrencyCode, then this will allow you to know what region warehouse support team to call to get the confirmed CurrencyCode.\n- Items*\n   - Products: Get Item by Filter\n   - Products: Get Item by SKU\n   - Products: Get Item by Id\n- Payments*\n- ShipMethodId\n   - Orders: Get Shipping Methods\n- ShippingAddress\n   - Get Customer\n- StoreId\n   - Products: Get Stores\n\n<b>OnFileCard Options:</b>\n- Unknown\n- DoNotSave\n- Primary\n- Secondary\n- OneTimeUse\n\n<hr />\n* At least one object must be present in the array.<br />\n<br />"
           }
         ],
         "consumes": [
@@ -404,7 +407,7 @@
     },
     "/{customerid}/stats": {
       "get": {
-        "description": "Provides a collection of commission metrics and statistical information for a given customer.\n\nYou can get the **Path Parameter** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**Time Format**\n\nMilitaryTimeHour:Minute:Second\n- Ex. 15:47:12",
+        "description": "Provides a collection of commission metrics and statistical information for a given customer.\n\nYou can get the **Request Parameter** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**Date Format**\n\nYear-Month-Day\n- Ex. 2018-10-30",
         "operationId": "58c9aa365b859009f09f5af3",
         "summary": "Get Customer Stats",
         "tags": [
@@ -438,7 +441,7 @@
                 "AssociateTypeID": 1,
                 "StatusID": 0,
                 "Name": "Test User",
-                "Date": "2017-07-18",
+                "Date": "2017-07-18T00:00:00+00:00",
                 "KitLevel": 1,
                 "KitLevels": null,
                 "CV": 0,
@@ -511,14 +514,14 @@
         ],
         "responses": {
           "200": {
-            "description": null
+            "description": "null"
           }
         }
       }
     },
     "/enroll": {
       "post": {
-        "description": "This method provides an aggregate process for:\n- Creating a new Customer\n- Placing an initial Order\n- Enrolling the new Customer in the Autoship process (optional)\n\nIt also places the new Customer within the proper position in commission plan.\n\n<b>NOTE:</b> Because of the number of steps in this process the latency for this call can be extremely high.  It may take 10 to 15 seconds depending on the implementation and complexity of the client's commission plan.<br/><br/>\n",
+        "description": "This method provides an aggregate process for:\n- Creating a new Customer\n- Placing an initial Order\n- Enrolling the new Customer in the Autoship process (optional)\n\nIt also places the new Customer within the proper position in commission plan.\n\n**Date + Time format**\n\nYear-Month-Day'T'MilitaryTimeHour:Minute:Second\n- Ex. 2018-10-30T15:47:52\n\n<b>NOTE:</b> Because of the number of steps in this process the latency for this call can be extremely high.  It may take 10 to 15 seconds depending on the implementation and complexity of the client's commission plan.<br/><br/>",
         "operationId": "58daa229f57e9ebe83aca704",
         "summary": "Submit Enrollment Form",
         "tags": [
@@ -526,16 +529,17 @@
         ],
         "parameters": [
           {
-            "name": "body",
+            "name": "",
             "in": "body",
             "schema": {
-              "example": "{\n    \"AcceptTerms\": true,\n    \"FirstName\": \"FirstName\",\n    \"LastName\": \"LastName\",\n    \"CompanyName\": \"Test Company\",\n    \"TextNumber\": \"+1 555 555 1111\",\n    \"Email\": \"testing@testing.directscale.com\",\n    \"Username\": \"testUsername\",\n    \"Password\": \"********\",\n    \"LanguageCode\": \"EN\",\n    \"AssociateTypeID\": 1,\n    \"SponsorID\": 2,\n    \"WebPageURL\": \"webAlias\",\n    \"TaxID\": \"123-45-6790\",\n    \"BirthDate\": \"1999-01-01\",\n    \"Order\": {\n      \"CurrencyCode\": \"USD\",\n      \"ShipMethodID\": 1,                              // Orders: Get Shipping Method(s)\n      \"StoreID\": 1,                                   // Products: Get Stores\n      \"OrderTypeID\": 3,                               // Orders: Get Order Type(s)\n      \"Items\": [\n\t    {\n        \"ItemID\": 6,                                  // Products: Get Item by Id\n        \"Quantity\": 1\n        }\n\t  ],\n      \"Payments\": [\n\t    {\n\t\t  \"Amount\": 100.00,\n\t      \"MerchantID\": 99,\n\t      \"CurrencyCode\": \"USD\",\n\t      \"SavePayment\":false,\n\t      \"CreditCard\": {\n\t        \"CardToken\": \"valid-card-token-1234\",\n\t        \"CardType\": \"Visa\",\n\t        \"Last4\": \"1111\",\n\t        \"ExpirationMonth\": 7,\n\t        \"ExpirationYear\": 20\n\t\t  }\n\t\t}\n      ]\n    },\n    \"AutoShip\": {\n      \"Frequency\": \"EveryTwoWeeks\",\n      \"StartDate\": \"2017-05-14\",\n      \"ShipMethodID\": 1,                                 // Orders: Get Shipping Method(s)\n      \"Items\": [\n\t    {\n          \"ItemID\": 6,                                   // Products: Get Item by Id\n          \"Quantity\": 1\n        }\n\t  ]\n    },\n    \"ApplicantAddress\": {\n      \"Street1\": \"350 S 200 W\",\n      \"Street2\": null,\n      \"Street3\": null,\n      \"City\": \"Lindon\",\n      \"Region\": \"UT\",\n      \"PostalCode\": \"84042\",\n      \"CountryCode\": \"US\"\n    },\n    \"ShippingAddress\": {\n      \"Street1\": \"350 S 200 W\",\n      \"Street2\": null,\n      \"Street3\": null,\n      \"City\": \"Lindon\",\n      \"Region\": \"UT\",\n      \"PostalCode\": \"84042\",\n      \"CountryCode\": \"US\"\n    },\n   \"SendEmails\" : false  }"
+              "example": "{\r\n    \"Order\": {\r\n      \"ShipMethodID\": 2,\r\n      \"StoreID\": 1,\r\n      \"CurrencyCode\": \"usd\",\r\n      \"Items\": [\r\n        {\r\n          \"ItemID\": 17901,\r\n          \"Quantity\": 3,\r\n          \"IsKit\": true,\r\n          \"CurrencyCode\": \"usd\"\r\n        }\r\n      ],\r\n      \"Payments\": [\r\n        {\r\n          \"Amount\": 40.79,\r\n          \"SavePaymentMethodId\": \"Usual\",\r\n          \"OnFileCard\": \"DoNotSave\",\r\n          \"CurrencyCode\": \"usd\",\r\n          \"MerchantId\": 99,\r\n          \"SavePayment\": true,\r\n          \"OrderRewardPoints\": {\r\n            \"Amount\": 25\r\n          },\r\n          \"OrderCreditCard\": {\r\n            \"CardToken\": \"1254\",\r\n            \"NameOnCard\": \"John Doe\",\r\n            \"Last4\": \"7689\",\r\n            \"CardType\": \"Visa\",\r\n            \"ExpirationMonth\": 2,\r\n            \"ExpirationYear\": 54\r\n          }\r\n        }\r\n      ],\r\n      \"RequireSuccess\": true\r\n    },\r\n    \"AutoShip\": {\r\n      \"StartDate\": \"2020-03-13T19:40:51.126Z\",\r\n      \"Frequency\": \"Weekly\",\r\n       \"ShipMethodID\": 3,\r\n      \"Items\": [\r\n        {\r\n          \"ItemID\": 17901,\r\n          \"Quantity\": 2,\r\n          \"IsKit\": true,\r\n          \"CurrencyCode\": \"usd\"\r\n        }\r\n      ]\r\n    },\r\n    \"AssociateID\": 0,\r\n    \"AcceptTerms\": true,\r\n    \"FirstName\": \"John\",\r\n    \"LastName\": \"Doe Sr.\",\r\n    \"RomanizedFirstName\": \"Johnathon\",\r\n    \"RomanizedLastName\": \"Doevicus\",\r\n    \"LegalFirstName\": \"John\",\r\n    \"LegalLastName\": \"Doe\",\r\n    \"TaxID\": \"142-67-1234\",\r\n    \"BirthDate\": \"2000-03-13T19:40:51.127Z\",\r\n    \"PrimaryPhone\": \"123-456-7890\",\r\n    \"SecondaryPhone\": \"098-765-4321\",\r\n    \"TextNumber\": \"123-456-7890\",\r\n    \"Email\": \"johndoe@provider.com\",\r\n    \"Username\": \"JonDoseph\",\r\n    \"Password\": \"!SneakyJohnDoe1\",\r\n    \"LanguageCode\": \"en\",\r\n    \"ApplicantAddress\": {\r\n        \"Street1\": \"7432 Maytown Road\",\r\n        \"Street2\": \"\",\r\n        \"Street3\": \"\",\r\n        \"City\": \"Springfield\",\r\n        \"Region\": \"NT\",\r\n        \"PostalCode\": \"49007\",\r\n        \"CountryCode\": \"US\"\r\n    },\r\n    \"AssociateTypeID\": 0,   // Obsolete, use AssociateBaseType\r\n    \"AssociateBaseType\": 2,\r\n    \"SponsorID\": 2,\r\n    \"WebPageURL\": \"www.link.com\",\r\n    \"WebPageItemID\": 45634,\r\n    \"SendEmails\": true\r\n}"
             },
-            "description": "<b>NOTE:</b>This request creates a customer, an order, and an autoship. For this to work, you'll need to change the item codes to match what's in your system, along with sponsor ID and payment information.\n\n<b>Required Fields:</b>\n- AcceptTerms *\n- ApplicantAddress\n- AssociateTypeID\n- ShippingAddress\n- Email\n- FirstName\n- LastName\n- Orders**\n- Password\n- Payments**\n- SendEmails\n- SponsorID\n- TaxID\n- Username\n\n<b>Uniqueness Required:</b>\n- Email\n- TaxID\n- Username\n- WebAlias\n\n<hr />\n*<em style=\"padding-left:18px;\">AcceptTerms</em> may not be required based on the logic surrounding CustomerType.<br />\n**<span style=\"padding-left:12px;\">At</span> least one object must be present in the array.\n<br /><br />"
+            "description": "<b>NOTE:</b>This request creates a customer, an order, and an autoship. For this to work, you'll need to change the item codes to match what's in your system, along with sponsor ID and payment information.\n\nFor the required fields, calls are provided to see examples of the values the variables should be.\n\n<b>Required Fields:</b>\n- Order\n   - ShipMethodID\n      - Orders: Get Shipping Methods\n   - StoreID\n      - Products: Get Stores\n   - CurrencyCode\n      - **Get Regions** displays the country/state codes of the warehouses. If you are concerned about having the proper **CurrencyCode**, then this will allow you to know what region warehouse support team to call to get the confirmed **CurrencyCode**.\n- Items\n   - ItemID\n      - Products: Get Item by SKU\n      - Products: Get Items by Filter\n   - Quantity\n- Payments\n   - CurrencyCode\n      - **Get Regions** displays the country/state codes of the warehouses. If you are concerned about having the proper **CurrencyCode**, then this will allow you to know what region warehouse support team to call to get the confirmed **CurrencyCode**.\n   - MerchantId\n      - Get Payment Merchants\n   - OrderCreditCard\n   - ExpirationMonth\n- AutoShip\n   - StartDate\n   - ShipMethodID\n      - Orders: Get Shipping Methods\n- Items\n   - ItemID\n      - Products: Get Item by SKU\n      - Products: Get Items by Filter\n   - Quantity\n- FirstName\n- LastName\n- Email\n- Username\n- Password\n- ApplicantAddress\n   - Street1\n   - City\n   - Region\n   - PostalCode\n   - CountryCode\n- AssociateBaseType\n- SponsorID\n   - Get Customer\n   - Get Customer by Parameter\n\n<b>Uniqueness Required:</b>\n- TaxID\n- Username\n\n**NOTE:** Unique variables can be validated with our **Validate** API calls.\n\n<hr />\n*<em style=\"padding-left:18px;\">AcceptTerms</em> may not be required based on the logic surrounding CustomerType.<br />\n**<span style=\"padding-left:12px;\">At</span> least one object must be present in the array.\n<br /><br />"
           }
         ],
         "consumes": [
-          "application/json"
+          "application/json (full)",
+          "application/json (minimal)"
         ],
         "produces": [
           "application/json"
@@ -564,7 +568,7 @@
     },
     "/{customerId}/orders/calculate": {
       "post": {
-        "description": "Calculates a Customer Order Total based on a valid Customer Order object.<br/><br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Calculates a Customer Order Total based on a valid Customer Order object.<br/><br/>\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "58e3a27d370f72f9d8cc2bdf",
         "summary": "Calculate Customer Order Total",
         "tags": [
@@ -582,13 +586,14 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "example": "{\n  \"CouponCodes\" : [],                 // Able to track coupons codes but do not provide a way to create or collect them\n  \"CurrencyCode\" : \"USD\",\n  \"Items\" : [{\n    \"ItemId\" : 6,                     // Products: Get Items by Id\n    \"Quantity\" : 1\n  }],\n  \"KitItems\" : [],\n  \"OrderType\" : 1,                    // Orders: Get Order Type(s)\n  \"PartyId\" : 1,                      // Customers: Get Customer Parties\n  \"PriceGroup\" : 1,                   // Products: Get Price Group(s)\n  \"ShipMethodId\" : 1,                 // Orders: Get Shipping Method(s)\n  \"ShippingAddress\" : {\n    \"Street1\" : \"250 South 400 West\",\n    \"Street2\" : \"Suite #225\",\n    \"Street3\" : null,\n    \"PostalCode\" : \"84042\",\n    \"City\" : \"Lindon\",\n    \"Region\" : \"UT\",\n    \"CountryCode\" : \"US\"\n  },\n  \"StoreId\" : 1,                      // Products: Get Stores\n  \"WarehouseId\" : 1                   // Orders: Get Regions\n}"
+              "example": "{\r\n    \"ShipMethodId\": 5,\r\n    \"CurrencyCode\": \"usd\",\r\n    \"ShippingAddress\": {\r\n    },\r\n    \"Items\": [\r\n      {\r\n       \"ItemId\": 17903,\r\n        \"Quantity\": 3\r\n      }\r\n    ]\r\n}"
             },
-            "description": "<b>Required Fields:</b>\n- CurrencyCode\n   - **Get Regions** displays the country/state codes of the warehouses. If you are concerned about having the proper **CurrencyCode**, then this will allow you to know what region warehouse support team to call to get the confirmed **CurrencyCode**.\n- OrderType\n- PartyId\n- PriceGroup\n- ShipMethodId\n- ShippingAddress\n- StoreId\n- WarehouseId\n"
+            "description": "<b>Required Fields:</b>\n- CurrencyCode\n   - **Get Regions** displays the country/state codes of the warehouses. If you are concerned about having the proper **CurrencyCode**, then this will allow you to know what region warehouse support team to call to get the confirmed **CurrencyCode**.\n- ShipMethodId\n   - Get ShippingMethod(s)\n- ShippingAddress\n   - Get Customer\n- ItemId\n   - Products: Get Item by ID\n   - Products: Get Item by Filter\n- Quantity\n   - Amount of the item wanted to be purchased"
           }
         ],
         "consumes": [
-          "application/json"
+          "application/json (full)",
+          "application/json (minimal)"
         ],
         "produces": [
           "application/json"
@@ -648,7 +653,7 @@
     },
     "/{customerId}/autoship": {
       "post": {
-        "description": "Creates an Autoship Order for the given Customer ID.<br/><br/>\nIf the ShippingAddress is not included in the json or set to null then the default shipping address for the customer will be used.<br/><br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Creates an Autoship Order for the given Customer ID.<br/><br/>\nIf the ShippingAddress is not included in the json or set to null then the default shipping address for the customer will be used.<br/><br/>\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "58fba8ab322c2752fd451a8f",
         "summary": "Create Customer Autoship Order",
         "tags": [
@@ -668,13 +673,14 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "example": "{\n\t\"StartDate\" : \"2017-05-12\",\n\t\"Frequency\" : \"Monthly\",\n\t\"ShipMethodId\" : 1,                        // Orders: Get Shipping Method(s)\n    \"MerchantId\" : 99,\n    \"PaymentMethodId\" : \"123Token456\",             // Customers: Get Payment Methods by Parameters\n\t\"ShippingAddress\" :\t{\n\t\t\"Street1\" : \"250 South 400 West\",\n\t\t\"Street2\" : \"Suite #225\",\n\t\t\"Street3\" : null,\n\t\t\"PostalCode\" : \"84042\",\n\t\t\"City\" : \"Lindon\",\n\t\t\"Region\" : \"UT\",\n\t\t\"CountryCode\" : \"US\"\n\t},\n\t\"Items\" : [{\n\t\t\"ItemId\" : 1,                       // Products: Get Item by Id\n\t\t\"Quantity\" : 1,\n                \"CurrencyCode\" : \"USD\"\n\t}]\n}"
+              "example": "{\r\n    \"StartDate\": \"2020-03-13T19:40:51.597Z\",\r\n    \"ShipMethodId\": 1,\r\n    \"Items\": [\r\n      {\r\n        \"ItemId\": 17901\r\n      }\r\n    ],\r\n    \"ShipAddress\": {\r\n      \"Street1\": \"350 S 400 W\",\r\n      \"City\": \"Lindon\",\r\n      \"Region\": \"UT\",\r\n      \"PostalCode\": \"84042\",\r\n      \"CountryCode\": \"us\"\r\n    }\r\n}"
             },
-            "description": "Creates an autoship for the CustomerID provided in the URL."
+            "description": "Creates an autoship for the CustomerID provided in the URL.\n\n**Required Fields:**\n- StartDate\n- ShipMethodId\n- Items\n   - ItemId\n- ShipAddress\n   - Street1\n   - City\n   - Region\n   - PostalCode\n   - CountryCode"
           }
         ],
         "consumes": [
-          "application/json"
+          "application/json (full)",
+          "application/json (minimal)"
         ],
         "responses": {
           "201": {
@@ -691,7 +697,7 @@
     },
     "/{customerId}/parties/{partyStatus}": {
       "get": {
-        "description": "Retrieves an array of Customer Parties based on a valid Customer ID and Party Status.<br/>\n<br/>\n<b>PREVIEW</b>: Please note that this method is still under development.<br/>\n\nYou can get the **Path Parameters** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**partyStatus**\n- Get Customer Party Totals",
+        "description": "Retrieves an array of Customer Parties based on a valid Customer ID and Party Status.<br/>\n<br/>\n<b>PREVIEW</b>: Please note that this method is still under development.<br/>\n\nYou can get the **Request Parameters** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**partyStatus**\n- Get Customer Party Totals\n\n**partyStatus Options:**\n- Open\n- Closed\n- Awarded",
         "operationId": "5953da9eb3ac8812040c6543",
         "summary": "Get Customer Parties",
         "tags": [
@@ -725,7 +731,7 @@
           "200": {
             "description": "Returns an array of valid Party objects.",
             "examples": {
-              "application/json": "[\n  {\n    \"PartyId\": 25,\n    \"CustomerId\": 20625,\n    \"Description\": \"Test party at my house!\",\n    \"HostId\": 20625,\n    \"HostEmail\": \"testing@testing.directscale.com\",\n    \"AwardedDate\": \"2017-02-25\",\n    \"BeginDate\": \"2016-12-21\",\n    \"EndDate\": \"2017-02-21\",\n    \"ClosedDate\": \"0001-01-01\",\n    \"PartyDate\": \"0001-01-01\",\n    \"StartTime\": \"10:00 AM\",\n    \"EndTime\": \"12:30 PM\",\n    \"Address\": {\n      \"ID\": 1,\n      \"Line1\": \"1234 Test Dr.\",\n      \"Line2\": \"\",\n      \"Line3\": \"\",\n      \"City\": \"Test City\",\n      \"State\": \"UT\",\n      \"Zip\": \"84057\",\n      \"CountryCode\": \"US\"\n    },\n    \"Directions\": \"Turn left on Baker's St. Third house on the left.\",\n    \"OrderDeliveryType\": 1,\n    \"Status\": \"Open\",\n    \"Orders\": [\n      {\n        \"OrderNumber\": 1,\n        \"AssociateID\": 2,\n        \"CommissionDate\": \"0001-01-01\",\n        \"OrderDate\": \"2017-07-03\",\n        \"Total\": 53.5,\n        \"TotalCV\": 300,\n        \"TotalQV\": 600,\n        \"IsPaid\": false,\n        \"ItemCount\": 1,\n        \"Status\": \"Waiting Payment\"\n      }\n    ],\n    \"Stats\": [\n      {\n        \"ID\": \"fake-id-1\",\n        \"Value\": 30,\n        \"IsBool\": false\n      }\n    ],\n    \"Rewards\": [\n      {\n        \"ID\": \"fake-id-2\",\n        \"Requirement\": \"Number of Orders\",\n        \"RewardName\": \"\",\n        \"Value\": 4,\n        \"NeededValue\": 20,\n        \"Options\": [\n          {\n            \"NeededValue\": 2,\n            \"RewardValue\": 20\n          }\n        ]\n      }\n    ],\n    \"History\": []\n  }\n]"
+              "application/json": "[\n  {\n    \"PartyId\": 25,\n    \"CustomerId\": 20625,\n    \"Description\": \"Test party at my house!\",\n    \"HostId\": 20625,\n    \"HostEmail\": \"testing@testing.directscale.com\",\n    \"AwardedDate\": \"2017-02-25T00:00:00.0000000+00:00\",\n    \"BeginDate\": \"2016-12-21T00:00:00.0000000+00:00\",\n    \"EndDate\": \"2017-02-21T00:00:00.0000000+00:00\",\n    \"ClosedDate\": \"0001-01-01T00:00:00.0000000+00:00\",\n    \"PartyDate\": \"0001-01-01T00:00:00.0000000+00:00\",\n    \"StartTime\": \"2020-03-12T10:00:00.0000000+00:00\",\n    \"EndTime\": \"2020-03-12T12:30:00.0000000+00:00\",\n    \"Address\": {\n      \"ID\": 1,\n      \"Line1\": \"1234 Test Dr.\",\n      \"Line2\": \"\",\n      \"Line3\": \"\",\n      \"City\": \"Test City\",\n      \"State\": \"UT\",\n      \"Zip\": \"84057\",\n      \"CountryCode\": \"US\"\n    },\n    \"Directions\": \"Turn left on Baker's St. Third house on the left.\",\n    \"OrderDeliveryType\": 1,\n    \"Status\": \"Open\",\n    \"Orders\": [\n      {\n        \"OrderNumber\": 1,\n        \"AssociateID\": 2,\n        \"CommissionDate\": \"0001-01-01T00:00:00.0000000+00:00\",\n        \"OrderDate\": \"2017-07-03T00:00:00.0000000+00:00\",\n        \"Total\": 53.5,\n        \"TotalCV\": 300,\n        \"TotalQV\": 600,\n        \"IsPaid\": false,\n        \"ItemCount\": 1,\n        \"Status\": \"Waiting Payment\"\n      }\n    ],\n    \"Stats\": [\n      {\n        \"ID\": \"fake-id-1\",\n        \"Value\": 30,\n        \"IsBool\": false\n      }\n    ],\n    \"Rewards\": [\n      {\n        \"ID\": \"fake-id-2\",\n        \"Requirement\": \"Number of Orders\",\n        \"RewardName\": \"\",\n        \"Value\": 4,\n        \"NeededValue\": 20,\n        \"Options\": [\n          {\n            \"NeededValue\": 2,\n            \"RewardValue\": 20\n          }\n        ]\n      }\n    ],\n    \"History\": [ ]\n  }\n]"
             }
           },
           "404": {
@@ -739,7 +745,7 @@
     },
     "/{customerId}/parties/totals": {
       "get": {
-        "description": "Retrieves an array of Party Totals based on a valid Customer Id.<br/>\n<br/>\n<b>PREVIEW</b>: Please note that this method is still under development.<br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Retrieves an array of Party Totals based on a valid Customer Id.<br/>\n<br/>\n<b>PREVIEW</b>: Please note that this method is still under development.<br/>\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "595d29bfb3ac881714d011a1",
         "summary": "Get Customer Party Totals",
         "tags": [
@@ -752,6 +758,20 @@
             "description": "The Id of the Customer whose Party Totals are to be retrieved.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "beginDate",
+            "in": "query",
+            "description": "Begin date for the timeline of the parties searched.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "End date for the timeline of the parties searched.",
+            "required": true,
+            "type": "string"
           }
         ],
         "produces": [
@@ -761,7 +781,7 @@
           "200": {
             "description": "Returns an array of valid Party Total objects.",
             "examples": {
-              "application/json": "[\n  {\n    \"ID\": 1,\n    \"BeginDate\": \"2016-12-22\",\n    \"EndDate\": \"2016-12-22\",\n    \"HostID\": 2,\n    \"Status\": \"Open\",\n    \"TotalCV\": 6400,\n    \"TotalQV\": 12800,\n    \"Total\": 1510.10\n  }\n]"
+              "application/json": "[\n  {\n    \"ID\": 1,\n    \"BeginDate\": \"2016-12-22T00:00:00.0000000+00:00\",\n    \"EndDate\": \"2016-12-22T00:00:00.0000000+00:00\",\n    \"HostID\": 2,\n    \"Status\": \"Open\",\n    \"TotalCV\": 6400,\n    \"TotalQV\": 12800,\n    \"Total\": 1510.1\n  }\n]"
             }
           },
           "404": {
@@ -796,14 +816,14 @@
         ],
         "responses": {
           "200": {
-            "description": null
+            "description": "null"
           }
         }
       }
     },
     "/websiteInfo": {
       "get": {
-        "description": "<b>DEPRECATED</b>: Please use the Get Website Information (Extended) instead.<br/><br/>\n\nYou can get the **Path Parameters** at these calls:\n\n- Get Customer",
+        "description": "<b>DEPRECATED</b>: Please use the Get Website Information (Extended) instead.<br/><br/>\n\nYou can get the **Request Parameters** at these calls:\n\n- Get Customer",
         "operationId": "5965150db3ac880988fd2c51",
         "summary": "Get Website Information (Deprecated)",
         "parameters": [
@@ -845,7 +865,7 @@
     },
     "/{customerId}/reset-password": {
       "put": {
-        "description": "Retrieves a Customer Password based on a valid Customer Id.\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter\n",
+        "description": "Updates the password of the customer designated.\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter\n",
         "operationId": "5967f042b3ac8807249d6e6e",
         "summary": "Reset Password",
         "tags": [
@@ -863,7 +883,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "example": "{  \n  \"newPassword\" : \"************\"\n}"
+              "example": "{\n  \"newPassword\": \"************\"\n}"
             },
             "description": "<b>Required Fields:</b>\n- newPassword"
           }
@@ -886,7 +906,7 @@
     },
     "/websiteInfo2": {
       "get": {
-        "description": "Retrieves custom website information for the given Web Alias.\n\nYou can get the **Path Parameter** at this call:\n\n- Get Customer",
+        "description": "Retrieves custom website information for the given Web Alias.\n\nYou can get the **Request Parameter** at this call:\n\n- Get Customer",
         "operationId": "5a874be6b3ac880a38c60ca0",
         "summary": "Get Website Information (Extended)",
         "tags": [
@@ -909,20 +929,30 @@
             "description": "",
             "examples": {
               "application/json": {
-                "CustomerId": "2",
-                "BackOfficeId": "15F92",
                 "FirstName": "Sam",
                 "LastName": "Space",
-                "CompanyName": null,
-                "WebAlias": "samspace",
-                "ImageUrl": "https://stream.corpadmin.directscale.com/ProfileImage?id=2",
+                "EmailAddress": "amy+sam@directscale.com",
                 "PrimaryPhone": "",
-                "SecondaryPhone": null,
-                "EmailAddress": "",
-                "Country": "US",
-                "Region": "NY",
-                "AboutMe": "",
-                "SocialMediaUrls": []
+                "SecondaryPhone": "",
+                "WebAlias": "SamSpace",
+                "CustomerId": 2,
+                "City": "Lindon",
+                "Region": "UT",
+                "CountryCode": "us",
+                "AboutMe": "Follow the clues to find out...",
+                "EnrollmentUrl": "https://treasurehunt.enroll.directscaledev.com/#/SamSpace/Start",
+                "OfficeUrl": "https://treasurehunt.office2.directscaledev.com",
+                "ShoppingLink": "https://treasurehunt.shop.directscaledev.com/SamSpace",
+                "Facebook": null,
+                "Twitter": null,
+                "Pinterest": null,
+                "YouTube": null,
+                "Linkdin": null,
+                "ImageUrl": "https://treasurehunt.corpadmin.directscaledev.com/BackOffice/ProfileImage?id=2",
+                "BackOfficeId": "15F92",
+                "ReplicatedSiteUrl": null,
+                "LanguageCode": "en",
+                "CustomerType": "1"
               }
             }
           }
@@ -931,7 +961,7 @@
     },
     "/{customerid}/paymentmethods/": {
       "get": {
-        "description": "Retrieves an list of PaymentMethods for the given Customers for the given Store.\n<br/><br/>\n<b>Note</b>: This operation is only available on Disco version 10 or later.<br/><br/>\n\nYou can get the **Path Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**storeId**\n- Products: Get Stores",
+        "description": "Retrieves an list of PaymentMethods for the given Customers for the given Store.\n<br/><br/>\n\nYou can get the **Request Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**storeId**\n- Products: Get Stores",
         "operationId": "get-payment-methods-by-parameters",
         "summary": "Get Payment Methods by Parameters",
         "tags": [
@@ -960,13 +990,13 @@
           "200": {
             "description": "Returns an array of payment methods.",
             "examples": {
-              "application/json": "[\n    {\n        \"PaymentMethodId\": \"TestToken1\",\n        \"MerchantId\": 99,\n        \"CardType\": \"Visa\",\n        \"NameOnAccount\": \"John Smith\",\n        \"Ending\": \"1111\",\n        \"Expires\": \"2020-01\",\n        \"CurrencyCode\": \"USD\"\n    },\n    {\n        \"PaymentMethodId\": \"TestToken2\",\n        \"MerchantId\": 99,\n        \"CardType\": \"MasterCard\",\n        \"NameOnAccount\": \"John Smith\",\n        \"Ending\": \"1112\",\n        \"Expires\": \"2020-09\",\n        \"CurrencyCode\": \"USD\"\n    }\n]"
+              "application/json": "[\n  {\n    \"PaymentMethodId\": \"TestToken1\",\n    \"MerchantId\": 99,\n    \"CardType\": \"Visa\",\n    \"NameOnAccount\": \"John Smith\",\n    \"Ending\": \"1111\",\n    \"Expires\": \"2020-01-01T00:00:00.0000000+00:00\",\n    \"CurrencyCode\": \"USD\"\n  },\n  {\n    \"PaymentMethodId\": \"TestToken2\",\n    \"MerchantId\": 99,\n    \"CardType\": \"MasterCard\",\n    \"NameOnAccount\": \"John Smith\",\n    \"Ending\": \"1112\",\n    \"Expires\": \"2020-09-01T00:00:00.0000000+00:00\",\n    \"CurrencyCode\": \"USD\"\n  }\n]"
             }
           }
         }
       },
       "post": {
-        "description": "Create a new payment method for the given customer.<br/><br/>\n<b>NOTE;</b> This operation is only available on Disco version 10 or later.<br/>\n<br/>\n\nYou can get the **Path Parameter** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Create a new payment method for the given customer.<br/><br/>\n<b>NOTE;</b> This operation is only available on Disco version 10 or later.<br/>\n<br/>\n\nYou can get the **Request Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**Date + Time format**\n\nYear-Month-Day'T'MilitaryTimeHour:Minute:Second\n- Ex. 2018-10-30T15:47:52",
         "operationId": "create-payment-method",
         "summary": "Create Payment Method",
         "tags": [
@@ -984,12 +1014,14 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "example": "{\n        \"MerchantId\": 99,\n\t\"PaymentToken\" : \"123Token789\",\n\t\"CardType\": \"Visa\",\n\t\"NameOnAccount\": \"John Smith\",\n\t\"Ending\": \"1111\",\n\t\"Expires\": \"2020-01\",\n\t\"CurrencyCode\": \"USD\"\n}\n"
-            }
+              "example": "{\r\n  \"MerchantId\": 99,\r\n  \"Expires\": \"2020-01-01\"\r\n}"
+            },
+            "description": "**Required Fields:**\n- **MerchantId**\n   - Get Payment Merchants\n- **Expires**\n   - _Expiration Date of the card_"
           }
         ],
         "consumes": [
-          "application/json"
+          "application/json (full)",
+          "application/json (minimal)"
         ],
         "responses": {
           "201": {
@@ -1000,7 +1032,7 @@
     },
     "/{customerid}/paymentmethods/{paymentmethodid}": {
       "delete": {
-        "description": "Delete the given payment method for this customer.<br/><br/>\nNote: You must also provide the merchant id for the given payment method.<br/><br/>\n<b>Note</b>: This operation is only available on Disco version 10 or later.<br/>\n<br/>\n\nYou can get the **Path Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**paymentmethodid**\n- Get Payment Method by Parameters\n\n**merchantid**\n- Get Payment Merchants",
+        "description": "Delete the given payment method for this customer.<br/><br/>\nNote: You must also provide the merchant id for the given payment method.<br/><br/>\n\nYou can get the **Request Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**paymentmethodid**\n- Get Payment Method by Parameters\n\n**merchantid**\n- Get Payment Merchants",
         "operationId": "delete-payment-method",
         "summary": "Delete Payment Method",
         "tags": [
@@ -1038,7 +1070,7 @@
     },
     "/{customerid}/paymentmethods/iframe": {
       "get": {
-        "description": "Get the data to display a iFrame for hosting the payment data capture form for the given store.<br/><br/>\n<b>Note</b>: This operation is only available on Disco version 10 or later.<br/><br/>\n\nYou can get the **Path Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**iframeId**\n- Not sourced by DirectScale\n\n**storeId**\n- Products: Get Stores\n\n**countryCode**, **Region**, and **languageCode**\n- Products: Get Regions",
+        "description": "Get the data to display a iFrame for hosting the payment data capture form for the given store.<br/><br/>\n\nYou can get the **Request Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**iframeId**\n- Not sourced by DirectScale\n\n**storeId**\n- Products: Get Stores\n\n**countryCode**, **Region**, and **languageCode**\n- Products: Get Regions",
         "operationId": "get-payment-method-iframe",
         "summary": "Get Payment Method IFrame",
         "tags": [
@@ -1109,7 +1141,7 @@
     },
     "/temp/paymentmethods/iframe": {
       "get": {
-        "description": "Get the data to display a iFrame for hosting the payment data capture form for the given store.<br/><br/>This will also create a temporary customer/associate account.  The customer ID is returned in the response body.  The Customer Id can be used to save payment method data and submit a enrollment order.  The account will not be visible to other area of the system until the submit enrollment is called.  If the enrollment is never processed then the account will automatically be removed from the system.<br/><br/>\n<b>Note</b>: This operation is only available on Disco version 10 or later.<br/><br/>\n\nYou can get the **Path Parameters** at these calls:\n\n**iframeId**\n- Not sourced by DirectScale\n\n**storeId**\n- Products: Get Stores\n\n**countryCode**, **region**, and **languageCode**\n- Products: Get Regions",
+        "description": "Get the data to display a iFrame for hosting the payment data capture form for the given store.<br/><br/>This will also create a temporary customer/associate account.  The customer ID is returned in the response body.  The Customer Id can be used to save payment method data and submit a enrollment order.  The account will not be visible to other areas of the system until the submit enrollment is called.  If the enrollment is never processed, then the account will automatically be removed from the system.<br/><br/>\n\nYou can get the **Request Parameters** at these calls:\n\n**iframeId**\n- Not sourced by DirectScale\n\n**storeId**\n- Products: Get Stores\n\n**countryCode**, **region**, and **languageCode**\n- Products: Get Regions",
         "operationId": "5b03347e795d2e8091251f30",
         "summary": "Get Payment Method IFrame (Temp User)",
         "tags": [
@@ -1174,7 +1206,7 @@
     },
     "/{customerid}/merchants": {
       "get": {
-        "description": "Get a list of merchants that can accept payment methods for the given store, country, and language.<br/><br/>\n<b>Note</b>: This operation is only available on Disco version 10 or later.<br/>\n<br/>\n\nYou can get the **Path Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**storeId**\n- Products: Get Stores\n\n**CountryCode**\n- Products: Get Regions\n\n**Region**\n- Products: Get Regions",
+        "description": "Get a list of merchants that can accept payment methods for the given store, country, and language.<br/><br/>\n\nYou can get the **Request Parameters** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter\n\n**storeId**\n- Products: Get Stores\n\n**CountryCode**\n- Products: Get Regions\n\n**Region**\n- Products: Get Regions",
         "operationId": "get-payment-merchants",
         "summary": "Get Payment Merchants",
         "tags": [
@@ -1209,16 +1241,22 @@
             "type": "string"
           }
         ],
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
-            "description": null
+            "description": "",
+            "examples": {
+              "application/json": "[{\r\n  \"MerchantId\": 99,\r\n  \"Name\": \"Test Merchant (USD)\",\r\n  \"DisplayName\": \"Credit Card\",\r\n  \"CurrencyCode\": \"USD\"\r\n}]"
+            }
           }
         }
       }
     },
     "/search/{searchTerm}": {
       "get": {
-        "description": "Search for all associates that match the given search term.\n\nAnything can be searched and will provide basic information on the items related to what was searched. This is a catch-all call that will find whatever is searched if no other call is able to complete the task.",
+        "description": "Search for all associates that match the given search term.\n\nWithin the searchTerm parameter, the following values can be searched and will return all variable values associated with that variable name:\n- backOfficeId\n- externalId\n- emailAddress\n- firstName\n- lastName\n- legalFirstName\n- legalLastName\n- romanizedFirstName\n- romanizedLastName\n- textNumber\n- primaryPhone\n- address1\n- city\n- state\n- zip",
         "operationId": "search-associate",
         "summary": "Search Associate",
         "tags": [
@@ -1235,7 +1273,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Search results returned"
+            "description": "Search items returned."
           },
           "404": {
             "description": "No results found"
@@ -1248,7 +1286,7 @@
     },
     "/{customerid}/services": {
       "get": {
-        "description": "Retrieves an array of Active Services on a valid Customer Id.\n\nYou can get the **Path Parameter** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Retrieves an array of Active Services on a valid Customer Id.\n\nYou can get the **Request Parameter** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "get-customer-services",
         "summary": "Get Customer Services",
         "tags": [
@@ -1270,7 +1308,7 @@
           "200": {
             "description": "Returns an array of valid Service objects.",
             "examples": {
-              "application/json": "[{ }]"
+              "application/json": "X-DirectScale-RequestId: c0ebc134-bbbf-43c2-8aa1-628c14052387\nDate: Tue, 17 Mar 2020 20:32:08 GMT\nContent-Length: 362\nContent-Type: application/json\n\n[{\n  \"ServiceName\": \"Tech Package\",\n  \"CustomerId\": 2,\n  \"ServiceId\": 1,\n  \"ExpirationDate\": \"2020-03-06T00:00:00\",\n  \"Services\": [{\n    \"ServiceId\": 1,\n    \"ItemId\": 17943,\n    \"ServicePeriod\": 1,\n    \"ServicePeriodType\": \"Months\",\n    \"GracePeriod\": 0,\n    \"CreateAutoship\": true\n  }]\n}]"
             }
           },
           "404": {
@@ -1297,7 +1335,7 @@
           "200": {
             "description": "Returns an array of all Customer IDs.",
             "examples": {
-              "application/json": "[1,2,3,4,5]"
+              "application/json": "[\n  1,\n  2,\n  3,\n  4,\n  5\n]"
             }
           },
           "500": {
@@ -1308,7 +1346,7 @@
     },
     "/customer-ids-by-filter": {
       "get": {
-        "description": "Gets all Customer IDs that meet the specified criteria.<br/><br/>\n\n**Date + Time format**\n\nYear-Month-Day'T'MilitaryTimeHour:Minute:Second\n- Ex. 2020-02-20T15:47:52",
+        "description": "Gets all Customer IDs that meet the specified criteria.<br/><br/>\n\n**Date + Time format**\n\nYear-Month-Day'T'MilitaryTimeHour:Minute:Second\n- Ex. 2018-10-30T15:47:52",
         "operationId": "5bad3171692fafb890855da4",
         "summary": "Get Customer IDs by Filter",
         "tags": [
@@ -1318,6 +1356,7 @@
           {
             "name": "customerType",
             "in": "query",
+            "description": "Using the SQL manager in Disco, find these values using this query: \"SELECT * FROM crm_associatetypes\"",
             "type": "integer"
           },
           {
@@ -1348,7 +1387,7 @@
           "200": {
             "description": "Gets an array of all Customer IDs that meet the specified criteria.",
             "examples": {
-              "application/json": "[1,3,5]"
+              "application/json": "[\n  1,\n  3,\n  5\n]"
             }
           },
           "500": {
@@ -1372,7 +1411,7 @@
           "200": {
             "description": "Returns an array of all DataPoint Categories.",
             "examples": {
-              "application/json": "[1,2,3,4,5]"
+              "application/json": "[\n  1,\n  2,\n  3,\n  4,\n  5\n]"
             }
           },
           "500": {
@@ -1394,7 +1433,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "example": "{\n\t\"AssociateIds\": [\n\t  2\n\t],\n\t\"DataPointsFilter\": [\n\t  {\n\t\t\"ID\": \"CommissionsCV\",\n\t\t\"Date\": \"2017-05-12\"\n\t  },\n\t  {\n\t\t\"ID\": \"AssociateAddressAddress\"\n\t  },\n\t  {\n\t\t\"ID\": \"AssociateAddressCity\"\n\t  },\n\t  {\n\t\t\"ID\": \"AssociateAddressState\"\n\t  },\n\t  {\n\t\t\"ID\": \"TreesMatrixAvailablePlacementCount\"\n\t  }\n\t]\n}"
+              "example": "{\n  \"AssociateIds\": [\n    2\n  ],\n  \"DataPointsFilter\": [\n    {\n      \"ID\": \"CommissionsCV\",\n      \"Date\": \"2017-05-12T00:00:00.0000000+00:00\"\n    },\n    {\n      \"ID\": \"AssociateAddressAddress\"\n    },\n    {\n      \"ID\": \"AssociateAddressCity\"\n    },\n    {\n      \"ID\": \"AssociateAddressState\"\n    },\n    {\n      \"ID\": \"TreesMatrixAvailablePlacementCount\"\n    }\n  ]\n}"
             },
             "description": "Gets the specified DataPoints for the specified customers."
           }
@@ -1414,7 +1453,7 @@
     },
     "/GetDownlineIds": {
       "get": {
-        "description": "Retrieves an array of Associates in your organization by tree.\n\nYou can get the **Path Parameters** at these calls:\n\n**associateId**\n- Get Customer Stats",
+        "description": "Retrieves an array of Associates in your organization by tree.\n\nYou can get the **Request Parameters** at these calls:\n\n**associateId**\n- Get Customer Stats",
         "operationId": "5c09527cbdc0d215e3ddac6a",
         "summary": "Get Customer Downline Ids",
         "tags": [
@@ -1422,18 +1461,10 @@
         ],
         "parameters": [
           {
-            "name": "associateId",
-            "in": "query",
-            "description": "Associate to get downline for",
-            "required": true,
-            "type": "integer"
-          },
-          {
             "name": "tree",
             "in": "query",
             "description": "Organizational tree wanted to search",
             "type": "string",
-            "default": "Enrollment",
             "enum": [
               "Unilevel",
               "Enrollment",
@@ -1446,6 +1477,13 @@
             "in": "query",
             "description": "Number of Levels returned.  If 0 returns all levels",
             "type": "integer"
+          },
+          {
+            "name": "associateId",
+            "in": "query",
+            "description": "Associate to get downline for",
+            "required": true,
+            "type": "integer"
           }
         ],
         "produces": [
@@ -1455,7 +1493,7 @@
           "200": {
             "description": "Returns an array of valid Service objects.",
             "examples": {
-              "application/json": "[{ }]"
+              "application/json": "[\n  1,\n  2,\n  3,\n  4,\n  5\n]"
             }
           },
           "404": {
@@ -1488,7 +1526,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "example": "{   \n   \"Message\": \"Some message\"\n}"
+              "example": "{\n  \"Message\": \"Some message\"\n}"
             }
           }
         ],
@@ -1508,7 +1546,7 @@
         }
       },
       "put": {
-        "description": "Updates the Last Charge Amount and Next Process Date of the given AutoShip.\n\n\nYou can get the **Path Parameter** at this call:\n\n**autoshipId**\n- Get Customer Autoships",
+        "description": "Updates the Last Charge Amount and Next Process Date of the given AutoShip.\n\n\nYou can get the **Request Parameter** at this call:\n\n**autoshipId**\n- Get Customer Autoships",
         "operationId": "update-autoship-date-and-amount",
         "summary": "Update AutoShip Date and Amount",
         "tags": [
@@ -1528,7 +1566,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "example": "{   \n   \"LastChargeAmount\": 0.0,\n   \"NextProcessDate\": \"date\"\n}"
+              "example": "{\n  \"LastChargeAmount\": 0,\n  \"NextProcessDate\": \"date\"\n}"
             }
           }
         ],
@@ -1550,11 +1588,12 @@
     },
     "/notificationEvents": {
       "get": {
-        "description": "For a given date/time range, fetch all notification events generated by customer events. The \"notification type\" is an integer. Its values could vary by client.\n\n**Date + Time format**\n\nYear-Month-Day'T'MilitaryTimeHour:Minute:Second\n- Ex. 2020-02-20T15:47:52",
+        "description": "For a given date/time range, fetch all notification events generated by customer events. The \"notification type\" is an integer. Its values could vary by client if overridden, but the default list is as follows:\n\n        Enrollment = 0,\n        RankAdvancement = 1,\n        NewOrder = 2,\n        NewAutoOrder = 3,\n        CommissionStatChanged = 4,\n        AutoShipProcessFailure = 5\n\n**Date + Time format**\n\nYear-Month-Day'T'MilitaryTimeHour:Minute:Second\n- Ex. 2018-10-30T15:47:52",
         "operationId": "get-notification-events",
         "summary": "Get Notification Events",
         "tags": [
-          "Customers"
+          "Customers",
+          "Events"
         ],
         "parameters": [
           {
@@ -1572,16 +1611,22 @@
             "type": "string"
           }
         ],
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "examples": {
+              "application/json": "[{\r\n    \"AssociateID\": 1,\r\n    \"EventType\": 2,\r\n    \"EventValue\": \"10003986\",\r\n    \"EntryDate\": \"2020-01-30T11:55:58\",\r\n    \"EventDate\": \"0001-01-01T00:00:00\"\r\n  },\r\n  {\r\n    \"AssociateID\": 1,\r\n    \"EventType\": 2,\r\n    \"EventValue\": \"10003987\",\r\n    \"EntryDate\": \"2020-01-30T12:55:37\",\r\n    \"EventDate\": \"0001-01-01T00:00:00\"\r\n  },\r\n  {\r\n    \"AssociateID\": 1,\r\n    \"EventType\": 2,\r\n    \"EventValue\": \"10003988\",\r\n    \"EntryDate\": \"2020-01-30T13:26:23\",\r\n    \"EventDate\": \"0001-01-01T00:00:00\"\r\n  },\r\n  {\r\n    \"AssociateID\": 1,\r\n    \"EventType\": 2,\r\n    \"EventValue\": \"10003989\",\r\n    \"EntryDate\": \"2020-01-30T13:41:10\",\r\n    \"EventDate\": \"0001-01-01T00:00:00\"\r\n  },\r\n  {\r\n    \"AssociateID\": 1,\r\n    \"EventType\": 2,\r\n    \"EventValue\": \"10003990\",\r\n    \"EntryDate\": \"2020-01-30T14:46:44\",\r\n    \"EventDate\": \"0001-01-01T00:00:00\"\r\n  }\r\n]"
+            }
           }
         }
       }
     },
     "/{customerid}/servicelog": {
       "post": {
-        "description": "Create a service log entry for the given customer.<br/><br/>\nThis appears on the customer record.<br/><br/>\nPassing in a Message results in only a service log entry. Passing in both Message and Detailed Message creates the service log entry, and a (linked) related support record with greater detail.\n\nYou can get the **Path Parameter** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Create a service log entry for the given customer.<br/><br/>\nThis appears on the customer record.<br/><br/>\nPassing in a Message results in only a service log entry. Passing in both Message and Detailed Message creates the service log entry, and a (linked) related support record with greater detail.\n\nYou can get the **Request Parameter** at these calls:\n\n**customerid**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "5dcb2708dafe38aad9ae7ce6",
         "summary": "Create Customer Service Log Entry",
         "tags": [
@@ -1599,7 +1644,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "example": "{\n  \"Message\": \"(Required) Short message\",\n  \"DetailedMessage\" : \"(Optional) Long message\"\n}\n"
+              "example": "{\n  \"Message\": \"(Required) Short message\",\n  \"DetailedMessage\": \"(Optional) Long message\"\n}"
             }
           }
         ],
@@ -1615,7 +1660,7 @@
     },
     "/{customerId}/autoships": {
       "get": {
-        "description": "Retrieves an array of Autoships based on a valid Customer Id.\n\nYou can get the **Path Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
+        "description": "Retrieves an array of Autoships based on a valid Customer Id.\n\nYou can get the **Request Parameter** at these calls:\n\n**customerId**\n- Get Customer IDs\n- Get Customer IDs by Filter",
         "operationId": "5dcb36b61bc448bce7d67fe6",
         "summary": "Get Customer Autoships",
         "tags": [
@@ -1649,7 +1694,7 @@
           "200": {
             "description": "Returns an array of valid Order objects.",
             "examples": {
-              "application/json": "[{\n    \"BillPhone\": \"+1 555 555 1111\",\n    \"CommissionDate\": \"2015-05-11\",\n    \"DistributorID\": 2,\n    \"Email\": \"testing@testing.directscale.com\",\n    \"InvoiceDate\": \"2015-05-11\",\n    \"LocalInvoiceNumber\": 1234,\n    \"Name\": \"Testing Name\",\n    \"OrderDate\": \"2015-05-11\",\n    \"OrderType\": 1,\n    \"OrderTypeDescription\": \"Test Description\",\n    \"OrderNumber\": 18,\n    \"SpecialInstructions\": \"Special Instructions here...\",\n    \"Status\": \"Paid\",\n    \"TotalBonus\": 12.0,\n    \"TotalCost\": 120.0,\n    \"TotalCV\": 1.0,\n    \"TotalQV\": 1.0,\n    \"Void\": false,\n    \"BillAddress\": {\n      \"ID\": 3214,\n      \"Line1\": \"1234 Testing Wy.\",\n      \"Line2\": null,\n      \"Line3\": null,\n      \"City\": \"Elko\",\n      \"State\": \"NV\",\n      \"Zip\": \"55487\",\n      \"CountryCode\": \"US\"\n    },\n    \"IsPaid\": true,\n    \"IsShipped\": false,\n    \"LineItems\": [\n      {\n        \"Amount\": 25.5,\n        \"Bonus\": 0.0,\n        \"Cost\": 0.0,\n        \"CurrencyCode\": \"USD\",\n        \"Height\": 0.0,\n        \"Length\": 0.0,\n        \"OrderNumber\": 18,\n        \"PackageNumber\": 15,\n        \"CV\": 0.0,\n        \"QV\": 0.0,\n        \"Qty\": 1.0,\n        \"SKU\": \"TDLARCH\",\n        \"ItemID\": 6,\n        \"ProductName\": \"Turtle Arch\",\n        \"Weight\": 0.0,\n        \"Width\": 0.0,\n        \"FlagCancer\": false,\n        \"FlagBirthDefect\": false\n      }\n    ],\n    \"Packages\": [\n      {\n        \"ID\": 15,\n        \"CustomerID\": \"2\",\n        \"Address1\": 3214,\n        \"Address2\": null,\n        \"Carrier\": \"FedEx\",\n        \"City\": \"Elko\",\n        \"CountryCode\": \"US\",\n        \"Height\": 0.0,\n        \"Length\": 0.0,\n        \"Notes\": \"Special Instructions here...\",\n        \"OrderNumber\": 18,\n        \"ShipByDate\": \"2015-05-11\",\n        \"ShipMethodID\": 1,\n        \"State\": \"NV\",\n        \"WarehouseID\": 1,\n        \"Weight\": 0.0,\n        \"Width\": 0.0,\n        \"Zip\": \"55487\",\n        \"ShipTo\": \"Test Name\",\n        \"Status\": \"Submitted\"\n      }\n    ],\n    \"Totals\": [\n      {\n        \"TaxableSubTotal\": 18.5,\n        \"CurrencyCode\": \"USD\",\n        \"ExchangeRate\": 1.0,\n        \"OrderNumber\": 18,\n        \"Shipping\": 7.0,\n        \"SubTotal\": 25.5,\n        \"Tax\": 1.67,\n        \"TaxTransactionID\": \"\",\n        \"DiscountTotal\": 0.0,\n        \"OverridenShippingTax\": false,\n        \"Total\": 27.17,\n        \"PaidAmount\": 27.17,\n        \"TotalDue\": 0.0\n      }\n    ],\n    \"Payments\": [\n      {\n        \"Amount\": 27.17,\n        \"AuthorizationNumber\": \"asdf1234\",\n        \"TransactionNumber\": \"asdfw56\",\n        \"CurrencyCode\": \"USD\",\n        \"ExchangeRate\": 1.0,\n        \"Merchant\": 12,\n        \"OrderNumber\": 18,\n        \"PayDate\": \"2015-05-11\",\n        \"PaymentResponse\": \"0: Success\",\n        \"PayType\": \"Cash\",\n        \"Reference\": \"\",\n        \"Status\": \"Paid\"\n      }\n    ]\n  }\n]"
+              "application/json": "[\n  {\n    \"AutoShipID\": 90020486,\n    \"AssociateID\": 2,\n    \"ShipAddress\": {\n      \"Street1\": \"350 S 400 W\",\n      \"Street2\": \"Ste 225\",\n      \"Street3\": \"\",\n      \"City\": \"Lindon\",\n      \"PostalCode\": \"84042\",\n      \"Region\": \"UT\",\n      \"CountryCode\": \"us\"\n    },\n    \"StartDate\": \"2020-02-06T00:00:00\",\n    \"Frequency\": 0,\n    \"LastProcessDate\": \"2020-02-06T16:23:30\",\n    \"NextProcessDate\": \"2020-02-13T00:00:00\",\n    \"LastChargeAmount\": 0.0,\n    \"Status\": \"Failed\",\n    \"ShipMethodID\": 5,\n    \"PaymentMethodID\": \"123Token789\",\n    \"PaymentMerchantID\": 99,\n    \"AutoShipType\": 0,\n    \"LineItems\": [{\n      \"ItemID\": 17924,\n      \"Quantity\": 5.0,\n      \"Cost\": 0.0,\n      \"ExtendedPrice\": 281.2,\n      \"ExtendedOriginalPrice\": 281.2,\n      \"ExtendedBonus\": 281.2,\n      \"ExtendedCV\": 262.45,\n      \"ExtendedQV\": 281.2,\n      \"ExtendedRewardPoints\": 0.0,\n      \"ExtendedCost\": 0.0,\n      \"ProductName\": \"NéVetica Hygiene Kit\",\n      \"Description\": null,\n      \"Specifications\": null,\n      \"SEO\": null,\n      \"LanguageCode\": \"en\",\n      \"SKU\": \"NEV-BHY-001\",\n      \"SkuID\": 17924,\n      \"Category\": {\n        \"ID\": 1,\n        \"Name\": \"Test Category\",\n        \"Description\": \"Test Category\",\n        \"DisplayIndex\": 0.0,\n        \"ImageUrl\": \"\",\n        \"ParentID\": 0,\n        \"ProductLineID\": 0,\n        \"ShortDescription\": \"\",\n        \"StoreIDs\": [\n          9,\n          10,\n          11,\n          12,\n          13,\n          14,\n          15\n        ],\n        \"HasChildren\": false\n      },\n      \"ChargeShipping\": true,\n      \"Custom\": null,\n      \"Height\": 0.0,\n      \"Image\": \"/ocs-bundle-small-.png\",\n      \"Length\": 0.0,\n      \"LengthUOM\": \"cm\",\n      \"MPN\": \"\",\n      \"PackCount\": 0.0,\n      \"PackageGroupID\": 1,\n      \"TaxClassID\": 14,\n      \"UnitOfMeasure\": \"\",\n      \"UPC\": \"\",\n      \"Weight\": 0.0,\n      \"WeightUOM\": \"oz\",\n      \"Width\": 0.0,\n      \"FlagBirthDefects\": false,\n      \"HasKitGroups\": false,\n      \"FlagCancer\": false,\n      \"PriceGroup\": 1,\n      \"Images\": [{\n        \"Description\": \"/ocs-bundle-small-.png\",\n        \"Path\": \"/ocs-bundle-small-.png\"\n      }],\n      \"Prices\": [{\n        \"GroupID\": 1,\n        \"Price\": 56.24,\n        \"PriceCurrency\": \"USD\",\n        \"OriginalPrice\": 56.24,\n        \"Bonus\": 56.24,\n        \"CV\": 52.49,\n        \"QV\": 56.24,\n        \"RewardPoints\": 0.0\n      }],\n      \"Options\": [],\n      \"ItemOptions\": [],\n      \"Languages\": [{\n          \"Description\": \"\",\n          \"LanguageCode\": \"en\",\n          \"ProductName\": \"NéVetica Hygiene Kit\",\n          \"SEOKeywords\": \"\",\n          \"Specifications\": \"\"\n        },\n        {\n          \"Description\": \"      \",\n          \"LanguageCode\": \"es\",\n          \"ProductName\": \"\",\n          \"SEOKeywords\": \"\",\n          \"Specifications\": \"\"\n        }\n      ],\n      \"OptionsMap\": [],\n      \"HasOptions\": false,\n      \"Price\": 56.24,\n      \"PriceCurrency\": \"USD\",\n      \"OriginalPrice\": 56.24,\n      \"Bonus\": 56.24,\n      \"CV\": 52.49,\n      \"QV\": 56.24,\n      \"RewardPoints\": 0.0,\n      \"CouponsBeingUsed\": 0,\n      \"StoreId\": 5,\n      \"PriceGroups\": [\n        1\n      ]\n    }],\n    \"Custom\": null,\n    \"FrequencyString\": \"Every Week on Thursday\",\n    \"TotalCV\": 262.45,\n    \"TotalQV\": 281.2,\n    \"CurrencyCode\": \"USD\",\n    \"SubTotal\": 281.2\n  }\n]"
             }
           },
           "404": {
